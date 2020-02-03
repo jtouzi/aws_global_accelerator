@@ -46,17 +46,26 @@ For this workshop we will use Oregon, Dublin and Tokyo regions, I've created two
 
 ## Lab 1 - Create an Accelerator
 
-1. Open the Global Accelerator console at https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#Global Accelerator:.
-2. Choose Create accelerator.
-3. Provide a name for your accelerator (AGAWorkshop), choose "Next"
+### Open the Global Accelerator console at https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#Global Accelerator:.
+### Choose "Create accelerator".
+### Provide a name for your accelerator (AGAWorkshop), choose "Next"
+
 <kbd>![x](./img/accelerator-name.png)</kbd>
-4. Add the listeners (TCP port 80), choose "Next"
+
+### Add the listeners (TCP port 80), choose "Next"
+
 <kbd>![x](./img/add-listeners.png)</kbd>
-5. Add endpoint group (one per region in which you deployed the CloudFormation template), choose "Next"
+
+### Add endpoint group (one per region in which you deployed the CloudFormation template), choose "Next"
+
 <kbd>![x](./img/add-endpoint-groups.png)</kbd>
-6. Add endpoints to the endpoint groups (choose in the drop down the Application Load Balancers the template created), then choose "Create accelerator"
+
+### Add endpoints to the endpoint groups (choose in the drop down the Application Load Balancers the template created), then choose "Create accelerator"
+
 <kbd>![x](./img/add-endpoints.png)</kbd>
-7. The Accelerator will be "In progress" status, it takes about 5 minutes to move to "Deployed" status, you should be able to see the two static anycast IP addresses and the DNS assigned to the Accelerator:
+
+### The Accelerator will be "In progress" status, it takes about 5 minutes to move to "Deployed" status, you should be able to see the two static anycast IP addresses and the DNS assigned to the Accelerator
+
 <kbd>![x](./img/accelerator-inprogress.png)</kbd>
 
 ## Lab 2 - Intelligent traffic distribution
