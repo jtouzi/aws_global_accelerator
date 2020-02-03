@@ -46,9 +46,7 @@ For this workshop we will use Oregon, Dublin and Tokyo regions, I've created two
 
 ## Lab 1 - Create an Accelerator
 
-### Open the Global Accelerator console at https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#Global Accelerator:.
-### Choose "Create accelerator".
-### Provide a name for your accelerator (AGAWorkshop), choose "Next"
+Open the Global Accelerator console at https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#GlobalAcceleratorHome:, Choose "Create accelerator" and  provide a name for your accelerator (AGAWorkshop), choose "Next"
 
 <kbd>![x](./img/accelerator-name.png)</kbd>
 
