@@ -86,8 +86,9 @@ We kept the default traffic dials (100%)
 
 Let's see how AWS Global Accelerator routes the requests based on the origin of the requester - we use the VPN to similuate requests from four different locations (Frankfurt, Herndon, Mumbai, Sao Paolo and Sydney) by running the following Bash command (use your accelerator DNS):
 
+```
 $ for i in {1..100}; do curl http://a05ba692c0635145f.awsglobalaccelerator.com/ --silent >> output.txt; done; cat output.txt | sort | uniq -c ; rm output.txt;
-
+```
 
 <kbd>![x](./img/100-frankfurt.png)</kbd>
 
