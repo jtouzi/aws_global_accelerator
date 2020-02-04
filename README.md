@@ -66,4 +66,54 @@ Open the Global Accelerator console at https://us-west-2.console.aws.amazon.com/
 
 <kbd>![x](./img/accelerator-inprogress.png)</kbd>
 
+Once the accelerator is in "Deployed" status, select the accelerator and make sure all the endpoints are healthy
+
+<kbd>![x](./img/accelerator-all-healthy.png)</kbd>
+
 ## Lab 2 - Intelligent traffic distribution
+
+We kept the default traffic dials (100%)
+
+<kbd>![x](./img/default-traffic-dials.png)</kbd>
+
+Let see how AWS Global Accelerator routes the requests based on the origin of the requester - I use the VPN to similuate requests from four different locations (Frankfurt, Herndon, Mumbai, Sao Paolo and Sydney), I run the following command (use your accelerator DNS):
+
+$ for i in {1..100}; do curl http://a05ba692c0635145f.awsglobalaccelerator.com/ --silent >> output.txt; done; cat output.txt | sort | uniq -c ; rm output.txt;
+
+
+<kbd>![x](./img/100-frankfurt.png)</kbd>
+
+<kbd>![x](./img/100-herndon.png)</kbd>
+
+<kbd>![x](./img/100-mumbai.png)</kbd>
+
+<kbd>![x](./img/100-saopaolo.png)</kbd>
+
+<kbd>![x](./img/100-sydney.png)</kbd>
+
+## Lab 3 - Traffic Dials
+
+### EU-WEST-1 Application upgrade or maintenance
+
+We would like to upgrade the application in EU-WEST-1 region, for this we would like to send the traffic to a different region, this is done by setting the Traffic Dial to 0 (zero) as chown below.
+
+<kbd>![x](./img/0-eu-west-1-1.png)</kbd>
+<kbd>![x](./img/0-eu-west-1-2.png)</kbd>
+
+Let see how AWS Global Accelerator handles traffic from Frankfurt and Mumbai, that were previously served from EU-WEST-1 region.
+
+<kbd>![x](./img/0-frankfurt.png)</kbd>
+
+<kbd>![x](./img/0-mumbai.png)</kbd>
+
+### The maintenance is completed in EU-WEST-1
+
+We want to test it by sending only 50% of the traffic it is supposed to handle.
+
+<kbd>![x](./img/50-eu-west-1.png)</kbd>
+
+Let see how AWS Global Accelerator handles traffic from Frankfurt and Mumbai, remember they were previously all served from EU-WEST-1 region.
+
+<kbd>![x](./img/50-frankfurt.png)</kbd>
+
+<kbd>![x](./img/50-mumbai.png)</kbd>
