@@ -5,21 +5,22 @@ In this workshop you will use the CloudFormtaion template to build a multiregion
 
 # Table of Content
 * [What are we building](#design)
-* Lab 0 - Launch the CloudFormation stack
-* Lab 1 - Create an Accelerator
-* Lab 2 - Intelligent traffic distribution
-* Lab 3 - Fine-grained traffic control with Traffic Dials
-  * EU-WEST-1 application upgrade or maintenance
-  * Blue/Green deployment
-* Lab 4 - Fine-grained traffic control with Endpoint Weights
-* Lab 5 - Client Affinity
-* Lab 7 - Continuous availability monitoring / Failover
-* Bonus Labs - CloudWatch metrics and enabling flow logs
+* [Lab 0 - Launch the CloudFormation stack](#lab0)
+* [Lab 1 - Create an Accelerator](#lab1)
+* [Lab 2 - Intelligent traffic distribution](#lab2)
+* [Lab 3 - Fine-grained traffic control with Traffic Dials](#lab3)
+  * [EU-WEST-1 application upgrade or maintenance](#lab31)
+  * [Blue/Green deployment](#lab32)
+* [Lab 4 - Fine-grained traffic control with Endpoint Weights](#lab4)
+* [Lab 5 - Client Affinity](#lab5)
+* [Lab 6 - Continuous availability monitoring / Failover](#lab6)
+* [Bonus Labs - CloudWatch metrics and enabling flow logs](#lab7)
 
 <a name="design"/>
 
 ## What are we building
 
+<a name="lab0"/>
 
 ## Lab 0 - Launch the CloudFormation stack
 
@@ -59,6 +60,8 @@ After you click on "Create stack", you will have the following window, it takes 
 
 For this workshop we will use Oregon, Dublin and Tokyo regions, I've created two endpoints in Oregon region.
 
+<a name="lab1"/>
+
 ## Lab 1 - Create an Accelerator
 
 - Open the Global Accelerator console at https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#GlobalAcceleratorHome:
@@ -93,6 +96,8 @@ You should be able to access the application using the accelerator DNS.
 
 AWS Global Accelerator can access public and private EC2 instances and load balancers. Note that you can't access the Application Load Balancers the CloudFormation created directly using their DNS, as they are internal load balancers, AWS Global Accelerator will access them using private IP addresses. This is the AWS Global Accelerator **origin cloaking** feature, for more information see: https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-benefits-of-migrating.html
 
+<a name="lab2"/>
+
 ## Lab 2 - Intelligent traffic distribution
 
 We kept the default traffic dials (100%)
@@ -120,7 +125,11 @@ $ for i in {1..100}; do curl http://a05ba692c0635145f.awsglobalaccelerator.com/ 
 2. Requests from Herndon and Sao-Paolo are processed in US-WEST-2 (Oregon), we have two endpoints in Oregon region, AWS Global Accelerator sends 50% of traffic to each endpoint (Endpoint weights).
 3. Requests from Sydney are processed in AP-NORTHEAST-1 (Tokyo)
 
+<a name="lab3"/>
+
 ## Lab 3 - Fine-grained traffic control with Traffic Dials
+
+<a name="lab31"/>
 
 ### EU-WEST-1 application upgrade or maintenance
 
@@ -137,6 +146,8 @@ Let's see how AWS Global Accelerator handles traffic from Frankfurt and Mumbai, 
 
 ### Comments
 Requests from Frankfurt are now processed in in US-WEST-1 (Oregon) and requests from Mumbai processed in AP-NORTHEAST-1 (Tokyo).
+
+<a name="lab32"/>
 
 ### The upgrade/maintenance is completed in EU-WEST-1. We want to test it by sending only 20% of the traffic it is supposed to handle.
 
@@ -159,6 +170,8 @@ Before you continue with the workshop, change back the traffic dial for US-WEST-
 
 Adjusting Traffic Flow With Traffic Dials: https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-traffic-dial.html
 
+<a name="lab4"/>
+
 ## Lab 4 - Fine-grained traffic control with Endpoint Weights
 In US-WEST-2 (Oregon) region we have two endpoints, in Lab 3 the two endpoints processed the same amount of traffic, they have the default endpoint weight (128). Let's say the first endpoint has more capacipty than the second, and we want it to handle 80% of the traffic processed in the region, we can set endpoint weights to 200 and 50 respectively for the first and second endpoint. The first will handle 200 / (200 + 50) = 80%, the second 50 / (200 + 50) = 20%
 
@@ -177,6 +190,8 @@ Endpoint Weights: https://docs.aws.amazon.com/global-accelerator/latest/dg/about
 
 Change back the endpoint weights to the default (128).
 
+<a name="lab5"/>
+
 ## Lab 5 - Client Affinity
 If we want AWS Global Accelerator to direct all requests from a user at a specific source (client) IP address to the same endpoint resource (to maintain client affinity), we can change the "Client Affinity" from "None" (default) to "Source IP" for the listener.
 
@@ -193,7 +208,9 @@ US-WEST-2 has two endpoints, but only one processed the 100 requests because the
 ### Resources
 Client Affinity: https://docs.aws.amazon.com/global-accelerator/latest/dg/about-listeners.html#about-listeners-client-affinity
 
-## Lab 7 - Continuous availability monitoring / Failover
+<a name="lab6"/>
+
+## Lab 6 - Continuous availability monitoring / Failover
 
 For some reason, our endpoint in AP-NORTHEAST-1 stops responding and the Application Load Balancer health check fails. AWS Global Accelerator will take up to 30 seconds (Health check interval) to notice the failure and to automatically redirect traffic to the next available region.
 
@@ -211,6 +228,8 @@ Let's see how AWS Global Accelerator will handle requests from Sydney, normally 
 
 ### Comments
 Sydney are now processed in US-WEST-2 region. AWS Global Accelerator will continue to monitor the endpoint, and will restart to send traffic to it once it becomes healthy.
+
+<a name="lab7"/>
 
 ## Bonus Labs - CloudWatch metrics and enabling flow logs
 
