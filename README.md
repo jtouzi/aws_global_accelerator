@@ -17,6 +17,7 @@ In this workshop you will use the CloudFormtaion template to build a multiregion
 9. Bonus Labs - CloudWatch metrics and enabling flow logs
 
 <a name="design"/>
+
 ## What are we building
 
 
