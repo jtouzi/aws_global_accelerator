@@ -20,6 +20,8 @@ In this workshop you will use the CloudFormtaion template to build a multiregion
 
 ## What are we building
 
+<kbd>![x](./img/design.png)</kbd>
+
 <a name="lab0"/>
 
 ## Lab 0 - Launch the CloudFormation stack
