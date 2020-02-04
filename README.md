@@ -15,6 +15,7 @@ In this workshop you will use the CloudFormtaion template to build a multiregion
 * [Lab 5 - Client Affinity](#lab5)
 * [Lab 6 - Continuous availability monitoring / Failover](#lab6)
 * [Bonus Labs - CloudWatch metrics and enabling flow logs](#lab7)
+* [Cleaning up](#clean)
 
 <a name="design"/>
 
@@ -254,3 +255,9 @@ Flow logs enable you to capture information about the IP address traffic going t
 version aws_account_id accelerator_id client_ip client_port gip gip_port endpoint_ip endpoint_port protocol ip_address_type packets bytes start_time end_time action log_status globalaccelerator_source_ip globalaccelerator_source_port endpoint_region globalaccelerator_region direction vpc_id
 2.0 071855492661 ad530208-6600-4e87-9706-1f89a7e36abc 139.162.106.181 37760 75.2.76.16 80 172.31.21.192 80 TCP IPV4 0 0 1580605194 1580605204 ACCEPT OK - 0 ap-northeast-1 NRT57-2 INGRESS vpc-0f24e33eec64ec958
 ```
+
+(#clean)
+
+## Cleaning up
+
+
