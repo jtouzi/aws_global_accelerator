@@ -4,17 +4,17 @@ This repository contains instructions for getting started with AWS Global Accele
 In this workshop you will use the CloudFormtaion template to build a multiregion application, and then serve it with AWS Global Accelerator.
 
 # Table of Content
-1. [What are we building](#design)
-2. Lab 0 - Launch the CloudFormation stack
-3. Lab 1 - Create an Accelerator
-4. Lab 2 - Intelligent traffic distribution
-5. Lab 3 - Fine-grained traffic control with Traffic Dials
-5.1. EU-WEST-1 application upgrade or maintenance
-5.2. Blue/Green deployment
-6. Lab 4 - Fine-grained traffic control with Endpoint Weights
-7. Lab 5 - Client Affinity
-8. Lab 7 - Continuous availability monitoring / Failover
-9. Bonus Labs - CloudWatch metrics and enabling flow logs
+* [What are we building](#design)
+* Lab 0 - Launch the CloudFormation stack
+* Lab 1 - Create an Accelerator
+* Lab 2 - Intelligent traffic distribution
+* Lab 3 - Fine-grained traffic control with Traffic Dials
+..* EU-WEST-1 application upgrade or maintenance
+..* Blue/Green deployment
+* Lab 4 - Fine-grained traffic control with Endpoint Weights
+* Lab 5 - Client Affinity
+* Lab 7 - Continuous availability monitoring / Failover
+* Bonus Labs - CloudWatch metrics and enabling flow logs
 
 <a name="design"/>
 
