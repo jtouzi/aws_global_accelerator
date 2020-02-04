@@ -9,8 +9,8 @@ In this workshop you will use the CloudFormtaion template to build a multiregion
 * Lab 1 - Create an Accelerator
 * Lab 2 - Intelligent traffic distribution
 * Lab 3 - Fine-grained traffic control with Traffic Dials
-..* EU-WEST-1 application upgrade or maintenance
-..* Blue/Green deployment
+⋅⋅* EU-WEST-1 application upgrade or maintenance
+⋅⋅* Blue/Green deployment
 * Lab 4 - Fine-grained traffic control with Endpoint Weights
 * Lab 5 - Client Affinity
 * Lab 7 - Continuous availability monitoring / Failover
