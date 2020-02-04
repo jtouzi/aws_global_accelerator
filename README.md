@@ -256,7 +256,7 @@ version aws_account_id accelerator_id client_ip client_port gip gip_port endpoin
 2.0 071855492661 ad530208-6600-4e87-9706-1f89a7e36abc 139.162.106.181 37760 75.2.76.16 80 172.31.21.192 80 TCP IPV4 0 0 1580605194 1580605204 ACCEPT OK - 0 ap-northeast-1 NRT57-2 INGRESS vpc-0f24e33eec64ec958
 ```
 
-(#clean)
+<a name="clean"/>
 
 ## Cleaning up
 
