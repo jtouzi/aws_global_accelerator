@@ -69,3 +69,11 @@ Endpoint Weights: https://docs.aws.amazon.com/global-accelerator/latest/dg/about
 Change back the endpoint weights to the default (128).
 
 <a name="lab5"/>
+
+# Checkpoint
+
+You now have an operational workshop environment to work with. [Proceed to Lab 2](../lab-4-client-affinity)
+
+## Participation
+
+We encourage participation; if you find anything, please submit an [issue](https://github.com/aws-samples/aws-global-accelerator-workshop/issues). However, if you want to help raise the bar, submit a [PR](https://github.com/aws-samples/aws-global-accelerator-workshop/pulls)!

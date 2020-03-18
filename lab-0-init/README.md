@@ -22,11 +22,6 @@
 
 [Workshop Cleanup - TBD](tbd-cleanup)
 
-This repository contains instructions for getting started with AWS Global Accelerator.
-
-In this workshop you will use the CloudFormation template to build a multi-region application, and then serve it with AWS Global Accelerator.
-
-
 ## Lab 0 - Workshop Initialization
 
 In this lab, you'll launch the core infrastructure for the workshop via AWS CloudFormation. We'll have a section to explain what you're launching here, so don't worry. After the workshop, simply delete the CloudFormation stack to delete all the above resources. We have a cleanup section at the end as well to remind you.

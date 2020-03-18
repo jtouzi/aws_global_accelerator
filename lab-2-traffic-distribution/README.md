@@ -33,3 +33,11 @@ $ for i in {1..100}; do curl http://a05ba692c0635145f.awsglobalaccelerator.com/ 
 3. Requests from Sydney are processed in AP-NORTHEAST-1 (Tokyo)
 
 <a name="lab3"/>
+
+# Checkpoint
+
+You now have an operational workshop environment to work with. [Proceed to Lab 2](../lab-3-fine-grained-control)
+
+## Participation
+
+We encourage participation; if you find anything, please submit an [issue](https://github.com/aws-samples/aws-global-accelerator-workshop/issues). However, if you want to help raise the bar, submit a [PR](https://github.com/aws-samples/aws-global-accelerator-workshop/pulls)!

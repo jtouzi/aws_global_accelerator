@@ -71,3 +71,11 @@ You should be able to access the application using the accelerator DNS.
 <kbd>![x](./img/accelerator-browser.png)</kbd>
 
 AWS Global Accelerator can access public and private EC2 instances and load balancers. Note that you can't access the Application Load Balancers the CloudFormation created directly using their DNS, as they are internal load balancers, AWS Global Accelerator will access them using private IP addresses. This is the AWS Global Accelerator **origin cloaking** feature, for more information see: https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-benefits-of-migrating.html
+
+# Checkpoint
+
+You now have an operational workshop environment to work with. [Proceed to Lab 2](../lab-2-traffic-distribution)
+
+## Participation
+
+We encourage participation; if you find anything, please submit an [issue](https://github.com/aws-samples/aws-global-accelerator-workshop/issues). However, if you want to help raise the bar, submit a [PR](https://github.com/aws-samples/aws-global-accelerator-workshop/pulls)!
