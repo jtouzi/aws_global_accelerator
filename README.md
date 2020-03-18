@@ -1,4 +1,4 @@
-# Mythical Mysfits: Building Multi-Region Applications that Align with BC/DR Objectives
+# Mythical Mysfits: Multi-Region Control with AWS Global Accelerator
 
 ## Overview
 ![mysfits-welcome](/images/mysfits-welcome.png)
@@ -23,12 +23,12 @@ Familiarity with AWS, Python, [Docker](https://www.docker.com/), networking, CI/
 The labs in the workshop are designed to be completed in sequence, and the full set of instructions are documented in each lab. Read and follow the instructions to complete each of the labs. Don't worry if you get stuck, we provide hints along the way.
 
 * **[Lab 0](lab-0-init):** Deploy existing Mythical stack
-* **[Lab 1](lab-1-xray):** Improve microservices observability with distributed tracing
-* **[Lab 2](lab-2-agg):** Build an operational dashboard
-* **[Lab 3](lab-3-mr-prep):** Prepare the app for multi-region deployments
-* **[Lab 4](lab-4-globalacc):** Implement AWS Global Accelerator and test traffic management
-* **[Lab 5](lab-5-loadtest):** Load test the system to test manual failover based on operational metrics
-<!-- * **[Bonus Lab](/):** [DOES NOT EXIST YET] Implement automated failover and active-active-->
+* **[Lab 1](lab-1-create-aga):** Improve microservices observability with distributed tracing
+* **[Lab 2](lab-2-traffic-distribution):** Build an operational dashboard
+* **[Lab 3](lab-3-fine-grained-control):** Prepare the app for multi-region deployments
+* **[Lab 4](lab-4-client-affinity):** Implement AWS Global Accelerator and test traffic management
+* **[Lab 5](lab-5-observability):** Load test the system to test manual failover based on operational metrics
+* **[Bonus Lab](lab-bonus):** CloudWatch metrics and enabling flow logs
 * **Workshop Cleanup** [Cleanup working environment](#important-workshop-cleanup)
 
 ### Conventions
