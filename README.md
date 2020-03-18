@@ -23,11 +23,11 @@ Familiarity with AWS, Python, [Docker](https://www.docker.com/), networking, CI/
 The labs in the workshop are designed to be completed in sequence, and the full set of instructions are documented in each lab. Read and follow the instructions to complete each of the labs. Don't worry if you get stuck, we provide hints along the way.
 
 * **[Lab 0](lab-0-init):** Deploy existing Mythical stack
-* **[Lab 1](lab-1-create-aga):** Improve microservices observability with distributed tracing
-* **[Lab 2](lab-2-traffic-distribution):** Build an operational dashboard
-* **[Lab 3](lab-3-fine-grained-control):** Prepare the app for multi-region deployments
-* **[Lab 4](lab-4-client-affinity):** Implement AWS Global Accelerator and test traffic management
-* **[Lab 5](lab-5-observability):** Load test the system to test manual failover based on operational metrics
+* **[Lab 1](lab-1-create-aga):** Create your first AWS Global Accelerator
+* **[Lab 2](lab-2-traffic-distribution):** Implement Intelligent Traffic Distribution
+* **[Lab 3](lab-3-fine-grained-control):** Implement Fine-grained traffic control
+* **[Lab 4](lab-4-client-affinity):** Implement Client Affinity
+* **[Lab 5](lab-5-observability):** Implement Observability
 * **[Bonus Lab](lab-bonus):** CloudWatch metrics and enabling flow logs
 * **Workshop Cleanup** [Cleanup working environment](#important-workshop-cleanup)
 

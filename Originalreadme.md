@@ -25,12 +25,7 @@ In this workshop you will use the CloudFormtaion template to build a multiregion
 
 <a name="lab0"/>
 
-## Lab 0 - Workshop Initialization
-
-In this lab, you'll launch the core infrastructure for the workshop via AWS CloudFormation. After the workshop, simply delete the CloudFormation stack to delete all the above resources. We have a cleanup section at the end as well to remind you.
-
-<details>
-<summary>Click here for more detail on what you'll be launching</summary>
+## Lab 0 - Launch the CloudFormation stack
 
 The CloudFormation stack below will create:
 - a VPC with an Internet Gateway and two private subnets
@@ -39,9 +34,7 @@ The CloudFormation stack below will create:
 - an IAM role the Lambda service will assume
 - a permission to the Application Load Balancer to invoke the Lambda function
 
-</details>
-
-### [1] Deploy Mythical CloudFormation Stack
+After the workshop, simply delete the CloudFormation stack to delete all the above resources.
 
 Launch the CloudFormation stack in two or more AWS Regions of your choice, note down the different regions you choose.
 
@@ -49,24 +42,24 @@ The link will load the CloudFormation Dashboard and start the stack creation pro
 
 | Region | Launch Template |
 |------- | -------- |
-| Oregon (us-west-2) | [![Launch stack in Oregon](images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=aws-aga-workshop&templateURL=https://jtouzi.s3.amazonaws.com/AGAWorkshop.template) |
-| Dublin (eu-west-1) | [![Launch stack in Dublin](images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=aws-aga-workshop&templateURL=https://jtouzi.s3.amazonaws.com/AGAWorkshop.template) |
-| Tokyo (ap-northeast-1) | [![Launch stack in Tokyo](images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/new?stackName=-aws-aga-workshop&templateURL=https://jtouzi.s3.amazonaws.com/AGAWorkshop.template) |
-| Sydney (ap-southeast-2) | [![Launch stack in Sydney](images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#/stacks/new?stackName=aws-aga-workshop&templateURL=https://jtouzi.s3.amazonaws.com/AGAWorkshop.template) |
-| Canada (ca-central-1) | [![Launch stack in Canada](images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=ca-central-1#/stacks/new?stackName=-aws-aga-workshop&templateURL=https://jtouzi.s3.amazonaws.com/AGAWorkshop.template) |
-| Mumbai (ap-south-1) | [![Launch stack in Mumbai](images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/new?stackName=aws-aga-workshop&templateURL=https://jtouzi.s3.amazonaws.com/AGAWorkshop.template) |
+| Oregon (us-west-2) | [![Launch stack in Oregon](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=-AGAWorkshop&templateURL=https://jtouzi.s3.amazonaws.com/AGAWorkshop.template) |
+| Dublin (eu-west-1) | [![Launch stack in Dublin](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=AGAWorkshop&templateURL=https://jtouzi.s3.amazonaws.com/AGAWorkshop.template) |
+| Tokyo (ap-northeast-1) | [![Launch stack in Tokyo](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/new?stackName=-AGAWorkshop&templateURL=https://jtouzi.s3.amazonaws.com/AGAWorkshop.template) |
+| Sydney (ap-southeast-2) | [![Launch stack in Sydney](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#/stacks/new?stackName=AGAWorkshop&templateURL=https://jtouzi.s3.amazonaws.com/AGAWorkshop.template) |
+| Canada (ca-central-1) | [![Launch stack in Canada](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=ca-central-1#/stacks/new?stackName=-AGAWorkshop&templateURL=https://jtouzi.s3.amazonaws.com/AGAWorkshop.template) |
+| Mumbai (ap-south-1) | [![Launch stack in Mumbai](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/new?stackName=AGAWorkshop&templateURL=https://jtouzi.s3.amazonaws.com/AGAWorkshop.template) |
 
-The template will automatically bring you to the CloudFormation Dashboard and start the stack creation process in the specified region. The default stack name "aws-aga-workshop" (change it if you want to use a different name or if you want to deploy 2 endpoints in the same region), proceed through the wizard to launch the stack. Leave all options at their default values, but make sure to check the box to allow CloudFormation to create IAM roles on your behalf:
+The template will automatically bring you to the CloudFormation Dashboard and start the stack creation process in the specified region. The default stack name "AGAWorkshop" (change it if you want to use a different name or if you want to deploy 2 endpoints in the same region), proceed through the wizard to launch the stack. Leave all options at their default values, but make sure to check the box to allow CloudFormation to create IAM roles on your behalf:
 
-<kbd>![x](images/cfn-create-template.png)</kbd>
+<kbd>![x](./img/cfn-create-template.png)</kbd>
 
-<kbd>![x](images/cfn-create.png)</kbd>
+<kbd>![x](./img/cfn-create.png)</kbd>
 
 After you click on "Create stack", you will have the following window, it takes 3 to 4 minutes for the stack to be created.
 
-<kbd>![x](images/cfn-create-start.png)</kbd>
+<kbd>![x](./img/cfn-create-start.png)</kbd>
 
-<kbd>![x](images/cfn-create-complete.png)</kbd>
+<kbd>![x](./img/cfn-create-complete.png)</kbd>
 
 For this workshop we will use Oregon, Dublin and Tokyo regions, I've created two endpoints in Oregon region.
 
