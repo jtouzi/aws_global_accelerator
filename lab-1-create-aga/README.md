@@ -1,7 +1,7 @@
 # Mythical Mysfits: Multi-Region with AWS Global Accelerator
 This repository contains instructions for getting started with AWS Global Accelerator.
 
-In this workshop you will use the CloudFormtaion template to build a multiregion application, and then serve it with AWS Global Accelerator.
+In this workshop you will use the CloudFormation template to build a multi-region application, and then serve it with AWS Global Accelerator.
 
 ## Lab 1 - Create an Accelerator
 

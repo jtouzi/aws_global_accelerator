@@ -1,32 +1,29 @@
-# Mythical Mysfits: Multi-Region with AWS Global Accelerator
+# Mythical Mysfits: Multi-Region Control with AWS Global Accelerator
+
+![mysfits-welcome](/images/mysfits-welcome.png)
+
+## Workshop Progress
+**[Lab 0: Workshop Initialization](../lab-0-init)**
+- [Workshop Initialization](1)
+[Lab 1: Create your first AWS Global Accelerator](../lab-1-create-aga)
+[Lab 2: Implement Intelligent Traffic Distribution](../lab-2-traffic-distribution)
+[Lab 3: Implement Fine-grained traffic control](../lab-3-fine-grained-control)
+[Lab 4: Implement Client Affinity](../lab-4-client-affinity)
+[Lab 5: Implement Observability](../lab-5-observability)
+[Bonus Lab: CloudWatch metrics and enabling flow logs](../lab-bonus)
+[Workshop Cleanup - TBD](tbd-cleanup)
+
 This repository contains instructions for getting started with AWS Global Accelerator.
 
-In this workshop you will use the CloudFormtaion template to build a multiregion application, and then serve it with AWS Global Accelerator.
+In this workshop you will use the CloudFormation template to build a multi-region application, and then serve it with AWS Global Accelerator.
 
-# Table of Content
-* [What are we building](#design)
-* [Lab 0 - Launch the CloudFormation stack](#lab0)
-* [Lab 1 - Create an Accelerator](#lab1)
-* [Lab 2 - Intelligent traffic distribution](#lab2)
-* [Lab 3 - Fine-grained traffic control with Traffic Dials](#lab3)
-  * [EU-WEST-1 application upgrade or maintenance](#lab31)
-  * [Blue/Green deployment](#lab32)
-* [Lab 4 - Fine-grained traffic control with Endpoint Weights](#lab4)
-* [Lab 5 - Client Affinity](#lab5)
-* [Lab 6 - Continuous availability monitoring / Failover](#lab6)
-* [Bonus Labs - CloudWatch metrics and enabling flow logs](#lab7)
-* [Cleaning up](#clean)
-
-<a name="design"/>
-
-<a name="lab0"/>
 
 ## Lab 0 - Workshop Initialization
 
 In this lab, you'll launch the core infrastructure for the workshop via AWS CloudFormation. We'll have a section to explain what you're launching here, so don't worry. After the workshop, simply delete the CloudFormation stack to delete all the above resources. We have a cleanup section at the end as well to remind you.
 
 <details>
-<summary>Click here if you want a sneak peek of what you'll be launching </summary>
+<summary>Click here if you want a sneak peek of what you'll be launching</summary>
 
 The CloudFormation stack below will create:
 - a VPC with an Internet Gateway and two private subnets
@@ -36,8 +33,8 @@ The CloudFormation stack below will create:
 - a permission to the Application Load Balancer to invoke the Lambda function
 
 </details>
-
-### [1] Deploy Mythical CloudFormation Stack
+<a name="1"></a>
+### 1. Deploy Mythical CloudFormation Stack
 
 Launch the CloudFormation stack in two or more AWS Regions of your choice, note down the different regions you choose.
 
