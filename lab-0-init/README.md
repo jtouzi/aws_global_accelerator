@@ -5,6 +5,9 @@
 ## Workshop Progress
 **[Lab 0: Workshop Initialization](../lab-0-init)**
 - [Workshop Initialization](#1)
+- [Familiarize Yourself with the Workshop Environment](#2)
+- [Workshop Tips](#3)
+
 [Lab 1: Create your first AWS Global Accelerator](../lab-1-create-aga)
 [Lab 2: Implement Intelligent Traffic Distribution](../lab-2-traffic-distribution)
 [Lab 3: Implement Fine-grained traffic control](../lab-3-fine-grained-control)
@@ -65,7 +68,9 @@ After you click on "Create stack", you will have the following window, it takes 
 
 For this workshop we will use Oregon, Dublin and Tokyo regions, I've created two endpoints in Oregon region.
 
-[2] ## Familiarize yourself with the workshop environment and tips
+<a name="2"/>
+
+### 2. Familiarize yourself with the workshop environment
 
 <kbd>![x](images/design.png)</kbd>
 
@@ -76,7 +81,9 @@ The CloudFormation template will launch the following resources:
 - an IAM role the Lambda service will assume
 - a permission to the Application Load Balancer to invoke the Lambda function
 
-#### Workshop tips
+<a name="3"/>
+
+### 3. Workshop tips
 
 These tips will help you be more efficient and save time.
 
