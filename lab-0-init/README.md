@@ -9,11 +9,17 @@
 - [Workshop Tips](#3)
 
 [Lab 1: Create your first AWS Global Accelerator](../lab-1-create-aga)
+
 [Lab 2: Implement Intelligent Traffic Distribution](../lab-2-traffic-distribution)
+
 [Lab 3: Implement Fine-grained traffic control](../lab-3-fine-grained-control)
+
 [Lab 4: Implement Client Affinity](../lab-4-client-affinity)
+
 [Lab 5: Implement Observability](../lab-5-observability)
+
 [Bonus Lab: CloudWatch metrics and enabling flow logs](../lab-bonus)
+
 [Workshop Cleanup - TBD](tbd-cleanup)
 
 This repository contains instructions for getting started with AWS Global Accelerator.
