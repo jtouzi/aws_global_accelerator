@@ -4,7 +4,7 @@
 
 ## Workshop Progress
 **[Lab 0: Workshop Initialization](../lab-0-init)**
-- [Workshop Initialization](1)
+- [Workshop Initialization](#1)
 [Lab 1: Create your first AWS Global Accelerator](../lab-1-create-aga)
 [Lab 2: Implement Intelligent Traffic Distribution](../lab-2-traffic-distribution)
 [Lab 3: Implement Fine-grained traffic control](../lab-3-fine-grained-control)
@@ -33,7 +33,9 @@ The CloudFormation stack below will create:
 - a permission to the Application Load Balancer to invoke the Lambda function
 
 </details>
-<a name="1"></a>
+
+<a name="1"/>
+
 ### 1. Deploy Mythical CloudFormation Stack
 
 Launch the CloudFormation stack in two or more AWS Regions of your choice, note down the different regions you choose.
