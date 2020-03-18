@@ -72,7 +72,7 @@ Change back the endpoint weights to the default (128).
 
 # Checkpoint
 
-You now have an operational workshop environment to work with. [Proceed to Lab 2](../lab-4-client-affinity)
+You now have an operational workshop environment to work with. [Proceed to Lab 4](../lab-4-client-affinity)
 
 ## Participation
 

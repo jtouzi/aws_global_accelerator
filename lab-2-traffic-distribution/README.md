@@ -36,7 +36,7 @@ $ for i in {1..100}; do curl http://a05ba692c0635145f.awsglobalaccelerator.com/ 
 
 # Checkpoint
 
-You now have an operational workshop environment to work with. [Proceed to Lab 2](../lab-3-fine-grained-control)
+You now have an operational workshop environment to work with. [Proceed to Lab 3](../lab-3-fine-grained-control)
 
 ## Participation
 

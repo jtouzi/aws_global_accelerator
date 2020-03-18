@@ -25,7 +25,7 @@ Client Affinity: https://docs.aws.amazon.com/global-accelerator/latest/dg/about-
 
 # Checkpoint
 
-You now have an operational workshop environment to work with. [Proceed to Lab 2](../lab-5-5-observability)
+You now have an operational workshop environment to work with. [Proceed to Lab 5](../lab-5-observability)
 
 ## Participation
 
