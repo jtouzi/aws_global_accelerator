@@ -44,31 +44,31 @@ Here's what you'll be doing:
 - Choose "Create accelerator" and  provide a name for your accelerator (AGAWorkshop)
 - Choose "Next"
 
-<kbd>![x](./img/accelerator-name.png)</kbd>
+<kbd>![x](images/accelerator-name.png)</kbd>
 
 ### Add the listeners (TCP port 80), choose "Next"
 
-<kbd>![x](./img/add-listeners.png)</kbd>
+<kbd>![x](images/add-listeners.png)</kbd>
 
 ### Add endpoint group (one per region in which you deployed the CloudFormation template), choose "Next"
 
-<kbd>![x](./img/add-endpoint-groups.png)</kbd>
+<kbd>![x](images/add-endpoint-groups.png)</kbd>
 
 ### Add endpoints to the endpoint groups (choose in the drop down the Application Load Balancers the template created), then choose "Create accelerator"
 
-<kbd>![x](./img/add-endpoints.png)</kbd>
+<kbd>![x](images/add-endpoints.png)</kbd>
 
 ### The Accelerator will be "In progress" status, it takes about 5 minutes to move to "Deployed" status, you should be able to see the two static anycast IP addresses and the DNS assigned to the Accelerator
 
-<kbd>![x](./img/accelerator-inprogress.png)</kbd>
+<kbd>![x](images/accelerator-inprogress.png)</kbd>
 
 ### Once the accelerator is in "Deployed" status, select the accelerator and make sure all the endpoints are healthy
 
-<kbd>![x](./img/accelerator-all-healthy.png)</kbd>
+<kbd>![x](images/accelerator-all-healthy.png)</kbd>
 
 You should be able to access the application using the accelerator DNS.
 
-<kbd>![x](./img/accelerator-browser.png)</kbd>
+<kbd>![x](images/accelerator-browser.png)</kbd>
 
 AWS Global Accelerator can access public and private EC2 instances and load balancers. Note that you can't access the Application Load Balancers the CloudFormation created directly using their DNS, as they are internal load balancers, AWS Global Accelerator will access them using private IP addresses. This is the AWS Global Accelerator **origin cloaking** feature, for more information see: https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-benefits-of-migrating.html
 

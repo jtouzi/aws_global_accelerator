@@ -8,11 +8,11 @@ Placeholder
 ## Lab 4 - Client Affinity
 If we want AWS Global Accelerator to direct all requests from a user at a specific source (client) IP address to the same endpoint resource (to maintain client affinity), we can change the "Client Affinity" from "None" (default) to "Source IP" for the listener.
 
-<kbd>![x](./img/client-affinity.png)</kbd>
+<kbd>![x](images/client-affinity.png)</kbd>
 
 Let's see how AWS Global Accelerator will handle requests from Herndon.
 
-<kbd>![x](./img/herndon-client-affinity.png)</kbd>
+<kbd>![x](images/herndon-client-affinity.png)</kbd>
 
 ### Comments
 

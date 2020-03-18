@@ -8,15 +8,15 @@ For some reason, our endpoint in AP-NORTHEAST-1 stops responding and the Applica
 
 To simulate the failure, change the response status code returned by the [Lambda function](https://ap-northeast-1.console.aws.amazon.com/lambda/) from 200 to 403 for example and Save.
 
-<kbd>![x](./img/lambda-function.png)</kbd>
+<kbd>![x](images/lambda-function.png)</kbd>
 
 After a maximum of 60 seconds (30 seconds for the ALB and 30 seconds for the Global Accelerator health chekcs), the endpoint status will become "Unhealthy" and Global Accelerator will start sending traffic automatically to the next available endpoint.
 
-<kbd>![x](./img/failover.png)</kbd>
+<kbd>![x](images/failover.png)</kbd>
 
 Let's see how AWS Global Accelerator will handle requests from Sydney, normally processed by AP-NORTHEAST-1 region.
 
-<kbd>![x](./img/sydney-failover.png)</kbd>
+<kbd>![x](images/sydney-failover.png)</kbd>
 
 ### Comments
 Sydney are now processed in US-WEST-2 region. AWS Global Accelerator will continue to monitor the endpoint, and will restart to send traffic to it once it becomes healthy.

@@ -13,14 +13,14 @@ Placeholder
 
 We would like to upgrade the application in EU-WEST-1 region, for this we would like to send the traffic to a different region, this is done by setting the Traffic Dial to 0 (zero) as shown below.
 
-<kbd>![x](./img/0-eu-west-1-1.png)</kbd>
-<kbd>![x](./img/0-eu-west-1-2.png)</kbd>
+<kbd>![x](images/0-eu-west-1-1.png)</kbd>
+<kbd>![x](images/0-eu-west-1-2.png)</kbd>
 
 Let's see how AWS Global Accelerator handles traffic from Frankfurt and Mumbai, previously processed in EU-WEST-1 region.
 
-<kbd>![x](./img/0-frankfurt.png)</kbd>
+<kbd>![x](images/0-frankfurt.png)</kbd>
 
-<kbd>![x](./img/0-mumbai.png)</kbd>
+<kbd>![x](images/0-mumbai.png)</kbd>
 
 ### Comments
 Requests from Frankfurt are now processed in in US-WEST-1 (Oregon) and requests from Mumbai processed in AP-NORTHEAST-1 (Tokyo).
@@ -29,20 +29,20 @@ Requests from Frankfurt are now processed in in US-WEST-1 (Oregon) and requests 
 
 ### The upgrade/maintenance is completed in EU-WEST-1. We want to test it by sending only 20% of the traffic it is supposed to handle.
 
-<kbd>![x](./img/20-eu-west-1.png)</kbd>
+<kbd>![x](images/20-eu-west-1.png)</kbd>
 
 Let see how AWS Global Accelerator handles traffic from Frankfurt and Mumbai, remember they were previously all processed in EU-WEST-1 (Dublin).
 
-<kbd>![x](./img/20-frankfurt.png)</kbd>
+<kbd>![x](images/20-frankfurt.png)</kbd>
 
-<kbd>![x](./img/20-mumbai.png)</kbd>
+<kbd>![x](images/20-mumbai.png)</kbd>
 
 ### Comments
 AWS Global Accelerator sends 20% of the traffic in EU-WEST-1 and 80% in the next closest available region, US-WEST-1 (Oregon) for requests from Frankfurt and AP-NORTHEAST-1 (Tokyo) for those from Mumbai.
 
 Before you continue with the workshop, change back the traffic dial for US-WEST-1 region to 100%.
 
-<kbd>![x](./img/default-traffic-dials.png)</kbd>
+<kbd>![x](images/default-traffic-dials.png)</kbd>
 
 ### Resources
 
@@ -53,11 +53,11 @@ Adjusting Traffic Flow With Traffic Dials: https://docs.aws.amazon.com/global-ac
 ## Lab 4 - Fine-grained traffic control with Endpoint Weights
 In US-WEST-2 (Oregon) region we have two endpoints, in Lab 3 the two endpoints processed the same amount of traffic, they have the default endpoint weight (128). Let's say the first endpoint has more capacipty than the second, and we want it to handle 80% of the traffic processed in the region, we can set endpoint weights to 200 and 50 respectively for the first and second endpoint. The first will handle 200 / (200 + 50) = 80%, the second 50 / (200 + 50) = 20%
 
-<kbd>![x](./img/20-endpoint-weights.png)</kbd>
+<kbd>![x](images/20-endpoint-weights.png)</kbd>
 
 Let's see how AWS Global Accelerator will handle requests from Herndon.
 
-<kbd>![x](./img/herndon-endpoint-weights.png)</kbd>
+<kbd>![x](images/herndon-endpoint-weights.png)</kbd>
 
 ### Comments
 The first endpoint in the endpoint group handles around 80% of the traffic. If you want Global Accelerator to stop sending traffic to an endpoint, you can change the weight for that resource to 0 as we did for traffic dials.
