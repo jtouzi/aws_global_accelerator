@@ -40,19 +40,41 @@ Here's what you'll be doing:
 
 ### 1. Create an AWS Global Accelerator
 
-The first step of
+The first step of this lab is to create an AWS Global Accelerator. The AWS Global Accelerator will serve as the entry point into your application. In the screenshots, we're using US-West-2 (Oregon), but you should be using the region that you launched your CloudFormation stack in.
 
 - Open the [Amazon Global Accelerator console](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#GlobalAcceleratorHome)
-- Choose "Create accelerator" and  provide a name for your accelerator (AGAWorkshop)
+- Choose **"Create accelerator"** and provide a name for your accelerator (AGAWorkshop)
 - Choose "Next"
 
 <kbd>![x](images/accelerator-name.png)</kbd>
 
 ### Add the listeners (TCP port 80), choose "Next"
 
+In order for your AWS Global Accelerator to know where to listen for traffic, we will need to add in a listener for TCP port 80.
+
+<details>
+<summary>Click here for more information on AWS Global Accelerator listeners</summary>
+
+With AWS Global Accelerator, you add listeners that process inbound connections from clients based on the ports and protocols that you specify. Global Accelerator supports both TCP and UDP protocols.
+
+You define a listener when you create your accelerator, and you can add more listeners at any time. You associate each listener with one or more endpoint groups, and you associate each endpoint group with one AWS Region.
+
+See more information in the [Listeners in AWS Global Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-listeners.html) documentation.
+
+</details>
+
 <kbd>![x](images/add-listeners.png)</kbd>
 
 ### Add endpoint group (one per region in which you deployed the CloudFormation template), choose "Next"
+
+In the previous step, we created a listener, which tells AWS Global Accelerator where it should be listening for traffic. Now we need to tell it where to send the traffic. This is through **Endpoint Groups**.
+
+<details>
+<summary>Click here for more information on AWS Global Accelerator endpoint groups</summary>
+
+See more information in the [Endpoint Groups in AWS Global Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups.html) documentation.
+
+</details>
 
 <kbd>![x](images/add-endpoint-groups.png)</kbd>
 
