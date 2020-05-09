@@ -1,4 +1,4 @@
-# Mythical Mysfits: Multi-Region Control with AWS Global Accelerator
+# Mythical Mysfits: Global Traffic Management with AWS Global Accelerator
 
 ## Overview
 ![mysfits-welcome](/images/mysfits-welcome.png)
@@ -7,7 +7,7 @@
 
 Our first adoption agency, founded in Devils Tower National Monument, has helped millions of mythical mysfits find loving homes. Since then, we've deployed expedition teams to far reaching corners of the Earth to seek out more wandering communities of mythical mysfits in need of care and hugs. Initial reports indicate that we'll need to expand our operation globally.
 
-To support our global expansion, we're doubling down on our digital adoption experience and have formed a team to re-architect for multi-region expansion. The initial goal is to enable a secondary region for disaster recovery (DR) purposes, which is a part of our business continuity planning. We could have built out DR in a single AWS region by leveraging multiple AZs, but we need to account for regional level disasters since mysfit lives are on the line. Our partners also emphasize in their contracts with us that we must maintain high degrees of availability. Lastly, this will set us up nicely for multi-region active-active as we open new adoption centers around the world.
+To support our global expansion, we're doubling down on our digital adoption experience and have formed a team to re-architect for multi-region expansion. The initial goal is to enable a second region to serve our customers in different parts of the globe. While it's possible to run everything in a single region, we want to provide the best level of service to our customers to give our mysfits the best chance of finding their forever families! Lastly, this will set us up nicely for multi-region active-active as we open new adoption centers around the world.
 
 To recap our progress to date, we've modernized our stack to be containerized microservices deployed with AWS Fargate. We manage our resources using infrastructure as code and have a fully automated CI/CD pipeline that deploys our code changes. Our solution architects have drafted a DR plan that leverages a secondary region. We need your help to carry out this plan by first improving observability, so we can make data driven decisions for things like regional failover. Then we'll need help with data replication, multi-region builds, and traffic management. Can you help us out?
 

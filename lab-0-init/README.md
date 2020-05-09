@@ -8,7 +8,7 @@
 - [Familiarize Yourself with the Workshop Environment](#2)
 - [Workshop Tips](#3)
 
-[Lab 1: Create your first AWS Global Accelerator](../lab-1-create-aga)
+[Lab 1: Create your first AWS Global Accelerator](../lab-1-create-amazon-global-accelerator)
 
 [Lab 2: Implement Intelligent Traffic Distribution](../lab-2-traffic-distribution)
 
@@ -94,7 +94,7 @@ These tips will help you be more efficient and save time.
 
 # Checkpoint
 
-You now have an operational workshop environment to work with. [Proceed to Lab 1](../lab-1-create-aga)
+You now have an operational workshop environment to work with. [Proceed to Lab 1](../lab-1-create-amazon-global-accelerator)
 
 ## Participation
 

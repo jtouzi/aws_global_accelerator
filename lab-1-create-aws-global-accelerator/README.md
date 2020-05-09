@@ -40,7 +40,9 @@ Here's what you'll be doing:
 
 ### 1. Create an AWS Global Accelerator
 
-- Open the Global Accelerator console at https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#GlobalAcceleratorHome:
+The first step of
+
+- Open the [Amazon Global Accelerator console](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#GlobalAcceleratorHome)
 - Choose "Create accelerator" and  provide a name for your accelerator (AGAWorkshop)
 - Choose "Next"
 
