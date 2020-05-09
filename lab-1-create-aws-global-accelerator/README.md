@@ -5,7 +5,7 @@
 ## Workshop Progress
 ✅ [Lab 0: Workshop Initialization](../lab-0-init)
 
-**[Lab 1: Create your first AWS Global Accelerator](../lab-1-create-aga)**
+**[Lab 1: Create your first AWS Global Accelerator](../lab-1-create-aws-global-accelerator)**
 
 [Lab 2: Implement Intelligent Traffic Distribution](../lab-2-traffic-distribution)
 
@@ -38,22 +38,33 @@ Here's what you'll be doing:
 
 <a name="1"/>
 
-### 1. Create an AWS Global Accelerator
+### 1. Create and configure your AWS Global Accelerator
 
-The first step of this lab is to create an AWS Global Accelerator. The AWS Global Accelerator will serve as the entry point into your application. In the screenshots, we're using US-West-2 (Oregon), but you should be using the region that you launched your CloudFormation stack in.
+The first step of this lab is to create and name an AWS Global Accelerator. The AWS Global Accelerator will serve as the entry point into your application. In the screenshots, we're using US-West-2 (Oregon), but you should be using the region that you launched your CloudFormation stack in.
 
-- Open the [Amazon Global Accelerator console](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#GlobalAcceleratorHome)
-- Choose **"Create accelerator"** and provide a name for your accelerator (AGAWorkshop)
-- Choose "Next"
+#### Name your AWS Global Accelerator
+
+1. Log into the AWS Management Console
+2. Open the [Amazon Global Accelerator console](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#GlobalAcceleratorHome)
+3. Choose **Create accelerator** and provide a name for your accelerator. In our workshop, we've named it AGAWorkshop
+4. Choose **Next**
 
 <kbd>![x](images/accelerator-name.png)</kbd>
 
-### Add the listeners (TCP port 80), choose "Next"
+#### Configure the AWS Global Accelerator listeners
+
+Add the listeners (TCP port 80), choose "Next"
 
 In order for your AWS Global Accelerator to know where to listen for traffic, we will need to add in a listener for TCP port 80.
 
+1. Enter the following information:
+* Ports: **80**
+* Protocol: **TCP**
+* Client affinity: **None**
+2. Click **Next**
+
 <details>
-<summary>Click here for more information on AWS Global Accelerator listeners</summary>
+<summary>Learn more: AWS Global Accelerator listeners</summary>
 
 With AWS Global Accelerator, you add listeners that process inbound connections from clients based on the ports and protocols that you specify. Global Accelerator supports both TCP and UDP protocols.
 
@@ -65,40 +76,86 @@ See more information in the [Listeners in AWS Global Accelerator](https://docs.a
 
 <kbd>![x](images/add-listeners.png)</kbd>
 
-### Add endpoint group (one per region in which you deployed the CloudFormation template), choose "Next"
+#### Configure the AWS Global Accelerator endpoint groups
 
-In the previous step, we created a listener, which tells AWS Global Accelerator where it should be listening for traffic. Now we need to tell it where to send the traffic. This is through **Endpoint Groups**.
+In the previous step, we created a listener, which tells AWS Global Accelerator where it should be listening for traffic. Now we need to tell it where to send the traffic. This is through **Endpoint Groups**. Endpoint Groups contain one or more registered endpoints to send traffic to and is effectively a container construct for the endpoints. Now let's add some endpoint groups. The number of groups will depend on the number of regions you're deployed in. We will also be configuring health checks in this step.
+
+1. Enter the following information:
+* Region: **[CHOOSE YOUR OWN REGION] - in our case, us-west-2**
+  * Traffic Dial: **100** - We will get into traffic dials later
+* Configure health checks: **eu-west-1**
+  * Traffic dial: **100**
+* Configure health checks: **ap-northeast-1**
+  * Traffic dial: **100**
 
 <details>
-<summary>Click here for more information on AWS Global Accelerator endpoint groups</summary>
+<summary>Learn more: AWS Global Accelerator endpoint groups and health checks</summary>
 
-See more information in the [Endpoint Groups in AWS Global Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups.html) documentation.
+See more information in the [Endpoint Groups in AWS Global Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups.html) and [Health Checks for AWS Global Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works.html#about-endpoint-groups-automatic-health-checks) documentation.
 
 </details>
 
 <kbd>![x](images/add-endpoint-groups.png)</kbd>
 
-### Add endpoints to the endpoint groups (choose in the drop down the Application Load Balancers the template created), then choose "Create accelerator"
+#### Configure endpoint groups and add endpoints
+
+We created the endpoint groups previously and now need to configure the actual endpoints. This is the end location where AWS Global Accelerator is going to send traffic. Endpoints in AWS Global Accelerator can be Network Load Balancers, Application Load Balancers, EC2 instances, or Elastic IP addresses.
+
+As part of the CloudFormation setup in Lab 0, we created an Application Load Balancer (ALB) to route traffic to. In this step, you will be configuring the endpoint group to point at the ALBs created by CloudFormation.
+
+1. For each region in the endpoint group, choose:
+* Endpoint Type: **Application Load Balancer**
+* Endpoint: **[CHOOSE THE ENDPOINT THAT WAS CREATED FOR YOU VIA CLOUDFORMATION]** - The list will auto-populate for you
+* Weight: **128**
+2. Click **Create accelerator**
+
+<details>
+<summary>Learn more: AWS Global Accelerator endpoints</summary>
+
+A static IP address serves as a single point of contact for clients, and Global Accelerator then distributes incoming traffic across healthy endpoints. Global Accelerator directs traffic to endpoints by using the port (or port range) that you specify for the listener that the endpoint group for the endpoint belongs to.
+
+Each endpoint group can have multiple endpoints. You can add each endpoint to multiple endpoint groups, but the endpoint groups must be associated with different listeners.
+
+See documentation for [Endpoints in AWS Global Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoints.html)
+
+</details>
 
 <kbd>![x](images/add-endpoints.png)</kbd>
 
-### The Accelerator will be "In progress" status, it takes about 5 minutes to move to "Deployed" status, you should be able to see the two static anycast IP addresses and the DNS assigned to the Accelerator
+#### Patiently wait for deployment
+
+Great job! The AWS Global Accelerator service is now creating an AWS Global Accelerator for you. This typically takes about 5 minutes to move from the **In Progress** status to the **Deployed** status. Once it's deployed, you should be able to see the two static anycast IP addresses and the assigned DNS name for the accelerator. You will need these things later.
+
+1. Wait.
 
 <kbd>![x](images/accelerator-inprogress.png)</kbd>
 
-### Once the accelerator is in "Deployed" status, select the accelerator and make sure all the endpoints are healthy
+#### Verify endpoint health
+
+Once the accelerator is in a **Deployed** state, we should double check that the back end endpoints are healthy. There is a really easy way to do this and that's just to look at the accelerator itself.
+
+1. Click on the accelerator link
+2. Take a look at the bottom window pane at **Listeners**. You should see **All healthy** on the right. If not, you may have configured the listeners incorrectly. Go back up a few steps.
 
 <kbd>![x](images/accelerator-all-healthy.png)</kbd>
 
-You should be able to access the application using the accelerator DNS.
+#### Access your application
+At this point, you have deployed an AWS Global Accelerator and should be able to access your back end application. Get the URL for your accelerator and put it into a browser window to see if everything works. If you get a valid response back, that's a good indicator that your application is up and serving traffic.
+
+1. Navigate to the AWS Global Accelerator DNS entry given to you in the AWS Global Accelerator console
 
 <kbd>![x](images/accelerator-browser.png)</kbd>
 
-AWS Global Accelerator can access public and private EC2 instances and load balancers. Note that you can't access the Application Load Balancers the CloudFormation created directly using their DNS, as they are internal load balancers, AWS Global Accelerator will access them using private IP addresses. This is the AWS Global Accelerator **origin cloaking** feature, for more information see: https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-benefits-of-migrating.html
+<details>
+<summary>Learn more: Accessing different types of endpoints</summary>
+
+AWS Global Accelerator can access public and private EC2 instances and load balancers. Note that you can't access the Application Load Balancers the CloudFormation created directly using their DNS, as they are internal load balancers, AWS Global Accelerator will access them using private IP addresses. This is the AWS Global Accelerator **origin cloaking** feature, for more information see: [AWS Global Accelerator Use Cases](https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-benefits-of-migrating.html)
+
+</details>
 
 # Checkpoint
 
-You now have an operational workshop environment to work with. [Proceed to Lab 2](../lab-2-traffic-distribution)
+At this point, you have created the workshop infrastructure as well as a simple AWS Global Accelerator. We can now take a deeper look into the details of AWS Global Accelerator! [Proceed to Lab 2](../lab-2-traffic-distribution)
 
 ## Participation
 
