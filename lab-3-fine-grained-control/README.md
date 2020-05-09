@@ -5,13 +5,23 @@
 ## Workshop Progress
 Placeholder
 
-## Lab 3 - Fine-grained traffic control with Traffic Dials
+## Lab 3 - Fine-grained traffic control with traffic dials
 
-<a name="lab31"/>
+In this lab, we will simulate a specific use case. For the purposes of this workshop, let's pretend that our application in EU-WEST-1 (Ireland) needs to undergo an upgrade or maintenance. This is a very common use case for our customers and we will walk through how easy it is to redirect traffic using traffic dials.
 
-### EU-WEST-1 application upgrade or maintenance
+Here's what you'll be doing
+-
+-
+-
+-
+-
 
-We would like to upgrade the application in EU-WEST-1 region, for this we would like to send the traffic to a different region, this is done by setting the Traffic Dial to 0 (zero) as shown below.
+### Route traffic away from EU-WEST-1 region
+
+We want to upgrade our application in EU-WEST-1, which means that we have to stop production traffic from hitting it. Fortunately, since we're using AWS Global Accelerator, this is really easy using traffic dials. For each endpoint group, you can set a traffic dial to control the percentage of traffic that is directed to the group. The percentage is applied only to traffic that is already directed to the endpoint group, not to all listener traffic.
+
+1. Navigate to your AWS Global Accelerator
+2. Set traffic dial to 0
 
 <kbd>![x](images/0-eu-west-1-1.png)</kbd>
 <kbd>![x](images/0-eu-west-1-2.png)</kbd>
@@ -24,6 +34,13 @@ Let's see how AWS Global Accelerator handles traffic from Frankfurt and Mumbai, 
 
 ### Comments
 Requests from Frankfurt are now processed in in US-WEST-1 (Oregon) and requests from Mumbai processed in AP-NORTHEAST-1 (Tokyo).
+
+<details>
+<summary>Learn more: AWS Global Accelerator Traffic Dials</summary>
+
+For more information, see the [Adjusting Traffic Flow with Traffic Dials](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-traffic-dial.html) documentation.
+
+</details>
 
 <a name="lab32"/>
 
