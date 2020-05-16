@@ -11,6 +11,9 @@
 
 **[Lab 3: Implement Fine-grained traffic control](../lab-3-fine-grained-control)**
 - [Route traffic away from the eu-west-1 region](#1)
+- [Slowly ramp traffic back to the maintenance site](#2)
+- [Revert traffic levels back to 100%](#3)
+- [Fine-grained traffic control with Endpoint Weights](#4)
 
 [Lab 4: Implement Client Affinity](../lab-4-client-affinity)
 
