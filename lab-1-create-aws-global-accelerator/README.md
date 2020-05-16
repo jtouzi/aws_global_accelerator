@@ -37,11 +37,11 @@ Here's what you'll be doing:
 - Verify Endpoint Health
 - Access Your Application
 
-The first step of this lab is to create and name an AWS Global Accelerator. The AWS Global Accelerator will serve as the entry point into your application. In the screenshots, we're using US-West-2 (Oregon), but you should be using the region that you launched your CloudFormation stack in.
-
 <a name="1"/>
 
-#### 1. Create and Name your AWS Global Accelerator
+### 1. Create and Name your AWS Global Accelerator
+
+The first step of this lab is to create and name an AWS Global Accelerator. The AWS Global Accelerator will serve as the entry point into your application. In the screenshots, we're using US-West-2 (Oregon), but you should be using the region that you launched your CloudFormation stack in.
 
 1. Log into the AWS Management Console
 2. Open the [Amazon Global Accelerator console](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#GlobalAcceleratorHome)
@@ -50,7 +50,7 @@ The first step of this lab is to create and name an AWS Global Accelerator. The 
 
 <kbd>![x](images/accelerator-name.png)</kbd>
 
-#### 2. Configure the AWS Global Accelerator listeners
+### 2. Configure the AWS Global Accelerator listeners
 
 Add the listeners (TCP port 80), choose "Next"
 
@@ -75,7 +75,7 @@ See more information in the [Listeners in AWS Global Accelerator](https://docs.a
 
 <kbd>![x](images/add-listeners.png)</kbd>
 
-#### 3. Configure the AWS Global Accelerator endpoint groups
+### 3. Configure the AWS Global Accelerator endpoint groups
 
 In the previous step, we created a listener, which tells AWS Global Accelerator where it should be listening for traffic. Now we need to tell it where to send the traffic. This is through **Endpoint Groups**. Endpoint Groups contain one or more registered endpoints to send traffic to and is effectively a container construct for the endpoints. Now let's add some endpoint groups. The number of groups will depend on the number of regions you're deployed in. We will also be configuring health checks in this step.
 
@@ -96,7 +96,7 @@ See more information in the [Endpoint Groups in AWS Global Accelerator](https://
 
 <kbd>![x](images/add-endpoint-groups.png)</kbd>
 
-#### 4. Configure endpoint groups and add endpoints
+### 4. Configure endpoint groups and add endpoints
 
 We created the endpoint groups previously and now need to configure the actual endpoints. This is the end location where AWS Global Accelerator is going to send traffic. Endpoints in AWS Global Accelerator can be Network Load Balancers, Application Load Balancers, EC2 instances, or Elastic IP addresses.
 
@@ -121,7 +121,7 @@ See documentation for [Endpoints in AWS Global Accelerator](https://docs.aws.ama
 
 <kbd>![x](images/add-endpoints.png)</kbd>
 
-#### 5. Patiently wait for deployment
+### 5. Patiently wait for deployment
 
 Great job! The AWS Global Accelerator service is now creating an AWS Global Accelerator for you. This typically takes about 5 minutes to move from the **In Progress** status to the **Deployed** status. Once it's deployed, you should be able to see the two static anycast IP addresses and the assigned DNS name for the accelerator. You will need these things later.
 
@@ -129,7 +129,7 @@ Great job! The AWS Global Accelerator service is now creating an AWS Global Acce
 
 <kbd>![x](images/accelerator-inprogress.png)</kbd>
 
-#### 6. Verify endpoint health
+### 6. Verify endpoint health
 
 Once the accelerator is in a **Deployed** state, we should double check that the back end endpoints are healthy. There is a really easy way to do this and that's just to look at the accelerator itself.
 
@@ -138,7 +138,7 @@ Once the accelerator is in a **Deployed** state, we should double check that the
 
 <kbd>![x](images/accelerator-all-healthy.png)</kbd>
 
-#### 7. Access your application
+### 7. Access your application
 At this point, you have deployed an AWS Global Accelerator and should be able to access your back end application. Get the URL for your accelerator and put it into a browser window to see if everything works. If you get a valid response back, that's a good indicator that your application is up and serving traffic.
 
 1. Navigate to the AWS Global Accelerator DNS entry given to you in the AWS Global Accelerator console

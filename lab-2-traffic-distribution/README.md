@@ -5,7 +5,9 @@
 ## Workshop Progress
 Placeholder
 
-## Lab 2 - Intelligent traffic distribution
+## Lab 2 - Intelligent Traffic Distribution
+
+In this lab we will help you understand how AWS Global Accelerator routes requests based on the origin of the requester. 
 
 We kept the default traffic dials (100%)
 
