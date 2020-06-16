@@ -12,11 +12,11 @@ If we want AWS Global Accelerator to direct all requests from a user at a specif
 
 Let's see how AWS Global Accelerator will handle requests from Herndon.
 
-<kbd>![x](images/herndon-client-affinity.png)</kbd>
+<kbd>![x](images/sao-paulo-client-affinity.png)</kbd>
 
 ### Comments
 
-US-WEST-2 has two endpoints, but only one processed the 100 requests because they were all from the same IP address.
+US-WEST-2 has two endpoints, requests from Sao Paulo and Ohio have been processed by only 1 endpoint because of the client affinity.
 
 ### Resources
 Client Affinity: https://docs.aws.amazon.com/global-accelerator/latest/dg/about-listeners.html#about-listeners-client-affinity
