@@ -28,6 +28,7 @@ $ aws cloudformation describe-stacks --stack-name AGAEC2 --query "Stacks[0].Outp
 
 $ aws cloudformation describe-stacks --stack-name AGAEC2 --query "Stacks[0].Outputs[?OutputKey=='PublicIp'].OutputValue" --output text --region sa-east-1
 ```
+
 ### Update the index.php with these EC2 instances (e.g.)
 ```
 $EC2_SaoPaulo = "18.231.143.234";
@@ -35,7 +36,14 @@ $EC2_Paris = "15.236.45.221";
 $EC2_Singapore = "54.52.197.134";
 $EC2_Ohio = "18.188.56.13";
 ```
-### Upload the index.php file in us-east-2 region:
+
+### Upload the index.php file in us-east-2 region
 ```
 scp -i /path/to/Key/YourOhioKey.pem index.php ec2-user@OHIO_IP:/var/www/html/
+```
+
+### Share the Ohio DNS to the participants so they can test their settings
+
+```
+$aws cloudformation describe-stacks --stack-name AGAEC2 --query "Stacks[0].Outputs[?OutputKey=='URL'].OutputValue" --output text --region us-east-2
 ```
