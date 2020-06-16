@@ -24,9 +24,9 @@ $ for i in {1..100}; do curl http://123abc456def.awsglobalaccelerator.com/ --sil
 <kbd>![x](images/100-traffic-dials.png)</kbd>
 
 ### Comments
-1. Requests from Frankfurt and Mumbai are processed in EU-WEST-1 (Dublin)
-2. Requests from Herndon and Sao-Paolo are processed in US-WEST-2 (Oregon), we have two endpoints in Oregon region, AWS Global Accelerator sends 50% of traffic to each endpoint (Endpoint weights).
-3. Requests from Sydney are processed in AP-NORTHEAST-1 (Tokyo)
+1. Requests from Paris are processed in EU-WEST-1 (Dublin).
+2. Requests from Ohio and Sao-Paolo are processed in US-WEST-2 (Oregon), we have two endpoints in Oregon region, AWS Global Accelerator sends 50% of traffic to each endpoint (Endpoint weights).
+3. Requests from Singapore are processed in AP-NORTHEAST-1 (Tokyo).
 
 <a name="lab3"/>
 
