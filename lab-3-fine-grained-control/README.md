@@ -51,13 +51,9 @@ We want to upgrade our application in eu-west-1, which means that we have to sto
 <kbd>![x](images/0-eu-west-1-1.png)</kbd>
 <kbd>![x](images/0-eu-west-1-2.png)</kbd>
 
-Now that we've set the traffic dial, we should test. If all went well, we should see no traffic going to the **eu-west-1** region anymore. You should see traffic coming from Frankfurt hit the us-west-2 (Oregon) region and traffic coming from Mumbai processed in the ap-northeast-1 (Tokyo) region.
+Now that we've set the traffic dial, we should test. If all went well, we should see no traffic going to the **eu-west-1** region anymore. You should see traffic coming from Paris hit a different region.
 
-6. [TODO] IMPLEMENT SOME SORT OF TEST FOR THIS. PROBABLY USING CURLS FROM CLOUD9 IN MULTIPLE REGIONS
-
-<kbd>![x](images/0-frankfurt.png)</kbd>
-
-<kbd>![x](images/0-mumbai.png)</kbd>
+<kbd>![x](images/0-traffic-dials-eu-west-1.png)</kbd>
 
 <details>
 <summary>Learn more: AWS Global Accelerator Traffic Dials</summary>
@@ -80,14 +76,12 @@ Maintenance is done. Now it's time to start routing traffic back to the eu-west-
 
 [TODO] SOMEHOW TEST
 
-<kbd>![x](images/20-frankfurt.png)</kbd>
-
-<kbd>![x](images/20-mumbai.png)</kbd>
+<kbd>![x](images/20-traffic-dials-eu-west-1.png)</kbd>
 
 <details>
 <summary>Learn more: How is traffic routed</summary>
 
-AWS Global Accelerator sends 20% of the traffic in EU-WEST-1 and 80% in the next closest available region, US-WEST-1 (Oregon) for requests from Frankfurt and AP-NORTHEAST-1 (Tokyo) for those from Mumbai.
+AWS Global Accelerator sends 20% of the traffic in EU-WEST-1 and 80% in the next closest available region, US-WEST-2 (Oregon) for requests from Paris.
 
 </details>
 
@@ -124,7 +118,7 @@ Now that our maintenance window is over and we've restored full levels of produc
 
 8. Test how traffic is being handled
 
-<kbd>![x](images/herndon-endpoint-weights.png)</kbd>
+<kbd>![x](images/us-west-2-endpoint-weights.png)</kbd>
 
 <details>
 <summary>Learn more: Controlling traffic using Endpoint Weights</summary>
