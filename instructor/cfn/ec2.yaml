@@ -1,0 +1,105 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'AWS Global Accelerator Workshop - This CloudFormation template creates an EC2 instance with HTTPD and PHP installed.'
+Parameters:
+  InstanceType:
+    Description: WebServer EC2 instance type
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+    - t2.micro
+    - t3.micro
+    - t3.small
+    - t3.medium
+    ConstraintDescription: must be a valid EC2 instance type.
+  KeyName:
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instances
+    Type: AWS::EC2::KeyPair::KeyName
+    MinLength: '1'
+    MaxLength: '255'
+    AllowedPattern: "[\\x20-\\x7E]*"
+    ConstraintDescription: can contain only ASCII characters.
+Mappings:
+  RegionMap:
+    'eu-north-1':
+      AMI: 'ami-0c947472aff72870d'
+    'ap-south-1':
+      AMI: 'ami-040c7ad0a93be494e'
+    'eu-west-3':
+      AMI: 'ami-05a51ff00c1d77571'
+    'eu-west-2':
+      AMI: 'ami-00e8b55a2e841be44'
+    'eu-west-1':
+      AMI: 'ami-040ba9174949f6de4'
+    'ap-northeast-2':
+      AMI: 'ami-02b3330196502d247'
+    'me-south-1':
+      AMI: 'ami-0207e6a966ca96048'
+    'ap-northeast-1':
+      AMI: 'ami-0064e711cbc7a825e'
+    'sa-east-1':
+      AMI: 'ami-053f8b6627112b46e'
+    'ca-central-1':
+      AMI: 'ami-007dbcbce3118978b'
+    'ap-east-1':
+      AMI: 'ami-ff4d378e'
+    'ap-southeast-1':
+      AMI: 'ami-00942d7cd4f3ca5c0'
+    'ap-southeast-2':
+      AMI: 'ami-08a74056dfd30c986'
+    'eu-central-1':
+      AMI: 'ami-0f3a43fbf2d3899f7'
+    'us-east-1':
+      AMI: 'ami-00dc79254d0461090'
+    'us-east-2':
+      AMI: 'ami-00bf61217e296b409'
+    'us-west-1':
+      AMI: 'ami-024c80694b5b3e51a'
+    'us-west-2':
+      AMI: 'ami-0a85857bfc5345c38'
+Resources:
+  WebServerInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      KeyName: !Ref KeyName
+      ImageId: !FindInMap [RegionMap, !Ref 'AWS::Region', AMI]
+      SecurityGroups: [!Ref InstanceSecurityGroup]
+      InstanceType: !Ref InstanceType
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash -xe
+          yum update -y
+          yum install -y httpd php
+          systemctl start httpd
+          systemctl enable httpd
+          mkdir /var/www/html/outputs
+          wget -P /var/www/html/ https://jtouzi.s3.amazonaws.com/GlobalAccelerator/ga.php
+          usermod -a -G apache ec2-user
+          chown -R ec2-user:apache /var/www
+          chmod 2775 /var/www
+          find /var/www -type d -exec chmod 2775 {} \;
+          find /var/www -type f -exec chmod 0664 {} \;
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access and HTTP access on the configured port
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: '22'
+        ToPort: '22'
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: '80'
+        ToPort: '80'
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: '443'
+        ToPort: '443'
+        CidrIp: 0.0.0.0/0
+Outputs:
+  URL:
+    Description: URL of the website
+    Value: !Join ['', ['http://', !GetAtt [WebServerInstance, PublicDnsName]]]
+  PublicIp:
+    Description: IP of the EC2 instance
+    Value: !GetAtt [WebServerInstance, PublicIp]
