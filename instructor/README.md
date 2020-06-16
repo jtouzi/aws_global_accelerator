@@ -45,5 +45,5 @@ scp -i /path/to/Key/YourOhioKey.pem index.php ec2-user@OHIO_IP:/var/www/html/
 ### Share the Ohio DNS to the participants so they can test their settings
 
 ```
-$aws cloudformation describe-stacks --stack-name AGAEC2 --query "Stacks[0].Outputs[?OutputKey=='URL'].OutputValue" --output text --region us-east-2
+$ aws cloudformation describe-stacks --stack-name AGAEC2 --query "Stacks[0].Outputs[?OutputKey=='URL'].OutputValue" --output text --region us-east-2
 ```
