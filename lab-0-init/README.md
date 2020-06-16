@@ -38,6 +38,8 @@ The CloudFormation stack below will create:
 
 </details>
 
+NOTE: In this workshop, we will NOT test AWS Global Accelerator performance, we will use four clients in different regions to show how AWS Global Accelerator routes requests based on users locations and the Accelerator settings (traffic dials, endpoint weights, failover, etc.). To test performance use real clients, or the Speed Comparison Tool (<a href="https://speedtest.globalaccelerator.aws/#/" target="_blank">https://speedtest.globalaccelerator.aws/#/</a>
+
 <a name="1"/>
 
 ### 1. Deploy Mythical CloudFormation Stack
