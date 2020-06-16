@@ -14,12 +14,12 @@ After a maximum of 60 seconds (30 seconds for the ALB and 30 seconds for the Glo
 
 <kbd>![x](images/failover.png)</kbd>
 
-Let's see how AWS Global Accelerator will handle requests from Sydney, normally processed by AP-NORTHEAST-1 region.
+Let's see how AWS Global Accelerator will handle requests from Singapore, normally processed by AP-NORTHEAST-1 (Tokyo) region.
 
-<kbd>![x](images/sydney-failover.png)</kbd>
+<kbd>![x](images/tokyo-failover.png)</kbd>
 
 ### Comments
-Sydney are now processed in US-WEST-2 region. AWS Global Accelerator will continue to monitor the endpoint, and will restart to send traffic to it once it becomes healthy.
+Requests from Singapore are now processed in EU-WEST-1 (Dublin) region. AWS Global Accelerator will continue to monitor the Tokyo endpoint, and will resume sending traffic to it once it becomes healthy.
 
 <a name="lab7"/>
 
