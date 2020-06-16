@@ -47,3 +47,10 @@ scp -i /path/to/Key/YourOhioKey.pem index.php ec2-user@OHIO_IP:/var/www/html/
 ```
 $ aws cloudformation describe-stacks --stack-name AGAEC2 --query "Stacks[0].Outputs[?OutputKey=='URL'].OutputValue" --output text --region us-east-2
 ```
+### Clean up AT THE END of the workshop
+```
+$ aws cloudformation delete-stack --stack-name AGAEC2 --region us-east-2
+$ aws cloudformation delete-stack --stack-name AGAEC2 --region sa-east-1
+$ aws cloudformation delete-stack --stack-name AGAEC2 --region eu-west-3
+$ aws cloudformation delete-stack --stack-name AGAEC2 --region ap-southeast-1
+```
