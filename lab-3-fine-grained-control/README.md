@@ -1,11 +1,11 @@
-# Mythical Mysfits: Multi-Region traffic management with AWS Global Accelerator
+# Mythical Mysfits: Multi-Region Control with AWS Global Accelerator
 
 ![mysfits-welcome](/images/mysfits-welcome.png)
 
 ## Workshop Progress
 ✅ [Lab 0: Workshop Initialization](../lab-0-init)
 
-✅ [Lab 1: Create your first Accelerator](../lab-1-create-aws-global-accelerator)
+✅ [Lab 1: Create your first AWS Global Accelerator](../lab-1-create-aws-global-accelerator)
 
 ✅ [Lab 2: Implement Intelligent Traffic Distribution](../lab-2-traffic-distribution)
 
@@ -15,14 +15,13 @@
 - [Revert traffic levels back to 100%](#3)
 - [Fine-grained traffic control with Endpoint Weights](#4)
 
-[Lab 4: Implement Client Affinity](../lab-4-client-affinity)
+[Lab 4: Implement Client Affinity](../lab-4-client-affinity)**
 
-[Lab 5: Implement Observability](../lab-5-observability)
+[Lab 5: Continuous availability monitoring and Failover](../lab-5-observability)
 
-[Bonus Lab: CloudWatch metrics and flow logs](../bonus-lab)
+[Bonus Lab: CloudWatch metrics and enabling flow logs](../bonus-lab)
 
-[Workshop Cleanup](../tbd-cleanup)
-
+[Cleaning up](../clean-up)
 
 ## Lab 3 - Fine-grained traffic control with traffic dials and endpoint weights
 
