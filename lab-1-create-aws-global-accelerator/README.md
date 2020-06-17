@@ -1,4 +1,4 @@
-# Mythical Mysfits: Multi-Region Control with AWS Global Accelerator
+# Mythical Mysfits: Multi-Region traffic management with AWS Global Accelerator
 
 ![mysfits-welcome](/images/mysfits-welcome.png)
 
@@ -19,7 +19,7 @@
 
 [Workshop Cleanup - TBD](tbd-cleanup)
 
-## Lab 1 - Create your first AWS Global Accelerator
+## Lab 1 - Create your first Accelerator
 
 Traffic management is one of the largest pieces of the puzzle when it comes to multi-region architectures. The one that we will focus on today is AWS Global Accelerator. AWS Global Accelerator is a network layer service that directs traffic to optimal regional endpoints based on health, client location, and policies that you configure. It provides you with static IP addresses that you associate with your accelerator which will act as a fixed entry point to your application endpoints in one or more AWS Regions.
 
