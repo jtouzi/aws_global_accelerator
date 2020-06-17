@@ -20,9 +20,9 @@
 ## CloudWatch metrics
 AWS Global Accelerator currently publishes three metrics (AWS/GlobalAccelerator namespace) to Amazon CloudWatch:
 
-NewFlowCount: The total number of new TCP and UDP flows (or connections) established from clients to endpoints in the time period.
-ProcessedBytesIn: The total number of incoming bytes processed by the accelerator, including TCP/IP headers.
-ProcessedBytesOut: The total number of outgoing bytes processed by the accelerator, including TCP/IP headers.
+* **NewFlowCount:** The total number of new TCP and UDP flows (or connections) established from clients to endpoints in the time period.
+* **ProcessedBytesIn:** The total number of incoming bytes processed by the accelerator, including TCP/IP headers.
+* **ProcessedBytesOut:** The total number of outgoing bytes processed by the accelerator, including TCP/IP headers.
 To view the metrics for your accelerator, open CloudWatch in US-WEST-2 region: https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#metricsV2:graph=~();query=~'*7bAWS*2fGlobalAccelerator*2cAccelerator*7d
 
 ## Enabling flow logs
