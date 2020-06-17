@@ -76,8 +76,6 @@ Maintenance is done. Now it's time to start routing traffic back to the eu-west-
 
 2. Once again, test the traffic. You should start seeing traffic back in the eu-west-1 region.
 
-[TODO] SOMEHOW TEST
-
 <kbd>![x](images/20-traffic-dials-eu-west-1.png)</kbd>
 
 <details>
