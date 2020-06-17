@@ -14,6 +14,7 @@
 ✅ [Lab 4: Implement Client Affinity](../lab-4-client-affinity)
 
 **[Lab 5: Continuous availability monitoring and Failover](../lab-5-observability)**
+
 [Bonus Lab: CloudWatch metrics and enabling flow logs](../bonus-lab)
 
 ## Lab 5 - Continuous availability monitoring and Failover
