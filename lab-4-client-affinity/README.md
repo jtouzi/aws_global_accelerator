@@ -3,7 +3,17 @@
 ![mysfits-welcome](/images/mysfits-welcome.png)
 
 ## Workshop Progress
-Placeholder
+✅ [Lab 0: Workshop Initialization](../lab-0-init)
+
+✅ [Lab 1: Create your first AWS Global Accelerator](../lab-1-create-aws-global-accelerator)
+
+✅ [Lab 2: Implement Intelligent Traffic Distribution](../lab-2-traffic-distribution)
+
+✅ [Lab 3: Implement Fine-grained traffic control](../lab-3-fine-grained-control)
+
+**[Lab 4: Implement Client Affinity](../lab-4-client-affinity)**
+
+[Lab 5: Implement Observability](../lab-5-observability)
 
 ## Lab 4 - Client Affinity
 If we want AWS Global Accelerator to direct all requests from a user at a specific source (client) IP address to the same endpoint resource (to maintain client affinity), we can change the "Client Affinity" from "None" (default) to "Source IP" for the listener.
