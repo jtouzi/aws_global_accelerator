@@ -1,15 +1,10 @@
-# Mythical Mysfits: Multi-region traffic management with AWS Global Accelerator
+# Multi-region traffic management with AWS Global Accelerator
 
 ## Overview
-![mysfits-welcome](/images/mysfits-welcome.png)
 
-**Mythical Mysfits** is a (fictional) pet adoption non-profit dedicated to helping abandoned, and often misunderstood, mythical creatures find a new forever family! Mythical Mysfits believes that all creatures deserve a second chance, even if they spent their first chance hiding under bridges and unapologetically robbing helpless travelers.
+This workshop will introduce you to the core concepts of AWS Global Accelerator, a service that improves the availability and performance of your applications with local or global users. It provides static IP addresses that act as a fixed entry point to your application endpoints in a single or multiple AWS Regions, such as your Application Load Balancers, Network Load Balancers or Amazon EC2 instances.
 
-Our first adoption agency, founded in Devils Tower National Monument, has helped millions of mythical mysfits find loving homes. Since then, we've deployed expedition teams to far reaching corners of the Earth to seek out more wandering communities of mythical mysfits in need of care and hugs. Initial reports indicate that we'll need to expand our operation globally.
-
-To support our global expansion, we're doubling down on our digital adoption experience and have formed a team to re-architect for multi-region expansion. The initial goal is to enable a second region to serve our customers in different parts of the globe. While it's possible to run everything in a single region, we want to provide the best level of service to our customers to give our mysfits the best chance of finding their forever families! Lastly, this will set us up nicely for multi-region active-active as we open new adoption centers around the world.
-
-To recap our progress to date, we've modernized our stack to be containerized microservices deployed with AWS Fargate. We manage our resources using infrastructure as code and have a fully automated CI/CD pipeline that deploys our code changes. Our solution architects have drafted a DR plan that leverages a secondary region. We need your help to carry out this plan by first improving observability, so we can make data driven decisions for things like regional failover. Then we'll need help with data replication, multi-region builds, and traffic management. Can you help us out?
+AWS Global Accelerator uses the AWS global network to optimize the path from your users to your applications, improving the performance of your traffic by as much as 60%.
 
 ### Requirements
 
