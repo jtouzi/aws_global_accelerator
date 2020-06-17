@@ -27,10 +27,12 @@ The labs in the workshop are designed to be completed in sequence, and the full 
 * **[Lab 4](lab-4-client-affinity):** Implement Client Affinity
 * **[Lab 5](lab-5-observability):** Implement Failover
 * **[Bonus Lab](bonus-lab):** CloudWatch metrics and enabling flow logs
-* **[Workshop Cleanup](clean-up)** [Cleanup working environment](#important-workshop-cleanup)
+* **[Workshop Cleanup](clean-up)**
 
+### Note
+In this workshop, we will NOT test AWS Global Accelerator performance, we will use four clients in different regions to show how AWS Global Accelerator routes requests based on users locations and the Accelerator settings (traffic dials, endpoint weights, failover, etc.). To test performance use real clients, or the [AWS Global Accelerator Speed Comparison Tool](https://speedtest.globalaccelerator.aws/#/).
 
-### IMPORTANT: Workshop Cleanup
+### Workshop Cleanup
 
 If you're attending an AWS event and are provided an account to use, you can ignore this section because we'll destroy the account once the workshop concludes. Feel free to proceed to [Lab-0 to get started](lab-0-init).
 
