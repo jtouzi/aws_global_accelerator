@@ -13,10 +13,10 @@
 
 ✅ [Lab 4: Implement Client Affinity](../lab-4-client-affinity)
 
-[Lab 5: Implement Observability](../lab-5-observability)
+**[Lab 5: Continuous availability monitoring and Failover](../lab-5-observability)**
 [Bonus Lab: CloudWatch metrics and enabling flow logs](../bonus-lab)
 
-## Lab 6 - Continuous availability monitoring / Failover
+## Lab 5 - Continuous availability monitoring and Failover
 
 For some reason, our endpoint in AP-NORTHEAST-1 stops responding and the Application Load Balancer health check fails. AWS Global Accelerator will take up to 30 seconds (Health check interval) to notice the failure and to automatically redirect traffic to the next available region.
 
