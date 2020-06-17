@@ -95,7 +95,7 @@ These tips will help you be more efficient and save time.
 
 # Checkpoint
 
-You now have an operational workshop environment to work with. [Proceed to Lab 1](../lab-1-create-amazon-global-accelerator)
+You now have an operational workshop environment to work with. [Proceed to Lab 1](../lab-1-create-aws-global-accelerator)
 
 ## Participation
 
