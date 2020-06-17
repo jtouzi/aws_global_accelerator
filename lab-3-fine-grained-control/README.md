@@ -21,7 +21,7 @@
 
 [Bonus Lab: CloudWatch metrics and enabling flow logs](../bonus-lab)
 
-[Cleaning up](../clean-up)
+[Clean up](../clean-up)
 
 ## Lab 3 - Fine-grained traffic control with traffic dials and endpoint weights
 
