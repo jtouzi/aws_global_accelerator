@@ -35,7 +35,7 @@ Here's what you'll be doing:
 
 <a name="1"/>
 
-### 1. Create and Name your AWS Global Accelerator
+### 1. Create and Name your Accelerator
 
 The first step of this lab is to create and name an AWS Global Accelerator. The AWS Global Accelerator will serve as the entry point into your application. In the screenshots, we're using US-West-2 (Oregon), but you should be using the region that you launched your CloudFormation stack in.
 
@@ -46,7 +46,7 @@ The first step of this lab is to create and name an AWS Global Accelerator. The 
 
 <kbd>![x](images/accelerator-name.png)</kbd>
 
-### 2. Configure the AWS Global Accelerator listeners
+### 2. Configure the Accelerator listeners
 
 Add the listeners (TCP port 80), choose "Next"
 
