@@ -27,8 +27,6 @@ Global Accelerator uses the AWS global network to optimize the network path from
 
 In this lab, you will build upon the infrastructure you created in previous labs and use AWS Global Accelerator to route traffic between the Application Load Balancers in your primary and secondary regions.
 
-![Placeholder for Arch Diagram](images/lab-1-arch.png)
-
 Here's what you'll be doing:
 - Create an Accelerator
 - Add Listeners
