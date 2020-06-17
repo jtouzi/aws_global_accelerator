@@ -2,6 +2,19 @@
 
 ![mysfits-welcome](/images/mysfits-welcome.png)
 
+## Workshop Progress
+✅ [Lab 0: Workshop Initialization](../lab-0-init)
+
+✅ [Lab 1: Create your first AWS Global Accelerator](../lab-1-create-aws-global-accelerator)
+
+✅ [Lab 2: Implement Intelligent Traffic Distribution](../lab-2-traffic-distribution)
+
+✅ [Lab 3: Implement Fine-grained traffic control](../lab-3-fine-grained-control)
+
+✅ [Lab 4: Implement Client Affinity](../lab-4-client-affinity)
+
+[Lab 5: Implement Observability](../lab-5-observability)
+
 ## Lab 6 - Continuous availability monitoring / Failover
 
 For some reason, our endpoint in AP-NORTHEAST-1 stops responding and the Application Load Balancer health check fails. AWS Global Accelerator will take up to 30 seconds (Health check interval) to notice the failure and to automatically redirect traffic to the next available region.
