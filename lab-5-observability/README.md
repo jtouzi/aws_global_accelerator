@@ -39,4 +39,4 @@ Let's see how AWS Global Accelerator will handle requests from Singapore, normal
 Requests from Singapore are now processed in EU-WEST-1 (Dublin) region. AWS Global Accelerator will continue to monitor the Tokyo endpoint, and will resume sending traffic to it once it becomes healthy.
 
 ### Checkpoint
-You have now tested Client Affinity with AWS Global Accelerator. Next on our global application to do list is to implement a failover! When you're ready, [proceed to Lab 5](../lab-5-observability)!
+You have now implemented failover with AWS Global Accelerator. We are almost done, if you have 5 more minutes [proceed to the bonus Lab](../bonus-lab) to see how you can use CloudWatch metrics and Flow Logs to monitor your accelerator activity.
