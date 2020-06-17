@@ -1,6 +1,4 @@
-# Mythical Mysfits: Multi-Region traffic management with AWS Global Accelerator
-
-![mysfits-welcome](/images/mysfits-welcome.png)
+# Multi-Region traffic management with AWS Global Accelerator - Fine-grained traffic control
 
 ## Workshop Progress
 ✅ [Lab 0: Workshop Initialization](../lab-0-init)
