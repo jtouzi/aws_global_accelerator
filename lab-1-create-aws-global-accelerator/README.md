@@ -148,6 +148,9 @@ AWS Global Accelerator can access public and private EC2 instances and load bala
 
 </details>
 
+### 8. Origin cloaking
+The ALBs the CloudFormation stack launched are internal ALBs, verify that you can't access them directly using their DNS, you must use the Global Accelerator to access the application. Note that Global Accelerator also support external ALBs.
+
 # Checkpoint
 
 At this point, you have created the workshop infrastructure as well as a simple AWS Global Accelerator. We can now take a deeper look into the details of AWS Global Accelerator! [Proceed to Lab 2](../lab-2-traffic-distribution)
