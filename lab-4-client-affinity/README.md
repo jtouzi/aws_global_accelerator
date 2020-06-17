@@ -1,4 +1,4 @@
-# Mythical Mysfits: Multi-Region Control with AWS Global Accelerator
+# Mythical Mysfits: Multi-Region traffic management with AWS Global Accelerator
 
 ![mysfits-welcome](/images/mysfits-welcome.png)
 
