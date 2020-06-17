@@ -1,4 +1,4 @@
-# Mythical Mysfits: Multi-Region Control with AWS Global Accelerator
+# Mythical Mysfits: Multi-Region traffic management with AWS Global Accelerator
 
 ![mysfits-welcome](/images/mysfits-welcome.png)
 
@@ -37,3 +37,6 @@ Let's see how AWS Global Accelerator will handle requests from Singapore, normal
 
 ### Comments
 Requests from Singapore are now processed in EU-WEST-1 (Dublin) region. AWS Global Accelerator will continue to monitor the Tokyo endpoint, and will resume sending traffic to it once it becomes healthy.
+
+### Checkpoint
+You have now tested Client Affinity with AWS Global Accelerator. Next on our global application to do list is to implement a failover! When you're ready, [proceed to Lab 5](../lab-5-observability)!
