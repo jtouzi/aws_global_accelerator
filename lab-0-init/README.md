@@ -7,8 +7,7 @@
 - [Workshop Initialization](#1)
 - [Familiarize Yourself with the Workshop Environment](#2)
 - [Workshop Tips](#3)
-
-[Lab 1: Create your first AWS Global Accelerator](../lab-1-create-amazon-global-accelerator)
+[Lab 1: Create your first AWS Global Accelerator](../lab-1-create-aws-global-accelerator)
 
 [Lab 2: Implement Intelligent Traffic Distribution](../lab-2-traffic-distribution)
 
