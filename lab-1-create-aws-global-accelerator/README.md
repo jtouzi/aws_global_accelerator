@@ -5,7 +5,7 @@
 ## Workshop Progress
 ✅ [Lab 0: Workshop Initialization](../lab-0-init)
 
-**[Lab 1: Create your first AWS Global Accelerator](../lab-1-create-aws-global-accelerator)**
+**[Lab 1: Create your first Accelerator](../lab-1-create-aws-global-accelerator)**
 
 [Lab 2: Implement Intelligent Traffic Distribution](../lab-2-traffic-distribution)
 
@@ -15,9 +15,9 @@
 
 [Lab 5: Implement Observability](../lab-5-observability)
 
-[Bonus Lab: CloudWatch metrics and enabling flow logs](../lab-bonus)
+[Bonus Lab: CloudWatch metrics and flow logs](../bonus-lab)
 
-[Workshop Cleanup - TBD](tbd-cleanup)
+[Workshop Cleanup](../tbd-cleanup)
 
 ## Lab 1 - Create your first Accelerator
 
