@@ -1,4 +1,4 @@
-# Mythical Mysfits: Multi-Region Control with AWS Global Accelerator
+# Mythical Mysfits: Multi-Region traffic management with AWS Global Accelerator
 
 ![mysfits-welcome](/images/mysfits-welcome.png)
 
@@ -15,7 +15,7 @@
 - [Revert traffic levels back to 100%](#3)
 - [Fine-grained traffic control with Endpoint Weights](#4)
 
-[Lab 4: Implement Client Affinity](../lab-4-client-affinity)**
+[Lab 4: Implement Client Affinity](../lab-4-client-affinity)
 
 [Lab 5: Continuous availability monitoring and Failover](../lab-5-observability)
 
