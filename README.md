@@ -15,13 +15,13 @@ AWS Global Accelerator uses the AWS global network to optimize the path from you
 
 The labs in the workshop are designed to be completed in sequence, and the full set of instructions are documented in each lab. Read and follow the instructions to complete each of the labs. Don't worry if you get stuck, we provide hints along the way.
 
-* **[Lab 0](lab-0-init):** Deploy existing Mythical stack
-* **[Lab 1](lab-1-create-aga):** Create your first AWS Global Accelerator
-* **[Lab 2](lab-2-traffic-distribution):** Implement Intelligent Traffic Distribution
-* **[Lab 3](lab-3-fine-grained-control):** Implement Fine-grained traffic control
-* **[Lab 4](lab-4-client-affinity):** Implement Client Affinity
-* **[Lab 5](lab-5-observability):** Implement Failover
-* **[Bonus Lab](bonus-lab):** CloudWatch metrics and enabling flow logs
+* **[Lab 0: Deploy existing Mythical stack](lab-0-init)**
+* **[Lab 1: Create your first AWS Global Accelerator](lab-1-create-aga)**
+* **[Lab 2: Implement Intelligent Traffic Distribution](lab-2-traffic-distribution)**
+* **[Lab 3: Implement Fine-grained traffic control](lab-3-fine-grained-control)**
+* **[Lab 4: Implement Client Affinity](lab-4-client-affinity)**
+* **[Lab 5: Implement Failover](lab-5-observability)**
+* **[Bonus Lab: CloudWatch metrics and enabling flow logs](bonus-lab)**
 * **[Workshop Cleanup](clean-up)**
 
 ### Workshop Cleanup
