@@ -123,7 +123,13 @@ See documentation for [Endpoints in AWS Global Accelerator](https://docs.aws.ama
 
 Great job! The AWS Global Accelerator service is now creating an AWS Global Accelerator for you. This typically takes about 5 minutes to move from the **In Progress** status to the **Deployed** status. Once it's deployed, you should be able to see the two static anycast IP addresses and the assigned DNS name for the accelerator. You will need these things later.
 
-1. Wait.
+<details>
+<summary>Learn more: AWS Global Accelerator BYOIP</summary>
+
+AWS Global Accelerator uses static IP addresses as entry points for your accelerators. These IP addresses are anycast from AWS edge locations. By default, Global Accelerator provides static IP addresses from the Amazon IP address pool. Instead of using the IP addresses that Global Accelerator provides, you can configure these entry points to be IPv4 addresses from your own address ranges.
+
+See documentation for [AWS Global Accelerator Bring Your Own IP](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html).
+</details>
 
 <kbd>![x](images/accelerator-inprogress.png)</kbd>
 
@@ -139,7 +145,7 @@ Once the accelerator is in a **Deployed** state, we should double check that the
 ### 7. Access your application
 At this point, you have deployed an AWS Global Accelerator and should be able to access your back end application. Get the URL for your accelerator and put it into a browser window to see if everything works. If you get a valid response back, that's a good indicator that your application is up and serving traffic.
 
-1. Navigate to the AWS Global Accelerator DNS entry given to you in the AWS Global Accelerator console
+Navigate to the AWS Global Accelerator DNS entry given to you in the AWS Global Accelerator console
 
 <kbd>![x](images/accelerator-browser.png)</kbd>
 
