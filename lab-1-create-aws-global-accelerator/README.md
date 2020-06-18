@@ -143,20 +143,6 @@ At this point, you have deployed an AWS Global Accelerator and should be able to
 
 <kbd>![x](images/accelerator-browser.png)</kbd>
 
-<details>
-<summary>Learn more: Accessing different types of endpoints</summary>
-
-AWS Global Accelerator can access public and private EC2 instances and load balancers. Note that you can't access the Application Load Balancers the CloudFormation created directly using their DNS, as they are internal load balancers, AWS Global Accelerator will access them using private IP addresses. This is the AWS Global Accelerator **origin cloaking** feature, for more information see: [AWS Global Accelerator Use Cases](https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-benefits-of-migrating.html)
-
-</details>
-
-### 8. Origin cloaking
-The ALBs the CloudFormation stack launched are internal ALBs, verify that you can't access them directly using their DNS, you must use the Global Accelerator to access the application. Note that Global Accelerator also support external ALBs.
-
-# Checkpoint
-
-At this point, you have created the workshop infrastructure as well as a simple AWS Global Accelerator. We can now take a deeper look into the details of AWS Global Accelerator! [Proceed to Lab 2](../lab-2-traffic-distribution)
-
 ## Participation
 
 We encourage participation; if you find anything, please submit an [issue](https://github.com/aws-samples/aws-global-accelerator-workshop/issues). However, if you want to help raise the bar, submit a [PR](https://github.com/aws-samples/aws-global-accelerator-workshop/pulls)!
