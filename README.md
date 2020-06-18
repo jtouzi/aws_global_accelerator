@@ -21,6 +21,7 @@ The labs in the workshop are designed to be completed in sequence, and the full 
 * **[Lab 3: Implement Fine-grained traffic control](lab-3-fine-grained-control)**
 * **[Lab 4: Implement Client Affinity](lab-4-client-affinity)**
 * **[Lab 5: Implement Failover](lab-5-observability)**
+* **[Lab 6: Origin Cloaking](lab-6-origin-cloaking)**
 * **[Bonus Lab: Enable flow logs and monitor with CloudWatch metrics](bonus-lab)**
 * **[Workshop Cleanup](clean-up)**
 
