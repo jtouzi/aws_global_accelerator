@@ -21,4 +21,16 @@
 
 ## Lab 6 - Origin Cloaking
 
-The CloudFormation template we used in Lab 1 created an internal Application Load Balancer.
+The CloudFormation template we used in Lab 1 created private subnets and internal Application Load Balancers, you can't access them directly by using their DNS, you must use the Global Accelerator endpoint to access the application.
+
+
+<details>
+<summary>Learn more: Accessing different types of endpoints</summary>
+
+AWS Global Accelerator can access public and private EC2 instances and load balancers. Note that you can't access the Application Load Balancers the CloudFormation created directly using their DNS, as they are internal load balancers, AWS Global Accelerator will access them using private IP addresses. This is the AWS Global Accelerator **origin cloaking** feature, for more information see: [AWS Global Accelerator Use Cases](https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-benefits-of-migrating.html)
+
+</details>
+
+# Checkpoint
+
+At this point, you have created the workshop infrastructure as well as a simple AWS Global Accelerator. We can now take a deeper look into the details of AWS Global Accelerator! [Bonus lab](../bonus-lab)
