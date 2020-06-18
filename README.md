@@ -4,7 +4,7 @@
 
 This workshop will introduce you to the core concepts of AWS Global Accelerator, a service that improves the availability and performance of your applications with local or global users. It provides static IP addresses that act as a fixed entry point to your application endpoints in a single or multiple AWS Regions, such as your Application Load Balancers, Network Load Balancers or Amazon EC2 instances.
 
-AWS Global Accelerator uses the AWS global network to optimize the path from your users to your applications, improving the performance of your traffic by as much as 60%. In this workshop, we will NOT test AWS Global Accelerator performance, we will use four clients in different regions to show how AWS Global Accelerator routes requests based on users locations and the Accelerator settings (traffic dials, endpoint weights, failover, etc.). To test performance use real clients, or the [AWS Global Accelerator Speed Comparison Tool](https://speedtest.globalaccelerator.aws/#/) to compares Global Accelerator to the public internet.
+AWS Global Accelerator uses the AWS global network to optimize the path from your users to your applications, improving the performance of your traffic by as much as 60%. In this workshop, we will NOT test AWS Global Accelerator performance, we will use four clients in different regions to show how AWS Global Accelerator routes requests based on users locations and the Accelerator settings (traffic dials, endpoint weights, failover, etc.). To test performance use real clients, or the [AWS Global Accelerator Speed Comparison Tool](https://speedtest.globalaccelerator.aws/#/) to compare Global Accelerator to the public internet.
 
 ### Requirements
 
