@@ -13,7 +13,7 @@
 
 ✅ [Lab 5: Continuous availability monitoring and Failover](../lab-5-observability)
 
-** [Lab 6: Origin Cloaking](../lab-6-origin-cloaking)**
+**[Lab 6: Origin Cloaking](../lab-6-origin-cloaking)**
 
 [Bonus Lab: CloudWatch metrics and enabling flow logs](../bonus-lab)
 
