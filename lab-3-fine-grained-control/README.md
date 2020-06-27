@@ -25,9 +25,7 @@
 
 ## Lab 3 - Fine-grained traffic control with traffic dials and endpoint weights
 
-With AWS Global Accelerator, there are two ways that you can customize how traffic is sent to your endpoints:
-- **Traffic Dials** to limit traffic to one or more endpoint groups
-- **Endpoint Weights** to specify the proportion of traffic to the endpoints in a group
+AWS Global Accelerator relays on the **traffic dials** to control the percentage of traffic that is directed to an endpoint group, and on **endpoint weights** to determine the proportion of traffic that is directed to endpoints in an endpoint group. These are great options for ***A/B testing*** and ***blue/green deployments***, both for multi-region and single-region applications.
 
 <details>
 <summary>Learn more: Traffic dials vs endpoint weights. What's the difference?</summary>
@@ -38,13 +36,13 @@ For more information, see our [documentation](https://docs.aws.amazon.com/global
 
 </details>
 
-In this lab, we will simulate a specific use case. For the purposes of this workshop, let's pretend that our application in eu-west-1 (Ireland) needs to undergo maintenance. This is a very common use case and we will walk through how easy it is to redirect traffic using traffic dials.
+In this lab, we will simulate a specific use case. For the purposes of this workshop, let's pretend that our application in EU-WEST-1 (Ireland) needs to undergo maintenance. This is a very common use case and we will walk through how easy it is to redirect traffic using traffic dials.
 
 <a name="1"/>
 
-### 1. Route traffic away from the eu-west-1 region
+### 1. Route traffic away from the EU-WEST-1 region
 
-We want to upgrade our application in eu-west-1, which means that we have to stop production traffic from hitting it. Fortunately, since we're using AWS Global Accelerator, this is really easy using traffic dials. For each endpoint group, you can set a traffic dial to control the percentage of traffic that is directed to the group. The percentage is applied only to traffic that is already directed to the endpoint group, not to all listener traffic.
+We want to upgrade our application in EU-WEST-1, which means that we have to stop production traffic from hitting it. Fortunately, since we're using AWS Global Accelerator, this is really easy using traffic dials. For each endpoint group, you can set a traffic dial to control the percentage of traffic that is directed to the group. The percentage is applied only to traffic that is already directed to the endpoint group, not to all listener traffic.
 
 1. Navigate to the [AWS Global Accelerator Dashboard](https://console.aws.amazon.com/ec2/v2/home#GlobalAcceleratorDashboard) and choose your Accelerator
 2. Choose the Listener you want to edit
@@ -55,7 +53,7 @@ We want to upgrade our application in eu-west-1, which means that we have to sto
 <kbd>![x](images/0-eu-west-1-1.png)</kbd>
 <kbd>![x](images/0-eu-west-1-2.png)</kbd>
 
-Now that we've set the traffic dial, we should test. If all went well, we should see no traffic going to the **eu-west-1** region anymore. You should see traffic coming from Paris hit a different region.
+Now that we've set the traffic dial, we should test. If all went well, no new connections should hit the EU-WEST-1 region, new connections from Paris should hit a different region.
 
 <kbd>![x](images/0-traffic-dials-eu-west-1.png)</kbd>
 
@@ -70,20 +68,20 @@ For more information, see the [Adjusting Traffic Flow with Traffic Dials](https:
 
 ### 2. Slowly ramp traffic back to the maintenance site
 
-Maintenance is done. Now it's time to start routing traffic back to the eu-west-1 region. What we'll do is send 20% of traffic to help us understand how the application is running. It's fairly common for customers to send some level of canary traffic in to a newly deployed application. It helps us minimize risk in case there was a deployment issue.
+Maintenance is done. Now it's time to start routing new connections back to the EU-WEST-1 region. What we'll do is send 20% of traffic to help us understand how the application is running. It's fairly common for customers to send some level of canary traffic in to a newly deployed application. It helps us minimize risk in case there was a deployment issue.
 
 1. Follow the same steps as [before](#1) to set the traffic dial to **20%**
 
 <kbd>![x](images/20-eu-west-1.png)</kbd>
 
-2. Once again, test the traffic. You should start seeing traffic back in the eu-west-1 region.
+2. Once again, test the traffic. You should start seeing new connections back in the EU-WEST-1 region.
 
 <kbd>![x](images/20-traffic-dials-eu-west-1.png)</kbd>
 
 <details>
 <summary>Learn more: How is traffic routed</summary>
 
-AWS Global Accelerator sends 20% of the traffic in EU-WEST-1 and 80% in the next closest available region, US-WEST-2 (Oregon) for requests from Paris.
+AWS Global Accelerator sends 20% of new connections in EU-WEST-1 and 80% in the next closest available region, US-WEST-2 (Oregon) for requests from Paris.
 
 </details>
 
@@ -91,22 +89,24 @@ AWS Global Accelerator sends 20% of the traffic in EU-WEST-1 and 80% in the next
 
 ### 3. Revert traffic levels back to 100%
 
-The last step of this lab is to change the trafic dial back to 100% for the eu-west-1 region. Follow steps in [Route traffic away from EU-WEST-1 region](#1) and set all values to 100%
+The last step of this lab is to change the trafic dial back to 100% for the EU-WEST-1 region. Follow steps in [Route traffic away from EU-WEST-1 region](#1) and set all values to 100%
 
 <kbd>![x](images/default-traffic-dials.png)</kbd>
-
-<details>
-<summary>Learn more: How do traffic dials work</summary>
-
-Adjusting Traffic Flow With Traffic Dials: https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-traffic-dial.html
-
-</details>
 
 <a name="4"/>
 
 ### 4. Fine-grained traffic control with Endpoint Weights
 
-Now that our maintenance window is over and we've restored full levels of production traffic to all endpoint groups, we are now going to focus on individual endpoints within one region. In our scenario, inside us-west-2 (Oregon), we have two endpoints. Currently, they are serving equal amounts of traffic, but let's consider a use case where one endpoint has more capacity than the other and we want one to handle 80% of all traffic processed. To support this use case, we can set endpoint weights to 200 and 50. The first will handle 80% (200 / 200+50) and the second will handle 20% (50 / 200+50).
+Now that our maintenance window is over and we've restored full levels of production traffic to all endpoint groups, we are now going to focus on individual endpoints within one region. In our scenario, inside US-WEST-2 (Oregon), we have two endpoints. Currently, they are serving equal amounts of traffic, but let's consider a use case where one endpoint has more capacity than the other and we want it to handle 80% of all traffic processed. To support this use case, we can set endpoint weights to 200 and 50. The first will handle 80% (200 / 200+50) and the second will handle 20% (50 / 200+50).
+
+<details>
+<summary>An Endpoint weight is a value that determines the proportion of traffic that Global Accelerator directs to an endpoint. Learn more...</summary>
+
+A weight is a value that determines the proportion of traffic that Global Accelerator directs to an endpoint. Global Accelerator calculates the sum of the weights for the endpoints in an endpoint group, and then directs traffic to the endpoints based on the ratio of each endpoint's weight to the total.
+
+Weighted routing lets you choose how much traffic is routed to a resource in an endpoint group. This can be useful in several ways, including load balancing and testing new versions of an application. See more details [here](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoints-endpoint-weights.html).
+
+</details>
 
 1. Navigate to the [AWS Global Accelerator Dashboard](https://console.aws.amazon.com/ec2/v2/home#GlobalAcceleratorDashboard) and choose your Accelerator
 2. Choose the Listener you want to edit
@@ -125,7 +125,7 @@ Now that our maintenance window is over and we've restored full levels of produc
 <details>
 <summary>Learn more: Controlling traffic using Endpoint Weights</summary>
 
-Note that the first endpoint in the endpoint group handles around 80% of the traffic. If you want Global Accelerator to stop sending traffic to an endpoint, you can change the weight for that resource to 0 as we did for traffic dials. See more details [here](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoints-endpoint-weights.html).
+Note that the first endpoint in the endpoint group handles around 80% of the traffic. If you want Global Accelerator to stop sending new traffic to an endpoint, you can change the weight for that resource to 0 as we did for traffic dials.
 
 </details>
 
