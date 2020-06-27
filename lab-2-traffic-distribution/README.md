@@ -21,9 +21,18 @@
 
 ## Lab 2 - Intelligent Traffic Distribution
 
-In this lab we will help you understand how AWS Global Accelerator routes requests based on the origin of the requester. 
+In this lab we will help you understand how AWS Global Accelerator routes requests based on the origin of the requester. Remember, we kept the default traffic dials (100%).
 
-We kept the default traffic dials (100%)
+<details>
+<summary>Traffic dials dictate the percentage of traffic an endpoint group can receive. Learn more...</summary>
+
+For each endpoint group, you can set a traffic dial to control the percentage of traffic that is directed to the group. The percentage is applied only to traffic that is already directed to the endpoint group, not to all listener traffic.
+
+By default, the traffic dial is set to 100 (that is, 100%) for all regional endpoint groups in an accelerator. The traffic dial lets you easily do performance testing or blue/green deployment testing for new releases across different AWS Regions, for example.
+
+For more information, see our [documentation](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-traffic-dial.html)
+
+</details>
 
 <kbd>![x](images/default-traffic-dials.png)</kbd>
 
@@ -46,7 +55,7 @@ $ for i in {1..100}; do curl http://123abc456def.awsglobalaccelerator.com/ --sil
 
 # Checkpoint
 
-You now have an operational workshop environment to work with. [Proceed to Lab 3](../lab-3-fine-grained-control)
+Now that we have seen how AWS Global Accelerator inteligently distributes traffic from users to endpoint groups, let's see how to send more or less traffic to an endpoint group or to a specific endpoint in an endpoint group. When you're ready [proceed to Lab 3](../lab-3-fine-grained-control)!
 
 ## Participation
 
