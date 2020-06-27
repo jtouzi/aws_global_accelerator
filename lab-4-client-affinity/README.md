@@ -20,26 +20,31 @@
 [Clean up](../clean-up)
 
 ## Lab 4 - Client Affinity
-If we want AWS Global Accelerator to direct all requests from a user at a specific source (client) IP address to the same endpoint resource (to maintain client affinity), we can change the "Client Affinity" from "None" (default) to "Source IP" for the listener.
+
+By default AWS Global Accelerator distributes traffic equally between the endpoints in the endpoint groups for the listener. If you have stateful applications, you can choose to have Global Accelerator direct all requests from a user at a specific source (client) IP address to the same endpoint resource, to maintain client affinity. You do this by changing the **Client Affinity** from **None** (default) to **Source IP** for the listener.
+
+<details>
+<summary>Learn more: Client Affinity</summary>
+
+Global Accelerator uses a consistent-flow hashing algorithm to choose the optimal endpoint for a user's connection. For more information, see our [documentation](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-listeners.html#about-listeners-client-affinity)
+
+</details>
 
 <kbd>![x](images/client-affinity.png)</kbd>
 
-Let's see how AWS Global Accelerator will handle requests from Herndon.
+Let's see how AWS Global Accelerator will handle requests from Sao Paulo and Ohio.
 
 <kbd>![x](images/sao-paulo-client-affinity.png)</kbd>
 
 ### Comments
 
-US-WEST-2 has two endpoints, requests from Sao Paulo and Ohio have been processed by only 1 endpoint because of the client affinity.
-
-### Resources
-Client Affinity: https://docs.aws.amazon.com/global-accelerator/latest/dg/about-listeners.html#about-listeners-client-affinity
+US-WEST-2 has two endpoints, requests from Sao Paulo and Ohio have been processed by only 1 endpoint in the endpoint group because of the client affinity.
 
 <a name="lab6"/>
 
 # Checkpoint
 
-You now have an operational workshop environment to work with. [Proceed to Lab 5](../lab-5-observability)
+Now that we have implemented fine-grained traffic control and Client Affinity, let's see how Global Accelerator handles failover. When you're ready [proceed to Lab 5](../lab-5-observability)
 
 ## Participation
 
