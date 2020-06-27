@@ -28,7 +28,7 @@ To simulate the failure, change the response status code returned by the [Lambda
 
 <kbd>![x](images/lambda-function.png)</kbd>
 
-After a maximum of 60 seconds (30 seconds for the ALB and 30 seconds for the Global Accelerator health chekcs), the endpoint status will become "Unhealthy" and Global Accelerator will start sending new connections automatically to the next available endpoint.
+After a maximum of 60 seconds (30 seconds for the ALB and 30 seconds for the Global Accelerator health chekcs), the endpoint status will become **Unhealthy** and Global Accelerator will start sending new connections automatically to the next available endpoint.
 
 <kbd>![x](images/failover.png)</kbd>
 
