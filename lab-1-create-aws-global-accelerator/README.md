@@ -139,7 +139,13 @@ Once the accelerator is in a **Deployed** state, we should double check that the
 
 1. Click on the accelerator link
 2. Take a look at the bottom window pane at **Listeners**. You should see **All healthy** on the right. If not, you may have configured the listeners incorrectly. Go back up a few steps.
+<details>
+<summary>Important note: AWS Global Accelerator BYOIP</summary>
 
+Global Accelerator requires your router and firewall rules to allow inbound traffic from the IP addresses associated with Route 53 health checkers to complete health checks for Application Load Balancer, EC2 instance, or Elastic IP address endpoints. You can find information about the IP address ranges associated with Amazon Route 53 health checkers in [Health Checks for Your Target Groups](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html) in the Amazon Route 53 Developer Guide.
+
+See documentation for [AWS Global Accelerator Health check options](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-health-check-options.html).
+</details>
 <kbd>![x](images/accelerator-all-healthy.png)</kbd>
 
 ### 7. Access your application
@@ -148,6 +154,13 @@ At this point, you have deployed an AWS Global Accelerator and should be able to
 Navigate to the AWS Global Accelerator DNS entry given to you in the AWS Global Accelerator console
 
 <kbd>![x](images/accelerator-browser.png)</kbd>
+
+<a name="checkpoint"/>
+
+# Checkpoint
+You have now created an Accelerator with AWS Global Accelerator, with Application Load Balancers in different regions as endpoints.
+
+Let's see how AWS Global Accelerator distributes traffic from different clients around the world! When you're ready, [proceed to Lab 2](../lab-2-traffic-distribution)!
 
 ## Participation
 
