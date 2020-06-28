@@ -58,8 +58,8 @@ Since the next lab is about performance, let's revert the change we made to the 
 - Select the Route table the CloudFormation created (by default *Public Route Table*)
 - Select the **Routes** tab and then **Edit Routes**
 - Click on **Add route**
--- Destination: 0.0.0.0/0
--- Target: Select **Internet Gateway** in the dropdown menu, then the Internet Gateway ID the CloudFormation template created (by default *GlobalAcceleratorVPC Internet Gateway*)
+* Destination: 0.0.0.0/0
+* Target: Select **Internet Gateway** in the dropdown menu, then the Internet Gateway ID the CloudFormation template created (by default *GlobalAcceleratorVPC Internet Gateway*)
 - Click on **Save routes**
 
 # Checkpoint
