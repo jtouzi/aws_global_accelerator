@@ -21,8 +21,15 @@
 
 ## Lab 6 - Origin Cloaking
 
-The CloudFormation template we used in Lab 1 created private subnets and internal Application Load Balancers, you can't access them directly by using their DNS, you must use the Global Accelerator endpoint to access the application.
+The CloudFormation template we used in [Lab 0](../lab-0-init) created public subnets and internet facing Application Load Balancers, you can access these ALBs directly from any region using their DNS. For example let's try to access directly the Tokyo ALB from our four clients:
 
+<kbd>![x](images/alb-origin-directly.png)</kbd>
+
+As you can see we can access the ALB directly from any client. Our application is currently exposed to 5 different access points (the 4 ALBs and the Global Accelerator endpoint), this exposes it to distributed denial of service (DDoS) attacks and does not allow you to have control over how your end users reach the application. AWS Global Accelerator offers a feature to obfuscate the source origin through functionality commonly referred to as **origin cloaking,** allowing private ALBs and private EC2 instances to be accessed through Global Accelerator in a secure and simplified manner.
+
+Origin cloaking allows you to make Global Accelerator the single internet-facing access point for your applications running in a single or multiple AWS Regions. The applications are centrally protected from distributed denial of service (DDoS) attacks through AWS Shield. You can also have greater control over how your end users reach your applications.
+
+Let's protect one of our ALBs from being accessed directly using it DNS, I choose the Tokyo ALB. For this we can make the Route table associated to the two Subnet the CloudFormation created private by removing the Route to the Internet Gateway:
 
 <details>
 <summary>Learn more: Accessing different types of endpoints</summary>
