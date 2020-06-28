@@ -26,25 +26,18 @@
 
 In this lab, you'll launch the core infrastructure for the workshop via AWS CloudFormation. We'll have a section to explain what you're launching here, so don't worry. After the workshop, simply delete the CloudFormation stack to delete all the above resources. We have a cleanup section at the end as well to remind you.
 
-<details>
-<summary>Click here if you want a sneak peek of what you'll be launching</summary>
-
-The CloudFormation stack below will create:
-- a VPC with an Internet Gateway and two private subnets
-- a Lambda function
-- an Application Load Balancer with the Lambda function as target
-- an IAM role the Lambda service will assume
-- a permission to the Application Load Balancer to invoke the Lambda function
-
-</details>
-
 <a name="1"/>
 
 ### 1. Deploy the CloudFormation Stack
 
 Launch the CloudFormation stack in **two or more AWS Regions** of your choice, note down the different regions you choose.
 
-The link will load the CloudFormation Dashboard and start the stack creation process in the chosen region.
+The link will load the CloudFormation Dashboard and start the stack creation process in the chosen region. The CloudFormation template will create the following resources:
+- a VPC with an Internet Gateway and two subnets
+- a Lambda function
+- an Application Load Balancer with the Lambda function as target
+- an IAM role the Lambda service will assume
+- a permission to the Application Load Balancer to invoke the Lambda function
 
 | Region | Launch Template |
 |------- | -------- |
@@ -74,13 +67,6 @@ For this workshop we will use **US-WEST-2 (Oregon), EU-WEST-1 (Dublin) and AP-NO
 ### 2. Familiarize yourself with the workshop environment
 
 <kbd>![x](images/design.png)</kbd>
-
-The CloudFormation template will launch the following resources:
-- a VPC with an Internet Gateway and two private subnets
-- a Lambda function
-- an Application Load Balancer with the Lambda function as target
-- an IAM role the Lambda service will assume
-- a permission to the Application Load Balancer to invoke the Lambda function
 
 <a name="3"/>
 
