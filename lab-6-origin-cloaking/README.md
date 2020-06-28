@@ -31,13 +31,37 @@ Origin cloaking allows you to make Global Accelerator the single internet-facing
 
 Let's protect one of our ALBs from being accessed directly using it DNS, I choose the Tokyo ALB. For this we can make the Route table associated to the two Subnet the CloudFormation created private by removing the Route to the Internet Gateway:
 
-<details>
-<summary>Learn more: Accessing different types of endpoints</summary>
+- Open the [VPC Console](https://ap-northeast-1.console.aws.amazon.com/vpc/home?region=ap-northeast-1)
+- Choose **Route Tables** on the left
+- Select the Route table the CloudFormation created (by default *Public Route Table*)
+- Select the **Routes** tab and then **Edit Routes**
+- Delete the route to the Internet Gateway and click on **Save routes**.
 
-AWS Global Accelerator can access public and private EC2 instances and load balancers. Note that you can't access the Application Load Balancers the CloudFormation created directly using their DNS, as they are internal load balancers, AWS Global Accelerator will access them using private IP addresses. This is the AWS Global Accelerator **origin cloaking** feature, for more information see: [AWS Global Accelerator Use Cases](https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-benefits-of-migrating.html)
+The route table should look like the following:
 
-</details>
+<kbd>![x](images/private-subnet.png)</kbd>
+
+Verify that the endpoint is no longer accessible directly:
+
+<kbd>![x](images/endpoint-not-accessible.png)</kbd>
+
+Verify that the endpoint is accessible via AWS Global Accelerator:
+
+<kbd>![x](images/endpoint-accessible-via-aga.png)</kbd>
+
+You can repeat this for other route tables to protect your ALBs from being accessed directly using their DNS, Global Accelerator is the single entry point.
+
+Since the next lab is about performance, let's revert the change we made to the route table (add a route to the Internet Gateway):
+
+- Open the [VPC Console](https://ap-northeast-1.console.aws.amazon.com/vpc/home?region=ap-northeast-1)
+- Choose **Route Tables** on the left
+- Select the Route table the CloudFormation created (by default *Public Route Table*)
+- Select the **Routes** tab and then **Edit Routes**
+- Click on **Add route**
+** Destination: 0.0.0.0/0
+** Target: Select **Internet Gateway** in the dropdown menu, then the Internet Gateway ID the CloudFormation template created (by default *GlobalAcceleratorVPC Internet Gateway*)
+- Click on **Save routes**
 
 # Checkpoint
 
-At this point, you have created the workshop infrastructure as well as a simple AWS Global Accelerator. We can now take a deeper look into the details of AWS Global Accelerator! [Bonus lab](../bonus-lab)
+Now that we know how AWS Global Accelerator manages traffic, how we can increase or decrease the percentage of traffic sent to an endpoint group (using traffic dials) or a specific endpoint in an endpoint group (using endpoint weights), how we can send traffic from the same clients to the same endpoints (using Client Affinity) and how failover works, how we can protect our endpoints from DDoS attacks and from being accessed directly, let's work on AWS Global Accelerator performance. When you're ready proceed to [Lab 7](../lab-7-aga-performance).
