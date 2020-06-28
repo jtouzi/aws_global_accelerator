@@ -43,73 +43,121 @@ It's recommended to capture 1000+ samples every hour for a day to avoid a single
 Create a file named *"curl-format.txt"* with the following content:
 
 ```
-        Name Lookup:  %{time_namelookup}s
-    Time to Connect:  %{time_connect}s
-   Time To Transfer:  %{time_pretransfer}s
- Time To First Byte:  %{time_starttransfer}s
-         Total Time:  %{time_total}s\n
+  Name Lookup:  %{time_namelookup}s |
+  Time to Connect:  %{time_connect}s |
+  Time To Transfer:  %{time_pretransfer}s |
+  Time To First Byte:  %{time_starttransfer}s |
+  Total Time:  %{time_total}s\n
 ```
 
-Run the following command, use your ALB and Global Accelerator endpoints, don't forget to add */100KB* to the endpoints - the command will take 50 * 2 = 100 seconds to complete.
+Run the following command, use your ALB and Global Accelerator endpoints, don't forget to add */100KB* to the endpoints - the command will take 20 * 3 = 60 seconds to complete. Again, it's recommended to capture 1000+ samples every hour for a day to avoid a single data-point from skewing result.
 
 ```
-for i in {1..50}; do curl -w @curl-format.txt -o /dev/null -s GlobalAccelerator-OR-ALB-Endpoint/100KB; sleep 2; done | grep -v time_total:0
+for i in {1..20}; do curl -w @curl-format.txt -o /dev/null -s GlobalAccelerator-OR-ALB-Endpoint/100KB; sleep 3; done | grep -v time_total:0
 ```
 
 ### With Global Accelerator endpoint
 
 ```
-$ for i in {1..50}; do curl -w @curl-format.txt -o /dev/null -s aebd116200e8c28ad.awsglobalaccelerator.com/100KB; sleep 2; done | grep -v time_total:0
-        Name Lookup:  0.264439s    Time to Connect:  0.291237s   Time To Transfer:  0.291318s Time To First Byte:  0.451677s         Total Time:  0.680415s
-        Name Lookup:  0.004427s    Time to Connect:  0.033053s   Time To Transfer:  0.033138s Time To First Byte:  0.210932s         Total Time:  0.448396s
-        Name Lookup:  0.064962s    Time to Connect:  0.090545s   Time To Transfer:  0.090616s Time To First Byte:  0.278465s         Total Time:  0.483150s
-        Name Lookup:  0.005096s    Time to Connect:  0.030859s   Time To Transfer:  0.030918s Time To First Byte:  0.212045s         Total Time:  0.423764s
-        Name Lookup:  0.004773s    Time to Connect:  0.030949s   Time To Transfer:  0.030999s Time To First Byte:  0.221981s         Total Time:  0.448046s
-        Name Lookup:  0.004873s    Time to Connect:  0.032195s   Time To Transfer:  0.032272s Time To First Byte:  0.212964s         Total Time:  0.443366s
-        Name Lookup:  0.004313s    Time to Connect:  0.033170s   Time To Transfer:  0.033220s Time To First Byte:  0.209426s         Total Time:  0.416624s
-        Name Lookup:  0.005112s    Time to Connect:  0.030819s   Time To Transfer:  0.030874s Time To First Byte:  0.206569s         Total Time:  0.412126s
-        Name Lookup:  0.004389s    Time to Connect:  0.033951s   Time To Transfer:  0.034027s Time To First Byte:  0.249200s         Total Time:  0.521165s
-        Name Lookup:  0.004472s    Time to Connect:  0.031309s   Time To Transfer:  0.031367s Time To First Byte:  0.233600s         Total Time:  0.440814s
-        Name Lookup:  0.005108s    Time to Connect:  0.031403s   Time To Transfer:  0.031466s Time To First Byte:  0.241857s         Total Time:  0.474102s
-        Name Lookup:  0.005181s    Time to Connect:  0.030900s   Time To Transfer:  0.030982s Time To First Byte:  0.229148s         Total Time:  0.437232s
-        Name Lookup:  0.004608s    Time to Connect:  0.030839s   Time To Transfer:  0.030917s Time To First Byte:  0.226787s         Total Time:  0.457976s
-        Name Lookup:  0.004727s    Time to Connect:  0.030877s   Time To Transfer:  0.030957s Time To First Byte:  0.209547s         Total Time:  0.415506s
-        Name Lookup:  0.004789s    Time to Connect:  0.031060s   Time To Transfer:  0.031138s Time To First Byte:  0.197912s         Total Time:  0.428157s
-        Name Lookup:  0.004739s    Time to Connect:  0.033187s   Time To Transfer:  0.033258s Time To First Byte:  0.205820s         Total Time:  0.434860s
-        Name Lookup:  0.005036s    Time to Connect:  0.031489s   Time To Transfer:  0.031544s Time To First Byte:  0.210797s         Total Time:  0.416962s
-        Name Lookup:  0.004219s    Time to Connect:  0.031313s   Time To Transfer:  0.031390s Time To First Byte:  0.205873s         Total Time:  0.425557s
-        Name Lookup:  0.005097s    Time to Connect:  0.032509s   Time To Transfer:  0.032573s Time To First Byte:  0.270132s         Total Time:  0.622762s
-        Name Lookup:  0.004113s    Time to Connect:  0.031980s   Time To Transfer:  0.032062s Time To First Byte:  0.215086s         Total Time:  0.443937s
-        Name Lookup:  0.004652s    Time to Connect:  0.029905s   Time To Transfer:  0.029968s Time To First Byte:  0.210371s         Total Time:  0.453563s
-        Name Lookup:  0.004548s    Time to Connect:  0.029708s   Time To Transfer:  0.029782s Time To First Byte:  0.375447s         Total Time:  0.579173s
-        Name Lookup:  0.004203s    Time to Connect:  0.029997s   Time To Transfer:  0.030051s Time To First Byte:  0.213364s         Total Time:  0.427322s
-        Name Lookup:  0.004397s    Time to Connect:  0.030693s   Time To Transfer:  0.030999s Time To First Byte:  0.217331s         Total Time:  0.431095s
-        Name Lookup:  0.005048s    Time to Connect:  0.031507s   Time To Transfer:  0.031577s Time To First Byte:  0.205366s         Total Time:  0.412901s
-        Name Lookup:  0.004613s    Time to Connect:  0.030468s   Time To Transfer:  0.030517s Time To First Byte:  0.193929s         Total Time:  0.398671s
-        Name Lookup:  0.012405s    Time to Connect:  0.038005s   Time To Transfer:  0.038080s Time To First Byte:  0.222345s         Total Time:  0.455140s
-        Name Lookup:  0.004479s    Time to Connect:  0.032150s   Time To Transfer:  0.032238s Time To First Byte:  0.205034s         Total Time:  0.410418s
-        Name Lookup:  0.004157s    Time to Connect:  0.030859s   Time To Transfer:  0.030911s Time To First Byte:  0.238250s         Total Time:  0.458268s
-        Name Lookup:  0.004530s    Time to Connect:  0.030309s   Time To Transfer:  0.030384s Time To First Byte:  0.225054s         Total Time:  0.468660s
-        Name Lookup:  0.004895s    Time to Connect:  0.036216s   Time To Transfer:  0.036279s Time To First Byte:  0.207062s         Total Time:  0.414798s
-        Name Lookup:  0.013196s    Time to Connect:  0.040668s   Time To Transfer:  0.040761s Time To First Byte:  0.232047s         Total Time:  0.475179s
-        Name Lookup:  0.005083s    Time to Connect:  0.030829s   Time To Transfer:  0.030903s Time To First Byte:  0.231192s         Total Time:  0.440231s
-        Name Lookup:  0.005314s    Time to Connect:  0.031249s   Time To Transfer:  0.031306s Time To First Byte:  0.213955s         Total Time:  0.435275s
-        Name Lookup:  0.004967s    Time to Connect:  0.031806s   Time To Transfer:  0.031876s Time To First Byte:  0.209980s         Total Time:  0.655534s
-        Name Lookup:  0.014128s    Time to Connect:  0.040540s   Time To Transfer:  0.040598s Time To First Byte:  0.217508s         Total Time:  0.450927s
-        Name Lookup:  0.004147s    Time to Connect:  0.029468s   Time To Transfer:  0.029535s Time To First Byte:  0.232301s         Total Time:  0.440380s
-        Name Lookup:  0.005097s    Time to Connect:  0.031414s   Time To Transfer:  0.031484s Time To First Byte:  0.226993s         Total Time:  0.436409s
-        Name Lookup:  0.004552s    Time to Connect:  0.030686s   Time To Transfer:  0.030753s Time To First Byte:  0.210477s         Total Time:  0.417745s
-        Name Lookup:  0.004244s    Time to Connect:  0.033483s   Time To Transfer:  0.033545s Time To First Byte:  0.200728s         Total Time:  0.408410s
-        Name Lookup:  0.004500s    Time to Connect:  0.032464s   Time To Transfer:  0.032536s Time To First Byte:  0.205050s         Total Time:  0.407028s
-        Name Lookup:  0.004867s    Time to Connect:  0.030811s   Time To Transfer:  0.030880s Time To First Byte:  0.210775s         Total Time:  0.425450s
-        Name Lookup:  0.004451s    Time to Connect:  0.030567s   Time To Transfer:  0.030643s Time To First Byte:  0.208636s         Total Time:  0.440089s
-        Name Lookup:  0.005113s    Time to Connect:  0.032544s   Time To Transfer:  0.032614s Time To First Byte:  0.203889s         Total Time:  0.488436s
-        Name Lookup:  0.004962s    Time to Connect:  0.030029s   Time To Transfer:  0.030076s Time To First Byte:  0.227998s         Total Time:  0.434124s
-        Name Lookup:  0.004331s    Time to Connect:  0.030706s   Time To Transfer:  0.030775s Time To First Byte:  0.196180s         Total Time:  0.402175s
-        Name Lookup:  0.004449s    Time to Connect:  0.031841s   Time To Transfer:  0.031895s Time To First Byte:  0.209146s         Total Time:  0.443584s
-        Name Lookup:  0.004667s    Time to Connect:  0.030175s   Time To Transfer:  0.030253s Time To First Byte:  0.206492s         Total Time:  0.421674s
-        Name Lookup:  0.004935s    Time to Connect:  0.031922s   Time To Transfer:  0.032000s Time To First Byte:  0.204626s         Total Time:  0.410237s
-        Name Lookup:  0.004191s    Time to Connect:  0.031536s   Time To Transfer:  0.031595s Time To First Byte:  0.204390s         Total Time:  0.425455s
+$ for i in {1..20}; do curl -w @curl-format.txt -o /dev/null -s aebd116200e8c28ad.awsglobalaccelerator.com/100KB; sleep 3; done | grep -v time_total:0
+Name Lookup:  0.004302s |  Time to Connect:  0.029995s |  Time To Transfer:  0.030072s |  Time To First Byte:  0.207302s |  Total Time:  0.413625s
+Name Lookup:  0.004453s |  Time to Connect:  0.030549s |  Time To Transfer:  0.030621s |  Time To First Byte:  0.205575s |  Total Time:  0.440627s
+Name Lookup:  0.005101s |  Time to Connect:  0.030617s |  Time To Transfer:  0.030693s |  Time To First Byte:  0.316582s |  Total Time:  0.471398s
+Name Lookup:  0.004477s |  Time to Connect:  0.029641s |  Time To Transfer:  0.029715s |  Time To First Byte:  0.205560s |  Total Time:  0.420285s
+Name Lookup:  0.004586s |  Time to Connect:  0.031909s |  Time To Transfer:  0.031983s |  Time To First Byte:  0.210130s |  Total Time:  0.416375s
+Name Lookup:  0.004822s |  Time to Connect:  0.031789s |  Time To Transfer:  0.031895s |  Time To First Byte:  0.197049s |  Total Time:  0.397660s
+Name Lookup:  0.005022s |  Time to Connect:  0.032124s |  Time To Transfer:  0.032205s |  Time To First Byte:  0.199342s |  Total Time:  0.429480s
+Name Lookup:  0.004605s |  Time to Connect:  0.031744s |  Time To Transfer:  0.031817s |  Time To First Byte:  0.209927s |  Total Time:  0.417744s
+Name Lookup:  0.012840s |  Time to Connect:  0.039522s |  Time To Transfer:  0.039610s |  Time To First Byte:  0.206226s |  Total Time:  0.685462s
+Name Lookup:  0.013742s |  Time to Connect:  0.039449s |  Time To Transfer:  0.039528s |  Time To First Byte:  0.215496s |  Total Time:  0.420609s
+Name Lookup:  0.004495s |  Time to Connect:  0.030949s |  Time To Transfer:  0.030998s |  Time To First Byte:  0.208667s |  Total Time:  0.420049s
+Name Lookup:  0.004711s |  Time to Connect:  0.031158s |  Time To Transfer:  0.031224s |  Time To First Byte:  0.238568s |  Total Time:  0.453413s
+Name Lookup:  0.012709s |  Time to Connect:  0.040213s |  Time To Transfer:  0.040280s |  Time To First Byte:  0.245723s |  Total Time:  0.452203s
+Name Lookup:  0.004240s |  Time to Connect:  0.029495s |  Time To Transfer:  0.029573s |  Time To First Byte:  0.209385s |  Total Time:  0.412565s
+Name Lookup:  0.004242s |  Time to Connect:  0.031328s |  Time To Transfer:  0.031392s |  Time To First Byte:  0.214517s |  Total Time:  0.444886s
+Name Lookup:  0.004827s |  Time to Connect:  0.030832s |  Time To Transfer:  0.030888s |  Time To First Byte:  0.236171s |  Total Time:  0.468354s
+Name Lookup:  0.005101s |  Time to Connect:  0.030605s |  Time To Transfer:  0.030673s |  Time To First Byte:  0.219511s |  Total Time:  0.437052s
+Name Lookup:  0.005019s |  Time to Connect:  0.031147s |  Time To Transfer:  0.031220s |  Time To First Byte:  0.218360s |  Total Time:  0.426351s
+Name Lookup:  0.004631s |  Time to Connect:  0.031153s |  Time To Transfer:  0.031225s |  Time To First Byte:  0.205672s |  Total Time:  0.414355s
+Name Lookup:  0.004408s |  Time to Connect:  0.036504s |  Time To Transfer:  0.036591s |  Time To First Byte:  0.224801s |  Total Time:  0.439200s
+```
+
+### With AP-NORTHEAST-1 (Tokyo) ALB endpoint
+
+```
+$ for i in {1..20}; do curl -w @curl-format.txt -o /dev/null -s AGAWo-Appli-1D492GIZTTFYA-981386931.ap-northeast-1.elb.amazonaws.com/100KB; sleep 3; done | grep -v time_total:0
+Name Lookup:  0.064513s |  Time to Connect:  0.244220s |  Time To Transfer:  0.244275s |  Time To First Byte:  1.015984s |  Total Time:  1.930865s
+Name Lookup:  0.004974s |  Time to Connect:  0.186893s |  Time To Transfer:  0.186951s |  Time To First Byte:  0.497774s |  Total Time:  1.429233s
+Name Lookup:  0.005107s |  Time to Connect:  0.183582s |  Time To Transfer:  0.183637s |  Time To First Byte:  0.421589s |  Total Time:  1.328985s
+Name Lookup:  0.004664s |  Time to Connect:  0.181916s |  Time To Transfer:  0.181998s |  Time To First Byte:  0.444044s |  Total Time:  1.355639s
+Name Lookup:  0.005107s |  Time to Connect:  0.183854s |  Time To Transfer:  0.183928s |  Time To First Byte:  0.460933s |  Total Time:  1.552164s
+Name Lookup:  0.049718s |  Time to Connect:  0.231609s |  Time To Transfer:  0.231673s |  Time To First Byte:  0.532838s |  Total Time:  1.459811s
+Name Lookup:  0.004173s |  Time to Connect:  0.186730s |  Time To Transfer:  0.186843s |  Time To First Byte:  0.468618s |  Total Time:  1.604985s
+Name Lookup:  0.004967s |  Time to Connect:  0.186270s |  Time To Transfer:  0.186349s |  Time To First Byte:  0.495409s |  Total Time:  1.424522s
+Name Lookup:  0.004380s |  Time to Connect:  0.186509s |  Time To Transfer:  0.186575s |  Time To First Byte:  0.439746s |  Total Time:  1.647907s
+Name Lookup:  0.005097s |  Time to Connect:  0.186731s |  Time To Transfer:  0.186804s |  Time To First Byte:  0.459450s |  Total Time:  1.565335s
+Name Lookup:  0.004191s |  Time to Connect:  0.184598s |  Time To Transfer:  0.184660s |  Time To First Byte:  0.476427s |  Total Time:  1.571533s
+Name Lookup:  0.012301s |  Time to Connect:  0.193061s |  Time To Transfer:  0.193126s |  Time To First Byte:  0.479551s |  Total Time:  1.585273s
+Name Lookup:  0.004574s |  Time to Connect:  0.219360s |  Time To Transfer:  0.219430s |  Time To First Byte:  0.522377s |  Total Time:  1.643978s
+Name Lookup:  0.005103s |  Time to Connect:  0.186390s |  Time To Transfer:  0.186459s |  Time To First Byte:  0.459718s |  Total Time:  1.554603s
+Name Lookup:  0.004346s |  Time to Connect:  0.185755s |  Time To Transfer:  0.185830s |  Time To First Byte:  0.477583s |  Total Time:  1.587635s
+Name Lookup:  0.005125s |  Time to Connect:  0.182057s |  Time To Transfer:  0.182129s |  Time To First Byte:  0.448973s |  Total Time:  1.546703s
+Name Lookup:  0.063127s |  Time to Connect:  0.242885s |  Time To Transfer:  0.242966s |  Time To First Byte:  0.544495s |  Total Time:  1.852474s
+Name Lookup:  0.063066s |  Time to Connect:  0.244853s |  Time To Transfer:  0.244942s |  Time To First Byte:  0.512554s |  Total Time:  1.720995s
+Name Lookup:  0.004473s |  Time to Connect:  0.186015s |  Time To Transfer:  0.186063s |  Time To First Byte:  0.438102s |  Total Time:  1.371680s
+Name Lookup:  0.005004s |  Time to Connect:  0.183820s |  Time To Transfer:  0.183892s |  Time To First Byte:  0.458083s |  Total Time:  3.247779s
+```
+
+### With EU-WEST-1 (Dublin) ALB endpoint
+
+```
+$ for i in {1..20}; do curl -w @curl-format.txt -o /dev/null -s AGAWo-Appli-I6GT0VY1BMPM-2010336347.eu-west-1.elb.amazonaws.com/100KB; sleep 3; done | grep -v time_total:0
+Name Lookup:  0.061972s |  Time to Connect:  0.200771s |  Time To Transfer:  0.200850s |  Time To First Byte:  0.582081s |  Total Time:  1.467863s
+Name Lookup:  0.004538s |  Time to Connect:  0.170738s |  Time To Transfer:  0.170797s |  Time To First Byte:  0.413691s |  Total Time:  1.277743s
+Name Lookup:  0.004164s |  Time to Connect:  0.150290s |  Time To Transfer:  0.150332s |  Time To First Byte:  0.366134s |  Total Time:  1.114313s
+Name Lookup:  0.005114s |  Time to Connect:  0.146203s |  Time To Transfer:  0.146266s |  Time To First Byte:  0.361701s |  Total Time:  1.370703s
+Name Lookup:  0.004159s |  Time to Connect:  0.154432s |  Time To Transfer:  0.154539s |  Time To First Byte:  0.525248s |  Total Time:  1.581253s
+Name Lookup:  0.004283s |  Time to Connect:  0.160705s |  Time To Transfer:  0.160761s |  Time To First Byte:  0.396577s |  Total Time:  1.843917s
+Name Lookup:  0.004625s |  Time to Connect:  0.154302s |  Time To Transfer:  0.154362s |  Time To First Byte:  0.368382s |  Total Time:  1.572708s
+Name Lookup:  0.004169s |  Time to Connect:  0.143916s |  Time To Transfer:  0.143994s |  Time To First Byte:  0.364600s |  Total Time:  1.484849s
+Name Lookup:  0.004979s |  Time to Connect:  0.144825s |  Time To Transfer:  0.144903s |  Time To First Byte:  0.363151s |  Total Time:  1.486377s
+Name Lookup:  0.005109s |  Time to Connect:  0.162082s |  Time To Transfer:  0.162131s |  Time To First Byte:  0.422452s |  Total Time:  1.680661s
+Name Lookup:  0.005118s |  Time to Connect:  0.142291s |  Time To Transfer:  0.142373s |  Time To First Byte:  0.354762s |  Total Time:  1.459401s
+Name Lookup:  0.005091s |  Time to Connect:  0.150546s |  Time To Transfer:  0.150628s |  Time To First Byte:  0.368316s |  Total Time:  1.536406s
+Name Lookup:  0.004195s |  Time to Connect:  0.146436s |  Time To Transfer:  0.146492s |  Time To First Byte:  0.362194s |  Total Time:  1.500276s
+Name Lookup:  0.013378s |  Time to Connect:  0.160399s |  Time To Transfer:  0.160463s |  Time To First Byte:  0.387554s |  Total Time:  1.568047s
+Name Lookup:  0.004482s |  Time to Connect:  0.153597s |  Time To Transfer:  0.153678s |  Time To First Byte:  0.381814s |  Total Time:  1.579033s
+Name Lookup:  0.013374s |  Time to Connect:  0.150218s |  Time To Transfer:  0.150292s |  Time To First Byte:  0.355720s |  Total Time:  1.449300s
+Name Lookup:  0.004167s |  Time to Connect:  0.155485s |  Time To Transfer:  0.155544s |  Time To First Byte:  0.367638s |  Total Time:  1.549134s
+Name Lookup:  0.004186s |  Time to Connect:  0.163817s |  Time To Transfer:  0.163894s |  Time To First Byte:  0.394241s |  Total Time:  1.678243s
+Name Lookup:  0.064445s |  Time to Connect:  0.202200s |  Time To Transfer:  0.202277s |  Time To First Byte:  0.417065s |  Total Time:  1.521327s
+Name Lookup:  0.004476s |  Time to Connect:  0.145908s |  Time To Transfer:  0.145989s |  Time To First Byte:  0.345045s |  Total Time:  1.484631s
+```
+
+### With a US-WEST-2 (Oregon) ALB endpoint
+
+```
+$ for i in {1..20}; do curl -w @curl-format.txt -o /dev/null -s AGAWo-Appli-9CXFU1XOCSJ6-977194569.us-west-2.elb.amazonaws.com/100KB; sleep 3; done | grep -v time_total:0
+Name Lookup:  0.066599s |  Time to Connect:  0.149003s |  Time To Transfer:  0.149079s |  Time To First Byte:  0.323751s |  Total Time:  0.993618s
+Name Lookup:  0.004476s |  Time to Connect:  0.090832s |  Time To Transfer:  0.090890s |  Time To First Byte:  0.234477s |  Total Time:  0.754488s
+Name Lookup:  0.005205s |  Time to Connect:  0.089855s |  Time To Transfer:  0.089926s |  Time To First Byte:  0.252486s |  Total Time:  0.937387s
+Name Lookup:  0.005105s |  Time to Connect:  0.090557s |  Time To Transfer:  0.090611s |  Time To First Byte:  0.264607s |  Total Time:  0.957222s
+Name Lookup:  0.005101s |  Time to Connect:  0.088653s |  Time To Transfer:  0.088737s |  Time To First Byte:  0.241471s |  Total Time:  0.925332s
+Name Lookup:  0.004179s |  Time to Connect:  0.088384s |  Time To Transfer:  0.088438s |  Time To First Byte:  0.255688s |  Total Time:  0.932052s
+Name Lookup:  0.005109s |  Time to Connect:  0.090012s |  Time To Transfer:  0.090100s |  Time To First Byte:  0.265141s |  Total Time:  0.989958s
+Name Lookup:  0.005116s |  Time to Connect:  0.089384s |  Time To Transfer:  0.089454s |  Time To First Byte:  0.250176s |  Total Time:  0.933267s
+Name Lookup:  0.074336s |  Time to Connect:  0.165917s |  Time To Transfer:  0.165980s |  Time To First Byte:  0.341575s |  Total Time:  2.524230s
+Name Lookup:  0.004985s |  Time to Connect:  0.086565s |  Time To Transfer:  0.086632s |  Time To First Byte:  0.256454s |  Total Time:  1.830530s
+Name Lookup:  0.004777s |  Time to Connect:  0.089732s |  Time To Transfer:  0.089804s |  Time To First Byte:  0.244834s |  Total Time:  1.677145s
+Name Lookup:  0.012448s |  Time to Connect:  0.098443s |  Time To Transfer:  0.098523s |  Time To First Byte:  0.269891s |  Total Time:  1.630636s
+Name Lookup:  0.004484s |  Time to Connect:  0.087777s |  Time To Transfer:  0.087851s |  Time To First Byte:  0.257454s |  Total Time:  2.322361s
+Name Lookup:  0.004173s |  Time to Connect:  0.086836s |  Time To Transfer:  0.086910s |  Time To First Byte:  0.252875s |  Total Time:  1.819901s
+Name Lookup:  0.005107s |  Time to Connect:  0.090533s |  Time To Transfer:  0.090627s |  Time To First Byte:  0.238066s |  Total Time:  1.687419s
+Name Lookup:  0.004949s |  Time to Connect:  0.089977s |  Time To Transfer:  0.090050s |  Time To First Byte:  0.227284s |  Total Time:  1.591376s
+Name Lookup:  0.013827s |  Time to Connect:  0.100097s |  Time To Transfer:  0.100170s |  Time To First Byte:  0.259987s |  Total Time:  1.630748s
+Name Lookup:  0.004387s |  Time to Connect:  0.087829s |  Time To Transfer:  0.087872s |  Time To First Byte:  0.245601s |  Total Time:  1.590556s
+Name Lookup:  0.067417s |  Time to Connect:  0.155489s |  Time To Transfer:  0.155552s |  Time To First Byte:  0.316172s |  Total Time:  0.840259s
+Name Lookup:  0.004208s |  Time to Connect:  0.088712s |  Time To Transfer:  0.088801s |  Time To First Byte:  0.245562s |  Total Time:  0.761126s
 ```
 
 ## Measuring Throughput
