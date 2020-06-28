@@ -40,7 +40,7 @@ The CloudFormation stack below will create:
 
 <a name="1"/>
 
-### 1. Deploy Mythical CloudFormation Stack
+### 1. Deploy the CloudFormation Stack
 
 Launch the CloudFormation stack in **two or more AWS Regions** of your choice, note down the different regions you choose.
 
@@ -55,19 +55,19 @@ The link will load the CloudFormation Dashboard and start the stack creation pro
 | Canada (ca-central-1) | [![Launch stack in Canada](images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=ca-central-1#/stacks/new?stackName=AGAWorkshop&templateURL=https://jtouzi.s3.amazonaws.com/GlobalAccelerator/AGAWorkshop.yaml) |
 | Mumbai (ap-south-1) | [![Launch stack in Mumbai](images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/new?stackName=AGAWorkshop&templateURL=https://jtouzi.s3.amazonaws.com/GlobalAccelerator/AGAWorkshop.yaml) |
 
-The template will automatically bring you to the CloudFormation Dashboard and start the stack creation process in the specified region. The default stack name "AGAWorkshop" (change it if you want to use a different name or if you want to deploy 2 endpoints in the same region), proceed through the wizard to launch the stack. Leave all options at their default values, but make sure to check the box to allow CloudFormation to create IAM roles on your behalf:
+The template will automatically bring you to the CloudFormation Dashboard and start the stack creation process in the specified region. The default stack name **AGAWorkshop** (change it if you want to use a different name or if you want to deploy 2 endpoints in the same region), proceed through the wizard to launch the stack. Leave all options at their default values, but make sure to check the box to allow CloudFormation to create IAM roles on your behalf:
 
 <kbd>![x](images/cfn-create-template.png)</kbd>
 
 <kbd>![x](images/cfn-create.png)</kbd>
 
-After you click on "Create stack", you will have the following window, it takes 3 to 4 minutes for the stack to be created.
+After you click on **Create stack**, you will have the following window, it takes 3 to 4 minutes for the stack to be created.
 
 <kbd>![x](images/cfn-create-start.png)</kbd>
 
 <kbd>![x](images/cfn-create-complete.png)</kbd>
 
-For this workshop we will use Oregon, Dublin and Tokyo regions, I've created two endpoints in Oregon region.
+For this workshop we will use **US-WEST-2 (Oregon), EU-WEST-1 (Dublin) and AP-NORTHEAST-1 (Tokyo) regions, I've created two endpoints in Oregon region.** 
 
 <a name="2"/>
 
