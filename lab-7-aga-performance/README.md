@@ -182,7 +182,7 @@ Create a file named *"curl-format.txt"* with the following content:
   Total Time:  %{time_total}s\n
 ```
 
-Run the following command, use your ALB and Global Accelerator endpoints, don't forget to add */100KB* to the endpoints - the command will take 20 * 3 = 60 seconds to complete. Again, it's recommended to capture 1000+ samples every hour for a day to avoid a single data-point from skewing result.
+Run the following command, use your ALB and Global Accelerator endpoints, don't forget to add */100KB* to the endpoints - we are sending 20 requests per endpoint, with a pause of 3 seconds. Again, it's recommended to capture 1000+ samples every hour for a day to avoid a single data-point from skewing result.
 
 ```
 for i in {1..20}; do curl -w @curl-format.txt -o /dev/null -s GlobalAccelerator-OR-ALB-Endpoint/100KB; sleep 3; done | grep -v time_total:0
