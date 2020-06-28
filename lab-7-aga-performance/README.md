@@ -39,7 +39,139 @@ It's recommended to capture 1000+ samples every hour for a day to avoid a single
 
 </details>
 
-## Time to download a 100KB file directly from the ALBs in different regions and from AWS Global Accelerator
+### Measuring number of hops and detect loss
+
+## TCP Traceroute to the Global Accelerator endpoint
+
+```
+$ sudo tcptraceroute aebd116200e8c28ad.awsglobalaccelerator.com
+Selected device en0, address 192.168.1.73, port 50239 for outgoing packets
+Tracing the path to aebd116200e8c28ad.awsglobalaccelerator.com (75.2.63.57) on TCP port 80 (http), 30 hops max
+ 1  192.168.1.254  4.037 ms  2.886 ms  3.544 ms
+ 2  * * *
+ 3  * * *
+ 4  12.242.112.22  25.039 ms  26.559 ms  25.094 ms
+ 5  12.244.76.10  28.199 ms  28.463 ms  27.643 ms
+ 6  * * *
+ 7  aebd116200e8c28ad.awsglobalaccelerator.com (75.2.63.57) [open]  25.227 ms  24.592 ms  27.608 ms
+```
+## TCP Traceroute to the AP-NORTHEAST-1 (Tokyo) ALB endpoint
+
+```
+$ sudo tcptraceroute AGAWo-Appli-1D492GIZTTFYA-981386931.ap-northeast-1.elb.amazonaws.com
+Password:
+Selected device en0, address 192.168.1.73, port 50959 for outgoing packets
+Tracing the path to AGAWo-Appli-1D492GIZTTFYA-981386931.ap-northeast-1.elb.amazonaws.com (18.178.149.43) on TCP port 80 (http), 30 hops max
+ 1  192.168.1.254  4.714 ms  2.905 ms  2.988 ms
+ 2  * * *
+ 3  * * *
+ 4  12.242.112.2  31.884 ms  29.227 ms  31.798 ms
+ 5  192.205.36.206  26.885 ms  27.091 ms  26.146 ms
+ 6  if-ae-23-2.tcore2.ct8-chicago.as6453.net (64.86.79.120)  183.163 ms  183.957 ms  182.397 ms
+ 7  if-ae-51-2.tcore1.sqn-sanjose.as6453.net (64.86.79.15)  177.759 ms  176.816 ms  178.155 ms
+ 8  if-ae-18-2.tcore2.sv1-santaclara.as6453.net (63.243.205.73)  178.978 ms  178.285 ms  178.261 ms
+ 9  if-et-5-2.hcore1.kv8-chiba.as6453.net (209.58.86.143)  175.444 ms  175.304 ms  176.023 ms
+10  if-ae-21-2.tcore1.tv2-tokyo.as6453.net (120.29.217.66)  177.717 ms  177.573 ms  177.637 ms
+11  209.58.61.39  178.721 ms  179.414 ms  179.399 ms
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  52.95.31.53  181.518 ms  182.055 ms  184.540 ms
+18  52.95.31.203  180.719 ms  181.248 ms  183.355 ms
+19  52.95.31.194  181.552 ms  183.073 ms  181.166 ms
+20  52.95.31.76  180.682 ms  178.953 ms  177.629 ms
+21  * * *
+22  * * *
+23  * * *
+24  * * *
+25  * * *
+26  * * *
+27  * * *
+28  ec2-18-178-149-43.ap-northeast-1.compute.amazonaws.com (18.178.149.43) [open]  182.720 ms  180.916 ms  182.119 ms
+```
+
+## TCP Traceroute to the EU-WEST-1 (Dublin) ALB endpoint
+
+```
+$ sudo tcptraceroute AGAWo-Appli-I6GT0VY1BMPM-2010336347.eu-west-1.elb.amazonaws.com
+Selected device en0, address 192.168.1.73, port 51872 for outgoing packets
+Tracing the path to AGAWo-Appli-I6GT0VY1BMPM-2010336347.eu-west-1.elb.amazonaws.com (34.254.18.175) on TCP port 80 (http), 30 hops max
+ 1  192.168.1.254  4.609 ms  3.449 ms  2.778 ms
+ 2  * * *
+ 3  * * *
+ 4  12.242.112.2  26.260 ms  30.632 ms  31.685 ms
+ 5  192.205.36.206  26.222 ms  26.032 ms  26.119 ms
+ 6  if-ae-37-3.tcore1.aeq-ashburn.as6453.net (66.198.154.68)  136.162 ms  134.912 ms  137.739 ms
+ 7  if-ae-30-2.tcore2.nto-newyork.as6453.net (63.243.216.20)  135.096 ms  134.792 ms  135.170 ms
+ 8  if-ae-32-2.tcore2.ldn-london.as6453.net (63.243.216.23)  141.569 ms  143.995 ms  142.700 ms
+ 9  80.231.20.82  153.059 ms  159.296 ms  153.060 ms
+10  * * *
+11  * * *
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  * * *
+18  * * *
+19  * * *
+20  * * *
+21  * * *
+22  * * *
+23  * * *
+24  * * *
+25  * * *
+26  * * *
+27  * * *
+28  * * *
+29  * * *
+30  * * *
+Destination not reached
+```
+
+## TCP Traceroute to a US-WEST-2 (Oregon) ALB endpoint
+
+```
+$ sudo tcptraceroute AGAWo-Appli-9CXFU1XOCSJ6-977194569.us-west-2.elb.amazonaws.com
+Selected device en0, address 192.168.1.73, port 52890 for outgoing packets
+Tracing the path to AGAWo-Appli-9CXFU1XOCSJ6-977194569.us-west-2.elb.amazonaws.com (52.10.138.194) on TCP port 80 (http), 30 hops max
+ 1  192.168.1.254  4.625 ms  2.927 ms  2.966 ms
+ 2  * * *
+ 3  * * *
+ 4  12.123.240.150  45.918 ms  52.357 ms  47.758 ms
+ 5  dlstx22crs.ip.att.net (12.122.1.210)  49.192 ms  47.598 ms  47.235 ms
+ 6  dvmco22crs.ip.att.net (12.122.2.86)  45.143 ms  239.280 ms  47.641 ms
+ 7  cr1.dvmco.ip.att.net (12.123.38.125)  43.648 ms  44.601 ms  45.121 ms
+ 8  12.91.154.234  45.973 ms  44.602 ms  45.205 ms
+ 9  * * *
+10  * * *
+11  * * *
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  * * *
+18  * * *
+19  * * *
+20  * * *
+21  * * *
+22  * * *
+23  * * *
+24  * * *
+25  * * *
+26  * * *
+27  * * *
+28  * * *
+29  * * *
+30  * * *
+Destination not reached
+```
+
+## Time to download a 100KB file from AWS Global Accelerator vs directly from the ALBs
+
 Create a file named *"curl-format.txt"* with the following content:
 
 ```
