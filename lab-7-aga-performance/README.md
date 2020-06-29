@@ -526,3 +526,7 @@ Name Lookup:  0.004208s |  Time to Connect:  0.088712s |  Time To Transfer:  0.0
 ```
 ### Comments
 With AWS Global Accelerator endpoint, cURL was in average 70%, 67% and 61% faster than respectively Tokyo, Dublin and Oregon ALB endpoints (from my location). These tests were done from my location, yours WILL be different, compare and discuss the results with the instructor.
+
+# Checkpoint
+
+Now that we know the main AWS Global Accelerator features and have tested its performance, move the [bonus Lab](../bonus-lab) if you have 5 minutes. We will see what metrics are available to us, how to enable flow logs and how this can help us.
