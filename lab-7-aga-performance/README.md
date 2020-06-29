@@ -18,13 +18,15 @@
 **[Lab 7: AWS Global Accelerator Performance](../lab-7-aga-performance)**
 
 1. AWS Global Accelerator speed comparison tool
-2. Measuring number of hops and detect loss
-3. Measuring the Total Time to download a 100KB file from AWS Global Accelerator vs directly from the ALBs
-4. Measuring RTT
+2. [Measuring number of hops and detect loss](#traceroute)
+3. [Measuring RTT](#rtt)
+4. [Measuring the Total Time to download a 100KB file](#curl)
 
 [Bonus Lab: CloudWatch metrics and enabling flow logs](../bonus-lab)
 
 [Cleaning up](../clean-up)
+
+## AWS Global Accelerator Performance
 
 AWS Global Accelerator leverages the expansive, congestion-free, fully-managed AWS global network for majority of the network path between your users and AWS applications. It allows your user traffic to access the AWS global network from the edge location that is closest to your users. Regardless of where your users are located, Global Accelerator intelligently routes traffic to the best endpoint to provide consistent application performance and high availability for your users.
 
@@ -194,6 +196,189 @@ Destination not reached
 ### Comments
 It took 7 hops with Global Accelerator, 28 with the Tokyo ALB and 30+ for Dublin and Oregon ALBs.
 
+## Measuring RTT
+
+The [Apache Bench (ab)](http://httpd.apache.org/docs/2.2/en/programs/ab.html) is a load testing and benchmarking tool for Hypertext Transfer Protocol (HTTP) server. From your laptop use Apache Bench tool to send 1000 measurements, 10 in parallel and have the tool provide first byte latency and last byte latency measure at different percentiles.
+```
+$ ab -n 1000 -c 10 http://GlobalAccelerator-OR-ALB-Endpoint/
+```
+
+Adjust -n to increase or decrease the number of requests to perform for the benchmarking session. The default is to just perform a single request which usually leads to non-representative benchmarking results.
+
+Adjust -c to increase or decrease the number of multiple requests to perform at a time. Default is one request at a time. See http://httpd.apache.org/docs/2.2/en/programs/ab.html for information on options for the tool.
+
+### With Global Accelerator endpoint
+
+```
+$ ab -n 1000 -c 10 http://aebd116200e8c28ad.awsglobalaccelerator.com/
+...
+Server Software:        awselb/2.0
+Server Hostname:        aebd116200e8c28ad.awsglobalaccelerator.com
+Server Port:            80
+
+Document Path:          /
+Document Length:        60 bytes
+
+Concurrency Level:      10
+Time taken for tests:   15.640 seconds
+Complete requests:      1000
+Failed requests:        495
+   (Connect: 0, Receive: 0, Length: 495, Exceptions: 0)
+Total transferred:      201495 bytes
+HTML transferred:       60495 bytes
+Requests per second:    63.94 [#/sec] (mean)
+Time per request:       156.400 [ms] (mean)
+Time per request:       15.640 [ms] (mean, across all concurrent requests)
+Transfer rate:          12.58 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       23   27   5.1     26     123
+Processing:    98  127  11.0    125     264
+Waiting:       98  127  11.0    125     264
+Total:        144  154  11.0    152     290
+
+Percentage of the requests served within a certain time (ms)
+  50%    152
+  66%    154
+  75%    155
+  80%    156
+  90%    161
+  95%    166
+  98%    185
+  99%    219
+ 100%    290 (longest request)
+```
+
+### With AP-NORTHEAST-1 (Tokyo) ALB endpoint
+
+```
+$ ab -n 1000 -c 10 http://AGAWo-Appli-1D492GIZTTFYA-981386931.ap-northeast-1.elb.amazonaws.com/
+...
+Server Software:        awselb/2.0
+Server Hostname:        AGAWo-Appli-1D492GIZTTFYA-981386931.ap-northeast-1.elb.amazonaws.com
+Server Port:            80
+
+Document Path:          /
+Document Length:        66 bytes
+
+Concurrency Level:      10
+Time taken for tests:   44.870 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      207000 bytes
+HTML transferred:       66000 bytes
+Requests per second:    22.29 [#/sec] (mean)
+Time per request:       448.699 [ms] (mean)
+Time per request:       44.870 [ms] (mean, across all concurrent requests)
+Transfer rate:          4.51 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:      174  197  50.3    183     608
+Processing:   188  242  90.0    207     759
+Waiting:      188  242  90.0    207     758
+Total:        365  439 101.8    393     948
+
+Percentage of the requests served within a certain time (ms)
+  50%    393
+  66%    412
+  75%    457
+  80%    523
+  90%    525
+  95%    668
+  98%    839
+  99%    872
+ 100%    948 (longest request)
+```
+
+### With EU-WEST-1 (Dublin) ALB endpoint
+
+```
+$ ab -n 1000 -c 10 http://AGAWo-Appli-I6GT0VY1BMPM-2010336347.eu-west-1.elb.amazonaws.com/
+...
+Server Software:        awselb/2.0
+Server Hostname:        AGAWo-Appli-I6GT0VY1BMPM-2010336347.eu-west-1.elb.amazonaws.com
+Server Port:            80
+
+Document Path:          /
+Document Length:        61 bytes
+
+Concurrency Level:      10
+Time taken for tests:   40.655 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      202000 bytes
+HTML transferred:       61000 bytes
+Requests per second:    24.60 [#/sec] (mean)
+Time per request:       406.554 [ms] (mean)
+Time per request:       40.655 [ms] (mean, across all concurrent requests)
+Transfer rate:          4.85 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:      134  195 109.3    150    1202
+Processing:   150  208 104.1    167    1288
+Waiting:      149  208 104.1    167    1288
+Total:        286  403 147.0    323    1636
+
+Percentage of the requests served within a certain time (ms)
+  50%    323
+  66%    394
+  75%    503
+  80%    522
+  90%    597
+  95%    693
+  98%    741
+  99%    781
+ 100%   1636 (longest request)
+```
+
+### With a US-WEST-2 (Oregon) ALB endpoint
+
+```
+$ ab -n 1000 -c 10 http://AGAWo-Appli-9CXFU1XOCSJ6-977194569.us-west-2.elb.amazonaws.com/
+...
+Server Software:        awselb/2.0
+Server Hostname:        AGAWo-Appli-9CXFU1XOCSJ6-977194569.us-west-2.elb.amazonaws.com
+Server Port:            80
+
+Document Path:          /
+Document Length:        60 bytes
+
+Concurrency Level:      10
+Time taken for tests:   20.784 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      201000 bytes
+HTML transferred:       60000 bytes
+Requests per second:    48.11 [#/sec] (mean)
+Time per request:       207.843 [ms] (mean)
+Time per request:       20.784 [ms] (mean, across all concurrent requests)
+Transfer rate:          9.44 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       81   92  39.3     85     402
+Processing:    96  109  31.5    102     378
+Waiting:       96  109  31.5    102     378
+Total:        179  200  52.0    187     591
+
+Percentage of the requests served within a certain time (ms)
+  50%    187
+  66%    190
+  75%    192
+  80%    194
+  90%    206
+  95%    253
+  98%    437
+  99%    458
+ 100%    591 (longest request)
+```
+
+### Comments
+These results show that AWS Global Accelerator 
+
 ## Measuring the Total Time to download a 100KB file from AWS Global Accelerator vs directly from the ALBs
 
 **[cURL](https://curl.haxx.se/)** is an excellent tool for debugging web requests, it allows to find the response time of a request.
@@ -208,7 +393,7 @@ Create a file named *"curl-format.txt"* with the following content:
   Total Time:  %{time_total}s\n
 ```
 
-Run the following command, use your ALB and Global Accelerator endpoints, don't forget to add */100KB* to the endpoints - we are sending 20 requests per endpoint, with a pause of 3 seconds. Again, it's recommended to capture 1000+ samples every hour for a day to avoid a single data-point from skewing result.
+Run the following command, use your ALB and Global Accelerator endpoints, don't forget to add */100KB* to the endpoints - we are sending 20 requests per endpoint, with a pause of 3 seconds. **Again, it's recommended to capture 1000+ samples every hour for a day to avoid a single data-point from skewing result.**
 
 ```
 for i in {1..20}; do curl -w @curl-format.txt -o /dev/null -s GlobalAccelerator-OR-ALB-Endpoint/100KB; sleep 3; done | grep -v time_total:0
@@ -319,9 +504,3 @@ Name Lookup:  0.004208s |  Time to Connect:  0.088712s |  Time To Transfer:  0.0
 ```
 ### Comments
 With AWS Global Accelerator endpoint, cURL was in average 70%, 67% and 61% faster than respectively Tokyo, Dublin and Oregon ALB endpoints (from my location).
-
-
-## Measuring RTT
-Throughput measurements help identify any congestion and/or packet loss experienced on a network and is a great measure of performance. If you want to test from a specific client, there are two ways which we suggest you use to measure the throughput:
-1. Using a custom speed test tool that Global Accelerator has developed which can be found here: https://speedtest.globalaccelerator.aws/
-2. Leveraging [iperf](https://iperf.fr/iperf-doc.php#3doc), let's use this tool to test throughput. If you don't have it installed on your laptop/Mac, you can [download it here](https://iperf.fr/en/iperf-download.php).
