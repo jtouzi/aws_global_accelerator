@@ -8,16 +8,14 @@
 ✅ [Lab 2: Implement Intelligent Traffic Distribution](../lab-2-traffic-distribution)
 
 **[Lab 3: Implement Fine-grained traffic control](../lab-3-fine-grained-control)**
-- [Route traffic away from the eu-west-1 region](#1)
-- [Slowly ramp traffic back to the maintenance site](#2)
-- [Revert traffic levels back to 100%](#3)
-- [Fine-grained traffic control with Endpoint Weights](#4)
 
 [Lab 4: Implement Client Affinity](../lab-4-client-affinity)
 
 [Lab 5: Continuous availability monitoring and Failover](../lab-5-observability)
 
 [Lab 6: Origin Cloaking](../lab-6-origin-cloaking)
+
+[Lab 7: AWS Global Accelerator Performance](../lab-7-aga-performance)
 
 [Bonus Lab: CloudWatch metrics and enabling flow logs](../bonus-lab)
 
