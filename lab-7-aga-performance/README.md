@@ -382,16 +382,16 @@ Percentage of the requests served within a certain time (ms)
 
 ### Comments
 
-| Endpoint | RPS | TPR | TR (Kbytes/sec) | 50% | 75% | 90% | 99% | 100% (longest request) |
-| ------- | ------- | ------- | -------| ------- | ------- | ------- |
+| Endpoint | RPS | TPR (ms) | TR (Kbytes/sec) | 50% (ms) | 75% (ms) | 90% (ms) | 99% (ms) | 100% (longest request in ms) |
+| -------: | -------: | -------: | -------: | -------: | -------: | -------: |-------: | -------: |
 | Global Accelerator | 63.94 | 156 | 12.58 | 152 | 155 | 161 | 219 | 290 |
-| Tokyo ALB | 22.29 | 448ms | 4.51 | 393 | 457 | 525 | 872 | 948 |
-| Dublin ALB | 24.6 | 406ms | 4.85 | 323 | 503 | 597 | 781 | 1636 |
-| Oregon ALB | 48.11 | 207ms | 9.44 | 187 | 192 | 206 | 458 | 591 |
+| Tokyo ALB | 22.29 | 448 | 4.51 | 393 | 457 | 525 | 872 | 948 |
+| Dublin ALB | 24.6 | 406 | 4.85 | 323 | 503 | 597 | 781 | 1636 |
+| Oregon ALB | 48.11 | 207 | 9.44 | 187 | 192 | 206 | 458 | 591 |
 
-RPS: Request per second (mean)
-TPR: Time per request (mean)
-TR: Transfer rate 
+- RPS: Request per second (mean)
+- TPR: Time per request (mean)
+- TR: Transfer rate 
 
 <a name="curl"/>
 
