@@ -529,4 +529,4 @@ With AWS Global Accelerator endpoint, cURL was in average 70%, 67% and 61% faste
 
 # Checkpoint
 
-Now that we know the main AWS Global Accelerator features and have tested its performance, move the [bonus Lab](../bonus-lab) if you have 5 minutes. We will see what metrics are available to us, how to enable flow logs and how this can help us.
+Now that we know the main AWS Global Accelerator features and have tested its performance, move the [bonus Lab](../bonus-lab) if you have 5 minutes. We will see what metrics are available to us, how to enable flow logs and how this can help us. If you don't have enough time, move to the [last lab to delete all the resources](../clean-up)!
