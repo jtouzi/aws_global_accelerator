@@ -380,6 +380,14 @@ Percentage of the requests served within a certain time (ms)
  100%    591 (longest request)
 ```
 
+### Comments
+
+| Endpoint | RPS | TPR (Mean) | 50% | 90% | 100% |
+| AGA | RPS | TPR | 50% | 90% | 100% |
+| Tokyo | RPS | TPR | 50% | 90% | 100% |
+| Dublin | RPS | TPR | 50% | 90% | 100% |
+| Oregon | RPS | TPR | 50% | 90% | 100% |
+
 <a name="curl"/>
 
 ## Measuring the Total Time to download a 100KB file from AWS Global Accelerator vs directly from the ALBs
