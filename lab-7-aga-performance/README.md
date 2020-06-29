@@ -382,18 +382,16 @@ Percentage of the requests served within a certain time (ms)
 
 ### Comments
 
-| Endpoint | RPS | TPR (Mean) | 50% | 90% | 100% |
-| ------- | ------- | ------- | ------- | ------- | ------- |
-| AGA | RPS | TPR | 50% | 90% | 100% |
-| Tokyo | RPS | TPR | 50% | 90% | 100% |
-| Dublin | RPS | TPR | 50% | 90% | 100% |
-| Oregon | RPS | TPR | 50% | 90% | 100% |
+| Endpoint | RPS | TPR | TR (Kbytes/sec) | 50% | 90% | 100% (longest request) |
+| ------- | ------- | ------- | -------| ------- | ------- | ------- |
+| AGA | 63.94 | 156ms | 12.58 | 152ms | 161ms | 290 |
+| Tokyo | 22.29 | 448ms | 4.51 | 393 | 525 | 948 |
+| Dublin | 24.6 | 406ms | 4.85 | 323 | 597 | 1636 |
+| Oregon | 48.11 | 207ms | 9.44 | 187 | 206 | 591 |
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-
+RPS: Request per second (mean)
+TPR: Time per request (mean)
+TR: Transfer rate 
 
 <a name="curl"/>
 
