@@ -2,9 +2,6 @@
 
 ## Workshop Progress
 **[Lab 0: Workshop Initialization](../lab-0-init)**
-- [Workshop Initialization](#1)
-- [Familiarize Yourself with the Workshop Environment](#2)
-- [Workshop Tips](#3)
 
 [Lab 1: Create your first AWS Global Accelerator](../lab-1-create-aws-global-accelerator)
 
@@ -17,6 +14,8 @@
 [Lab 5: Continuous availability monitoring and Failover](../lab-5-observability)
 
 [Lab 6: Origin Cloaking](../lab-6-origin-cloaking)
+
+[Lab 7: AWS Global Accelerator Performance](lab-7-aga-performance)
 
 [Bonus Lab: CloudWatch metrics and enabling flow logs](../bonus-lab)
 
