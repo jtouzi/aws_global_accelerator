@@ -23,7 +23,7 @@
 
 ## Lab 2 - Intelligent Traffic Distribution
 
-In this lab we will help you understand how AWS Global Accelerator routes requests based on the origin of the requester. Remember, we kept the default traffic dials (100%).
+In this lab we will help you understand how AWS Global Accelerator routes requests based on the origin of the requester.
 
 <details>
 <summary>Traffic dials dictate the percentage of traffic an endpoint group can receive. Learn more...</summary>
