@@ -48,3 +48,9 @@ version aws_account_id accelerator_id client_ip client_port gip gip_port endpoin
 AWS Solutions Architecture team has published a blog post that uses [Amazon Athena](http://aws.amazon.com/athena) (an interactive query tool for S3-based data) and [Amazon QuickSight](https://aws.amazon.com/quicksight) (a cloud-based business intelligence service) to analyze and visualize the flow log data and develop actionable business value. With this solution you can troubleshoot reachability issues for your application, identify security vulnerabilities, or get an overview of how end-users access your application.
 
 For more information and implementation details see: https://aws.amazon.com/blogs/networking-and-content-delivery/analyzing-and-visualizing-aws-global-accelerator-flow-logs-using-amazon-athena-and-amazon-quicksight/
+
+# Checkpoint
+
+We have completed all the labs, let [DELELE the resources](../clean-up)!
+
+Next on our global application to do list is to implement client affinity! When you're ready, [proceed to Lab 4](../lab-4-client-affinity)!
