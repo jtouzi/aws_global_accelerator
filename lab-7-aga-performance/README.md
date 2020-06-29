@@ -255,6 +255,8 @@ Percentage of the requests served within a certain time (ms)
 - RPS: Request per second (mean)
 - TPR: Time per request (mean)
 
+These tests were done from my location, yours WILL be different, compare and discuss the results with the instructor.
+
 <a name="traceroute"/>
 
 ## Measuring number of hops and detect loss
@@ -392,7 +394,7 @@ Destination not reached
 ```
 
 ### Comments
-It took 7 hops with Global Accelerator, 28 with the Tokyo ALB and 30+ for Dublin and Oregon ALBs.
+It took 7 hops with Global Accelerator, 28 with the Tokyo ALB and 30+ for Dublin and Oregon ALBs. These tests were done from my location, yours WILL be different, compare and discuss the results with the instructor.
 
 <a name="curl"/>
 
@@ -520,4 +522,4 @@ Name Lookup:  0.067417s |  Time to Connect:  0.155489s |  Time To Transfer:  0.1
 Name Lookup:  0.004208s |  Time to Connect:  0.088712s |  Time To Transfer:  0.088801s |  Time To First Byte:  0.245562s |  Total Time:  0.761126s
 ```
 ### Comments
-With AWS Global Accelerator endpoint, cURL was in average 70%, 67% and 61% faster than respectively Tokyo, Dublin and Oregon ALB endpoints (from my location).
+With AWS Global Accelerator endpoint, cURL was in average 70%, 67% and 61% faster than respectively Tokyo, Dublin and Oregon ALB endpoints (from my location). These tests were done from my location, yours WILL be different, compare and discuss the results with the instructor.
