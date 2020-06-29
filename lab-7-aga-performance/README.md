@@ -382,7 +382,7 @@ Percentage of the requests served within a certain time (ms)
 
 ### Comments
 
-| Endpoint | RPS | TPR | TR (Kbytes/sec) | 50% | 75% | 90% | 99% | 100% (longest request) |
+| Endpoint | RPS | TPR | TR (Kbytes/sec) | 50% | 75% | 90% | 99% | Longest request |
 | -------: | -------: | -------: | -------: | -------: | -------: | -------: |-------: | -------: |
 | Global Accelerator | 63.94 | 156ms | 12.58 | 152ms | 155ms | 161ms | 219ms | 290ms |
 | Tokyo ALB | 22.29 | 448ms | 4.51 | 393ms | 457ms | 525ms | 872ms | 948ms |
