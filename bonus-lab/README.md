@@ -52,5 +52,3 @@ For more information and implementation details see: https://aws.amazon.com/blog
 # Checkpoint
 
 We have completed all the labs, let [DELELE the resources](../clean-up)!
-
-Next on our global application to do list is to implement client affinity! When you're ready, [proceed to Lab 4](../lab-4-client-affinity)!
