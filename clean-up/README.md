@@ -13,7 +13,9 @@
 
 ✅ [Lab 5: Continuous availability monitoring and Failover](../lab-5-observability)
 
-✅ [Lab 6: Origin Cloaking](../lab-6-origin-cloaking)
+✅ [Lab 6: Implement Origin Cloaking](../lab-6-origin-cloaking)
+
+✅ [Lab 7: AWS Global Accelerator Performance](../lab-7-aga-performance)
 
 ✅ [Bonus Lab: CloudWatch metrics and enabling flow logs](../bonus-lab)
 
