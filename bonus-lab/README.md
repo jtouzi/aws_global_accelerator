@@ -51,4 +51,4 @@ For more information and implementation details see: https://aws.amazon.com/blog
 
 # Checkpoint
 
-We have completed all the labs, let [DELELE the resources](../clean-up)!
+We have completed all the labs, [DELELE THE RESOURCES CREATED](../clean-up)!
