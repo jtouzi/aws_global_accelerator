@@ -383,7 +383,7 @@ Percentage of the requests served within a certain time (ms)
 ### Comments
 
 | Endpoint | RPS | TPR (Mean) | 50% | 90% | 100% |
-| Endpoint | RPS | TPR (Mean) | 50% | 90% | 100% |
+| ------- | ------- | ------- | ------- | ------- | ------- |
 | AGA | RPS | TPR | 50% | 90% | 100% |
 | Tokyo | RPS | TPR | 50% | 90% | 100% |
 | Dublin | RPS | TPR | 50% | 90% | 100% |
