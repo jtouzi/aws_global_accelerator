@@ -377,6 +377,7 @@ Percentage of the requests served within a certain time (ms)
 ```
 
 <a name="curl"/>
+
 ## Measuring the Total Time to download a 100KB file from AWS Global Accelerator vs directly from the ALBs
 
 **[cURL](https://curl.haxx.se/)** is an excellent tool for debugging web requests, it allows to find the response time of a request.
