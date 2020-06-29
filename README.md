@@ -2,9 +2,9 @@
 
 ## Overview
 
-This workshop will introduce you to the core concepts of AWS Global Accelerator, a service that improves the availability and performance of your applications with local or global users. It provides static IP addresses that act as a fixed entry point to your application endpoints in a single or multiple AWS Regions, such as your Application Load Balancers, Network Load Balancers or Amazon EC2 instances.
+This workshop will introduce you to the core concepts of AWS Global Accelerator, a service that improves the availability and performance of your applications with local or global users. It provides static IP addresses that act as a fixed entry point to your application endpoints in a single or multiple AWS Regions, such as your Application Load Balancers, Network Load Balancers or Amazon EC2 instances. AWS Global Accelerator uses the AWS global network to optimize the path from your users to your applications, improving the performance of your traffic by as much as 60%.
 
-AWS Global Accelerator uses the AWS global network to optimize the path from your users to your applications, improving the performance of your traffic by as much as 60%. In this workshop, we will NOT test AWS Global Accelerator performance, we will use four clients in different regions to show how AWS Global Accelerator routes requests based on users locations and the Accelerator settings (traffic dials, endpoint weights, failover, etc.). To test performance use real clients, or the [AWS Global Accelerator Speed Comparison Tool](https://speedtest.globalaccelerator.aws/#/) to compare Global Accelerator to the public internet.
+In this workshop, we will use four clients in different regions to show how AWS Global Accelerator routes requests based on users locations and the Accelerator settings (traffic dials, endpoint weights, failover, etc.). To test a website performance, it's recommended to use real clients, we will use some commands to see the difference between accessing our application via the ALBs directly vs accessing it via AWS Global Accelerator.
 
 ### Requirements
 
@@ -22,6 +22,7 @@ The labs in the workshop are designed to be completed in sequence, and the full 
 * **[Lab 4: Implement Client Affinity](lab-4-client-affinity)**
 * **[Lab 5: Implement Failover](lab-5-observability)**
 * **[Lab 6: Origin Cloaking](lab-6-origin-cloaking)**
+* **[Lab 6: AWS Global Accelerator Performance](lab-7-aga-performance)**
 * **[Bonus Lab: Enable flow logs and monitor with CloudWatch metrics](bonus-lab)**
 * **[Workshop Cleanup](clean-up)**
 
