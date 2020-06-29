@@ -382,16 +382,15 @@ Percentage of the requests served within a certain time (ms)
 
 ### Comments
 
-| Endpoint | RPS | TPR | TR (Kbytes/sec) | 50% | 75% | 90% | 99% | Longest request |
+| Endpoint | RPS | TPR | Transfer rate | 50% | 75% | 90% | 99% | Longest request |
 | -------: | -------: | -------: | -------: | -------: | -------: | -------: |-------: | -------: |
-| Global Accelerator | 63.94 | 156ms | 12.58 | 152ms | 155ms | 161ms | 219ms | 290ms |
-| Tokyo ALB | 22.29 | 448ms | 4.51 | 393ms | 457ms | 525ms | 872ms | 948ms |
-| Dublin ALB | 24.6 | 406ms | 4.85 | 323ms | 503ms | 597ms | 781ms | 1636ms |
-| Oregon ALB | 48.11 | 207ms | 9.44 | 187ms | 192ms | 206ms | 458ms | 591ms |
+| Global Accelerator | 63.94 | 156ms | 12.58 Kbytes/sec | 152ms | 155ms | 161ms | 219ms | 290ms |
+| Tokyo ALB | 22.29 | 448ms | 4.51 Kbytes/sec | 393ms | 457ms | 525ms | 872ms | 948ms |
+| Dublin ALB | 24.6 | 406ms | 4.85 Kbytes/sec | 323ms | 503ms | 597ms | 781ms | 1636ms |
+| Oregon ALB | 48.11 | 207ms | 9.44 Kbytes/sec | 187ms | 192ms | 206ms | 458ms | 591ms |
 
 - RPS: Request per second (mean)
 - TPR: Time per request (mean)
-- TR: Transfer rate 
 
 <a name="curl"/>
 
