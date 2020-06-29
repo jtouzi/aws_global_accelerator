@@ -66,6 +66,7 @@ Results may differ when you run the test multiple times. Download times can vary
 ## Measuring RTT
 
 The [Apache Bench (ab)](http://httpd.apache.org/docs/2.2/en/programs/ab.html) is a load testing and benchmarking tool for Hypertext Transfer Protocol (HTTP) server. From your laptop use Apache Bench tool to send 1000 measurements, 10 in parallel and have the tool provide first byte latency and last byte latency measure at different percentiles.
+
 ```
 $ ab -n 1000 -c 10 http://GlobalAccelerator-OR-ALB-Endpoint/
 ```
@@ -73,6 +74,8 @@ $ ab -n 1000 -c 10 http://GlobalAccelerator-OR-ALB-Endpoint/
 Adjust -n to increase or decrease the number of requests to perform for the benchmarking session. The default is to just perform a single request which usually leads to non-representative benchmarking results.
 
 Adjust -c to increase or decrease the number of multiple requests to perform at a time. Default is one request at a time. See http://httpd.apache.org/docs/2.2/en/programs/ab.html for information on options for the tool.
+
+Below are results for some of my tests, it's recommend to the test several times, with different parameters and compare the results.
 
 ### With Global Accelerator endpoint
 
