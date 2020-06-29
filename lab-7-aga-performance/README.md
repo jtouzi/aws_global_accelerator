@@ -39,9 +39,9 @@ It's recommended to capture 1000+ samples every hour for a day to avoid a single
 
 </details>
 
-### Measuring number of hops and detect loss
+## Measuring number of hops and detect loss
 
-## TCP Traceroute to the Global Accelerator endpoint
+### TCP Traceroute to the Global Accelerator endpoint
 
 ```
 $ sudo tcptraceroute aebd116200e8c28ad.awsglobalaccelerator.com
@@ -55,7 +55,7 @@ Tracing the path to aebd116200e8c28ad.awsglobalaccelerator.com (75.2.63.57) on T
  6  * * *
  7  aebd116200e8c28ad.awsglobalaccelerator.com (75.2.63.57) [open]  25.227 ms  24.592 ms  27.608 ms
 ```
-## TCP Traceroute to the AP-NORTHEAST-1 (Tokyo) ALB endpoint
+### TCP Traceroute to the AP-NORTHEAST-1 (Tokyo) ALB endpoint
 
 ```
 $ sudo tcptraceroute AGAWo-Appli-1D492GIZTTFYA-981386931.ap-northeast-1.elb.amazonaws.com
@@ -92,7 +92,7 @@ Tracing the path to AGAWo-Appli-1D492GIZTTFYA-981386931.ap-northeast-1.elb.amazo
 28  ec2-18-178-149-43.ap-northeast-1.compute.amazonaws.com (18.178.149.43) [open]  182.720 ms  180.916 ms  182.119 ms
 ```
 
-## TCP Traceroute to the EU-WEST-1 (Dublin) ALB endpoint
+### TCP Traceroute to the EU-WEST-1 (Dublin) ALB endpoint
 
 ```
 $ sudo tcptraceroute AGAWo-Appli-I6GT0VY1BMPM-2010336347.eu-west-1.elb.amazonaws.com
@@ -131,7 +131,7 @@ Tracing the path to AGAWo-Appli-I6GT0VY1BMPM-2010336347.eu-west-1.elb.amazonaws.
 Destination not reached
 ```
 
-## TCP Traceroute to a US-WEST-2 (Oregon) ALB endpoint
+### TCP Traceroute to a US-WEST-2 (Oregon) ALB endpoint
 
 ```
 $ sudo tcptraceroute AGAWo-Appli-9CXFU1XOCSJ6-977194569.us-west-2.elb.amazonaws.com
@@ -170,7 +170,7 @@ Tracing the path to AGAWo-Appli-9CXFU1XOCSJ6-977194569.us-west-2.elb.amazonaws.c
 Destination not reached
 ```
 
-## Time to download a 100KB file from AWS Global Accelerator vs directly from the ALBs
+## Measuring the Total Time to download a 100KB file from AWS Global Accelerator vs directly from the ALBs
 
 Create a file named *"curl-format.txt"* with the following content:
 
@@ -292,7 +292,7 @@ Name Lookup:  0.067417s |  Time to Connect:  0.155489s |  Time To Transfer:  0.1
 Name Lookup:  0.004208s |  Time to Connect:  0.088712s |  Time To Transfer:  0.088801s |  Time To First Byte:  0.245562s |  Total Time:  0.761126s
 ```
 
-## Measuring Throughput
+## Measuring RTT
 Throughput measurements help identify any congestion and/or packet loss experienced on a network and is a great measure of performance. If you want to test from a specific client, there are two ways which we suggest you use to measure the throughput:
 1. Using a custom speed test tool that Global Accelerator has developed which can be found here: https://speedtest.globalaccelerator.aws/
 2. Leveraging [iperf](https://iperf.fr/iperf-doc.php#3doc), let's use this tool to test throughput. If you don't have it installed on your laptop/Mac, you can [download it here](https://iperf.fr/en/iperf-download.php).
