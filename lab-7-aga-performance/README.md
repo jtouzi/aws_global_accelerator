@@ -17,6 +17,11 @@
 
 **[Lab 7: AWS Global Accelerator Performance](../lab-7-aga-performance)**
 
+1. AWS Global Accelerator speed comparison tool
+2. Measuring number of hops and detect loss
+3. Measuring the Total Time to download a 100KB file from AWS Global Accelerator vs directly from the ALBs
+4. Measuring RTT
+
 [Bonus Lab: CloudWatch metrics and enabling flow logs](../bonus-lab)
 
 [Cleaning up](../clean-up)
@@ -30,7 +35,7 @@ Global Accelerator's performance depends on many factors, such as the performanc
 - Not ideal: use synthetic monitoring from data centers or other cloud providers with tens/hundreds of probes (e.g., ThousandEyes)
 - Don't do this: test from EC2 to EC2, as that already uses the Amazon backbone
 
-For this test, use your laptop/Mac (Windows, Linux, MacOS), I'll be using a Mac.
+For this workshop we will use the first option, and test from our laptop/Mac (Windows, Linux, MacOS), I'll be using a Mac.
 
 <details>
 <summary>General guidance on performance measurement</summary>
@@ -39,7 +44,22 @@ It's recommended to capture 1000+ samples every hour for a day to avoid a single
 
 </details>
 
+## AWS Global Accelerator speed comparison tool
+
+You can use the AWS Global Accelerator Speed Comparison Tool to see Global Accelerator download speeds compared to direct internet downloads, across AWS Regions. This tool enables you to use your browser to see the performance difference when you transfer data using Global Accelerator. You choose a file size to download, and the tool downloads files over HTTPS/TCP from Application Load Balancers in different Regions to your browser. For each Region, you see a direct comparison of the download speeds.
+
+To access the Speed Comparison Tool, copy the following URL into your browser: https://speedtest.globalaccelerator.aws
+
+<details>
+<summary>Important</summary>
+
+Results may differ when you run the test multiple times. Download times can vary based on factors that are external to Global Accelerator, such as the quality, capacity, and distance of the connection in the last-mile network that you're using.
+
+</details>
+
 ## Measuring number of hops and detect loss
+
+Traceroute shows the route packets take from your computer to a host over an IP network. By default it uses ICMP protocol, some firewalls and routers often block the ICMP protocol completely or disallow the ICMP echo requests (ping requests). Let's use TCP Traceroute (send TCP packets) to see the number of hops and detect any packet loss, this will better reproduce the connection being made by our endpoints.
 
 ### TCP Traceroute to the Global Accelerator endpoint
 
@@ -55,6 +75,7 @@ Tracing the path to aebd116200e8c28ad.awsglobalaccelerator.com (75.2.63.57) on T
  6  * * *
  7  aebd116200e8c28ad.awsglobalaccelerator.com (75.2.63.57) [open]  25.227 ms  24.592 ms  27.608 ms
 ```
+
 ### TCP Traceroute to the AP-NORTHEAST-1 (Tokyo) ALB endpoint
 
 ```
@@ -170,7 +191,12 @@ Tracing the path to AGAWo-Appli-9CXFU1XOCSJ6-977194569.us-west-2.elb.amazonaws.c
 Destination not reached
 ```
 
+### Comments
+It took 7 hops with Global Accelerator, 28 with the Tokyo ALB and 30+ for Dublin and Oregon ALBs.
+
 ## Measuring the Total Time to download a 100KB file from AWS Global Accelerator vs directly from the ALBs
+
+**[cURL](https://curl.haxx.se/)** is an excellent tool for debugging web requests, it allows to find the response time of a request.
 
 Create a file named *"curl-format.txt"* with the following content:
 
@@ -291,6 +317,9 @@ Name Lookup:  0.004387s |  Time to Connect:  0.087829s |  Time To Transfer:  0.0
 Name Lookup:  0.067417s |  Time to Connect:  0.155489s |  Time To Transfer:  0.155552s |  Time To First Byte:  0.316172s |  Total Time:  0.840259s
 Name Lookup:  0.004208s |  Time to Connect:  0.088712s |  Time To Transfer:  0.088801s |  Time To First Byte:  0.245562s |  Total Time:  0.761126s
 ```
+### Comments
+With AWS Global Accelerator endpoint, cURL was in average 70%, 67% and 61% faster than respectively Tokyo, Dublin and Oregon ALB endpoints (from my location).
+
 
 ## Measuring RTT
 Throughput measurements help identify any congestion and/or packet loss experienced on a network and is a great measure of performance. If you want to test from a specific client, there are two ways which we suggest you use to measure the throughput:
