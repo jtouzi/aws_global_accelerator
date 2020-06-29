@@ -382,12 +382,12 @@ Percentage of the requests served within a certain time (ms)
 
 ### Comments
 
-| Endpoint | RPS | TPR | TR (Kbytes/sec) | 50% | 90% | 100% (longest request) |
+| Endpoint | RPS | TPR | TR (Kbytes/sec) | 50% | 75% | 90% | 99% | 100% (longest request) |
 | ------- | ------- | ------- | -------| ------- | ------- | ------- |
-| AGA | 63.94 | 156ms | 12.58 | 152ms | 161ms | 290 |
-| Tokyo | 22.29 | 448ms | 4.51 | 393 | 525 | 948 |
-| Dublin | 24.6 | 406ms | 4.85 | 323 | 597 | 1636 |
-| Oregon | 48.11 | 207ms | 9.44 | 187 | 206 | 591 |
+| Global Accelerator | 63.94 | 156 | 12.58 | 152 | 155 | 161 | 219 | 290 |
+| Tokyo ALB | 22.29 | 448ms | 4.51 | 393 | 457 | 525 | 872 | 948 |
+| Dublin ALB | 24.6 | 406ms | 4.85 | 323 | 503 | 597 | 781 | 1636 |
+| Oregon ALB | 48.11 | 207ms | 9.44 | 187 | 192 | 206 | 458 | 591 |
 
 RPS: Request per second (mean)
 TPR: Time per request (mean)
