@@ -249,7 +249,7 @@ Percentage of the requests served within a certain time (ms)
 ### Comments
 
 | Endpoint | RPS (mean) | TPR (mean) | Transfer rate (mean) | Download Time (mean) | +/- sd | 50% | 75% | 90% | 99% | Longest request |
-| -------: | -------: | -------: | -------: | -------: | -------: | -------: | -------: |-------: | -------: |
+| -------: | -------: | -------: | -------: | -------: | -------: | -------: | -------: | -------: |-------: | -------: |
 | Global Accelerator | 63.94 | 156ms | 12.58 Kbytes/sec | 154ms | 11.0ms  | 152ms | 155ms | 161ms | 219ms | 290ms |
 | Tokyo ALB | 22.29 | 448ms | 4.51 Kbytes/sec | 439ms | 101.8ms  | 393ms | 457ms | 525ms | 872ms | 948ms |
 | Dublin ALB | 24.6 | 406ms | 4.85 Kbytes/sec | 403ms | 147ms  | 323ms | 503ms | 597ms | 781ms | 1636ms |
