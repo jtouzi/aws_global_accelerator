@@ -248,15 +248,15 @@ Percentage of the requests served within a certain time (ms)
 
 ### Comments
 
-| Endpoint | RPS | TPR | Transfer rate | 50% | 75% | 90% | 99% | Longest request |
-| -------: | -------: | -------: | -------: | -------: | -------: | -------: |-------: | -------: |
-| Global Accelerator | 63.94 | 156ms | 12.58 Kbytes/sec | 152ms | 155ms | 161ms | 219ms | 290ms |
-| Tokyo ALB | 22.29 | 448ms | 4.51 Kbytes/sec | 393ms | 457ms | 525ms | 872ms | 948ms |
-| Dublin ALB | 24.6 | 406ms | 4.85 Kbytes/sec | 323ms | 503ms | 597ms | 781ms | 1636ms |
-| Oregon ALB | 48.11 | 207ms | 9.44 Kbytes/sec | 187ms | 192ms | 206ms | 458ms | 591ms |
+| Endpoint | RPS (mean) | TPR (mean) | Transfer rate (mean) | Download Time (mean) | +/- sd | 50% | 75% | 90% | 99% | Longest request |
+| -------: | -------: | -------: | -------: | -------: | -------: | -------: | -------: |-------: | -------: |
+| Global Accelerator | 63.94 | 156ms | 12.58 Kbytes/sec | 154ms | 11.0ms  | 152ms | 155ms | 161ms | 219ms | 290ms |
+| Tokyo ALB | 22.29 | 448ms | 4.51 Kbytes/sec | 439ms | 101.8ms  | 393ms | 457ms | 525ms | 872ms | 948ms |
+| Dublin ALB | 24.6 | 406ms | 4.85 Kbytes/sec | 403ms | 147ms  | 323ms | 503ms | 597ms | 781ms | 1636ms |
+| Oregon ALB | 48.11 | 207ms | 9.44 Kbytes/sec | 200ms | 52ms  | 187ms | 192ms | 206ms | 458ms | 591ms |
 
-- RPS: Request per second (mean)
-- TPR: Time per request (mean)
+- RPS: Request per second
+- TPR: Time per request
 
 These tests were done from my location, yours WILL be different, compare and discuss the results with the instructor.
 
@@ -525,7 +525,7 @@ Name Lookup:  0.067417s |  Time to Connect:  0.155489s |  Time To Transfer:  0.1
 Name Lookup:  0.004208s |  Time to Connect:  0.088712s |  Time To Transfer:  0.088801s |  Time To First Byte:  0.245562s |  Total Time:  0.761126s
 ```
 ### Comments
-With AWS Global Accelerator endpoint, cURL was in average 70%, 67% and 61% faster than respectively Tokyo, Dublin and Oregon ALB endpoints (from my location). These tests were done from my location, yours WILL be different, compare and discuss the results with the instructor.
+With AWS Global Accelerator endpoint, cURL was always faster than respectively Tokyo, Dublin and Oregon ALB endpoints. These tests were done from my location, yours WILL be different, compare and discuss the results with the instructor.
 
 # Checkpoint
 
