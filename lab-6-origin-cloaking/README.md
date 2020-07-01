@@ -52,7 +52,7 @@ To allow only our accelerator to access the ALB, update the SG associated to the
 - Choose **Security Groups** on the left
 - Select the ALB Security Group the CloudFormation created (by default *AGAWorkshop-ALBSecurityGroup-StackID*)
 - Select **Inbound rules** tab and click on **Edit inbound rules**
-- Delete the two entries (HTTP and HTTPS) then click on **Add rule**
+- Delete the two entries (HTTP and HTTPS), then click on **Add rule**
 - **Type:** All TCP | **Source:** Custom, in the drop down menu select the Global Accelerator Security Group, add an optional description
 - Click on **Save rules**
 
@@ -68,17 +68,17 @@ Verify that the endpoint is accessible via AWS Global Accelerator:
 
 You can repeat this for other route tables to protect your ALBs from being accessed directly using their DNS, Global Accelerator is the single entry point.
 
-Since the next lab is about performance, let's revert the change we made to the route table (add a route to the Internet Gateway):
+Since the next lab is about performance, let's revert the changes we made (allow public HTTP and HTTPS traffic):
 
-- Open the [VPC Console](https://ap-northeast-1.console.aws.amazon.com/vpc/home?region=ap-northeast-1)
-- Choose **Route Tables** on the left
-- Select the Route table the CloudFormation created (by default *Public Route Table*)
-- Select the **Routes** tab and then **Edit Routes**
-- Click on **Add route**
-> Destination: 0.0.0.0/0
+- Open the [EC2 Console](https://ap-northeast-1.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-1)
+- Choose **Security Groups** on the left
+- Select the ALB Security Group the CloudFormation created (by default *AGAWorkshop-ALBSecurityGroup-StackID*)
+- Select **Inbound rules** tab and click on **Edit inbound rules**
+- Delete the entry from the Global Accellerator SG, then click on **Add rule**
+- **Type:** HTTP | **Source:** Anywhere
+- **Type:** HTTPS | **Source:** Anywhere
+- Click on **Save rules**
 
-> Target: Select **Internet Gateway** in the dropdown menu, then the Internet Gateway ID the CloudFormation template created (by default *GlobalAcceleratorVPC Internet Gateway*)
-- Click on **Save routes**
 
 # Checkpoint
 
