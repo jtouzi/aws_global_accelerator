@@ -31,17 +31,32 @@ As you can see we can access the ALB directly from any client. Our application i
 
 Origin cloaking allows you to make Global Accelerator the single internet-facing access point for your applications running in a single or multiple AWS Regions. The applications are centrally protected from distributed denial of service (DDoS) attacks through AWS Shield. You can also have greater control over how your end users reach your applications.
 
-Let's protect one of our ALBs from being accessed directly using it DNS, I choose the Tokyo ALB. For this we can make the Route table associated to the two Subnet the CloudFormation created private by removing the Route to the Internet Gateway:
+Let's make one of our ALB endpoints not accessible from the internet, I choose the Tokyo ALB. The CloudFormation template we used created a VPC with a default Security Group (SG) named *default*, and an ALB with an SG attached to it (it name depends on your CFN stack name, by default *AGAWorkshop-ALBSecurityGroup-StackID*) that allows HTTP and HTTPS traffic from 0.0.0.0/0. When you create an Accelerator, AWS Global Accelerator creates and manages an SG named *GlobalAccelerator* with no permission entry, it also creates Elastic Network Interfaces (ENIs) in each subnet that has at least one ENI of the ALB in it that is fronted by an accelerator in your account, these ENIs allow traffic only to and from the AWS Global Accelerator service.
 
-- Open the [VPC Console](https://ap-northeast-1.console.aws.amazon.com/vpc/home?region=ap-northeast-1)
-- Choose **Route Tables** on the left
-- Select the Route table the CloudFormation created (by default *Public Route Table*)
-- Select the **Routes** tab and then **Edit Routes**
-- Delete the route to the Internet Gateway and click on **Save routes**.
+<details>
+<summary>Internal ALBs and private EC2 instances with Global Accelerator. Learn more...</summary>
 
-The route table should look like the following:
+You can add  iinternal Application Load Balancers or private Amazon EC2 instances as endpoints in AWS Global Accelerator, when you do so you enable internet traffic to flow directly to and from the endpoint in Virtual Private Clouds (VPCs) by targeting it in a private subnet.
 
-<kbd>![x](images/private-subnet.png)</kbd>
+For more information, see our [documentation](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoints.html)
+
+</details>
+
+<kbd>![x](images/security-groups.png)</kbd>
+
+<kbd>![x](images/network-interfaces.png)</kbd>
+
+To allow only our accelerator to access the ALB, update the SG associated to the ALB by removing the HTTP and HTTPs entries, and adding the Global Accelerator SG:
+
+- Open the [EC2 Console](https://ap-northeast-1.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-1)
+- Choose **Security Groups** on the left
+- Select the ALB Security Group the CloudFormation created (by default *AGAWorkshop-ALBSecurityGroup-StackID*)
+- Select **Inbound rules** tab and click on **Edit inbound rules**
+- Delete the two entries (HTTP and HTTPS) then click on **Add rule**
+- **Type:** All TCP | **Source:** Custom, in the drop down menu select the Global Accelerator Security Group, add an optional description
+- Click on **Save rules**
+
+<kbd>![x](images/access-from-aga.png)</kbd>
 
 Verify that the endpoint is no longer accessible directly:
 
