@@ -27,6 +27,10 @@ In this lab, you'll launch the core infrastructure for the workshop via AWS Clou
 
 <a name="1"/>
 
+### 0. Note for the instructor/trainer
+
+Use the CloudFormation in the [instructor notes](instructor) to spin up 4 EC2 instances in four different AWS regions (Ohio, Singapore, Paris and Sao Paulo), share the Ohio DNS with the participants so they can see how AWS Global Accelerator distributes traffic based on user location and the accelerator settings.
+
 ### 1. Deploy the CloudFormation Stack
 
 Launch the CloudFormation stack in **two or more AWS Regions** of your choice, note down the different regions you choose.
